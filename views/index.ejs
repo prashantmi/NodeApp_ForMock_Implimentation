@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Investigation Tracking Report</title>
+<meta charset="ISO-8859-1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<!---New Resources Created by Prashant Start----------------------------------------------------------------------------->
+
+<!--JQuery Added by Prashant-->
+<script src="media/jquery/3.4.1/jquery-3.4.1.min.js" type="text/javascript"></script>
+
+<!--Propper JS Added by Prashant-->
+<script src="media/popper.js/1.15.0/umd/popper.min.js"></script>
+<!--Tooltip JS Added by Prashant-->
+<script src="media/tooltip.js/1.3.2/umd/tooltip.min.js"></script>
+
+
+<!--JQueryUI Added by Prashant-->
+<script src="media/jquery-ui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+<link href="media/jquery-ui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+<script src="media/jquery-ui/1.12.1/jquery.ui.datepicker.validation.min.js" type="text/javascript"></script>
+<script src="media/jquery-ui/1.12.1/jquery.validate.min.js" type="text/javascript"></script>
+
+<!--Bootstrap Added by Prashant-->
+<link href="media/bootstrap/bootstrap-4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="media/bootstrap/bootstrap-4.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+
+
+<!--Bootstrap Datables Added by Prashant-->
+<link href="media/dataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<script src="media/dataTables/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script src="media/dataTables/DataTables-1.10.18/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+
+
+<!--Bootstrap Datatables Buttons Added by Prashant-->
+<link href="media/dataTables/Buttons-1.5.6/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<script src="media/dataTables/Buttons-1.5.6/js/dataTables.buttons.min.js" type="text/javascript"></script>
+<script src="media/dataTables/Buttons-1.5.6/js/buttons.bootstrap4.min.js" type="text/javascript"></script>
+
+<script src="media/dataTables/Buttons-1.5.6/js/buttons.colVis.min.js" type="text/javascript"></script>
+<script src="media/dataTables/Buttons-1.5.6/js/buttons.flash.min.js" type="text/javascript"></script>
+<script src="media/dataTables/Buttons-1.5.6/js/buttons.html5.min.js" type="text/javascript"></script>
+<script src="media/dataTables/Buttons-1.5.6/js/buttons.print.min.js" type="text/javascript"></script>
+
+
+<!--Excel HTML5 export button Added by Prashant-->
+<script src="media/dataTables/JSZip-2.5.0/jszip.min.js" type="text/javascript"></script>
+
+<!--PDF HTML5 export button Added by Prashant-->
+<script src="media/dataTables/pdfmake-0.1.36/pdfmake.min.js" type="text/javascript"></script>
+<script src="media/dataTables/pdfmake-0.1.36/vfs_fonts.js" type="text/javascript"></script>
+
+
+<!--Bootstrap Datables FixedHeader Added by Prashant-->
+<link href="media/dataTables/FixedHeader-3.1.4/css/fixedHeader.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<script src="media/dataTables/FixedHeader-3.1.4/js/dataTables.fixedHeader.min.js" type="text/javascript"></script>
+<script src="media/dataTables/FixedHeader-3.1.4/js/fixedHeader.bootstrap4.min.js" type="text/javascript"></script> <!--not ness-->
+
+
+<!--Bootstrap Datables RowGroup Added by Prashant-->
+<link href="media/dataTables/RowGroup-1.1.0/css/rowGroup.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<script src="media/dataTables/RowGroup-1.1.0/js/dataTables.rowGroup.min.js" type="text/javascript"></script>
+<script src="media/dataTables/RowGroup-1.1.0/js/rowGroup.bootstrap4.min.js" type="text/javascript"></script> <!--not ness-->
+
+
+<!--Bootstrap Datables Responsive Added by Prashant-->
+<link href="media/dataTables/Responsive-2.2.2/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<script src="media/dataTables/Responsive-2.2.2/js/dataTables.responsive.min.js" type="text/javascript"></script>
+<script src="media/dataTables/Responsive-2.2.2/js/responsive.bootstrap4.min.js" type="text/javascript"></script>
+
+
+<!--Fontawesome Icons---->
+<link rel="stylesheet" href="media/fontawesome/5.10.1/css/all.css" />
+
+
+<!---For Bootstrap 3 moment.js dattimepicker---->
+<!-- <link rel="stylesheet" href="media/bootstrap/bootstrap-3.3.7/css/bootstrap.min.css" /> -->
+<script type="text/javascript" src="media/misc/moment.js"></script>
+<script type="text/javascript" src="media/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" href="media/bootstrap/css/bootstrap-datetimepicker.min.css" />
+
+<!---Datatables Date sorting plugin----->
+<!-- <script type="text/javascript" src="media/misc/moment.min.js"></script> -->
+<script type="text/javascript" src="media/misc/datetime-moment.js"></script>
+
+
+<!--Custome Resources----->
+<script type="text/javascript" src="media/reports/js/invTrackingReport.js"></script>
+<link rel="stylesheet" href="media/reports/css/invTrackingReport.css" />
+
+<!---New Resources Created by Prashant End--------------------------------------------------------------------------------------->
+
+
+</head>
+
+<body>
+<html:form action="/InvestigationTrackingReport" enctype="multipart/form-data">
+
+
+<div class="container-fluid mt-md-2 mb-md-4 bg-white" id="container1">
+   <div class="mx-md-0 row p-3 p-md-1 align-items-center shadow rounded bg-white no-gutters">
+
+    <div class="col-md-3.5 mr-md-2 ml-md-1 ">
+     <p class="" style="font-weight: bold;font-size: 25px;"><span class="fas fa-chart-bar text-success" style="font-size:36px;"></span> Investigation Tracking Report </p>
+    </div>
+
+    <div class="col-md-3 form-group mr-md-2 mt-md-2">
+         <div class='input-group'>
+            <div class="input-group-append">
+            <!-- <span class="input-group-text">Bill No:</span> -->
+            <select class="form-control" id="inputTypeBC">
+              <option value="1">Bill No :</option>
+              <option value="2">Cr No :</option>
+            </select>
+            </div>
+        <input type="number" class="form-control" id="billNoInput" placeholder="Enter Bill No." maxlength="15" value="961019190000641" >
+        <input type="number" class="form-control" id="crNoInput"  placeholder="Enter Cr. No." maxlength="20"  style="display: none" value="961011900005083">
+        </div>
+    </div>
+
+ <div class='inputDates col-md-2 mr-md-2 mt-md-2' style="display : none; ">
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker-from'>
+                <div class="input-group-append">
+                    <span class="input-group-text px-1" >From Date:</span>
+                </div>
+                <input type='text' class="form-control px-1 fromDateInput" value="" onkeydown="return false" />
+                <span class="input-group-addon">
+                    <span class="input-group-text">
+                        <i class="fas fa-calendar-alt" style="color: #007BFF; font-size:23px;"></i>
+                    </span>
+                </span>
+            </div>
+        </div>
+</div>
+
+<div class='inputDates col-md-2 mr-md-2  mt-md-2' style="display: none;">
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker-to'>
+                <div class="input-group-append">
+                    <span class="input-group-text px-1" >To Date:</span>
+                </div>
+                <input type='text' class="form-control px-1 toDateInput " value="" onkeydown="return false" />
+                <span class="input-group-addon">
+                    <span class="input-group-text">
+                        <i class="fas fa-calendar-alt" style="color: #007BFF; font-size:23px;"></i>
+                    </span>
+                </span>
+            </div>
+        </div>
+</div>
+
+    <div class="col-md-1 p-md-1 " >
+        <button id="getData" type="button" class="btn btn-warning "><i class="text-nowrap">Get Data</i></button>
+
+        <button id="getingData" class="btn btn-primary text-nowrap" style="display: none;" disabled>
+        <span class="spinner-border spinner-border-sm"></span> Loading..
+    </button>
+    </div>
+
+   </div>
+
+
+</div>
+
+
+<div class="container-fluid mt-md-0 mb-md-4 bg-white" id="patDetails" style="display:none;">
+    <div class="mx-md-0 row p-2 align-items-center shadow rounded bg-white no-gutters">
+        <div class="col-md-2 " id="patDetails-icon" >
+            <p class="" style="font-weight: bold;font-size: 26px;">
+            <i class="fas fa-female" id="patDetails-icon-w"  style="color: #E83E8C; font-size:40px; display:none;"></i>
+            <i class="fas fa-male"   id="patDetails-icon-m"  style="color: #007BFF; font-size:40px; display:none;"></i>
+            <i class="fas fa-child"  id="patDetails-icon-g"  style="color: #E83E8C; font-size:40px; display:none;"></i>
+            <i class="fas fa-child"  id="patDetails-icon-b"  style="color: #007BFF; font-size:40px; display:none;"></i>
+            <i class="fas fa-baby"   id="patDetails-icon-gc" style="color: #E83E8C; font-size:40px; display:none;"></i>
+            <i class="fas fa-baby"   id="patDetails-icon-bc" style="color: #007BFF; font-size:40px; "></i>
+            Patient Details </p>
+        </div>
+
+        <div class="col-md-10 " id="patDetails-table">
+          <table id="DataTable1" class="table  dt-responsive nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white" style="width:100%">
+            <!-- <caption>Patient details By Bill No.</caption> -->
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>CR Number</th>
+                    <th>Patient Status</th>
+                    <th>Age/Gender</th>
+                    <th>Phone</th>
+                    <th>Email Id</th>
+                    <th>Latest Bill Number</th>
+                    <th>Payments Done</th>
+                    <th>Pending Payments</th>
+                    <th>Member Since</th>
+                    <th>Address</th>
+                    <th>Note</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="patReqnListOnBillNo" class="container-fluid mt-md-0 mb-md-4 bg-white " style="display: none;">
+<table id="DataTable2" class="table  dt-responsive table-striped table-bordered  nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white" style="width:100%">
+  <caption>Investigation Tracking List By Bill No.</caption>
+        <thead>
+            <tr>
+                <th>
+                <i class="fas fa-chevron-circle-up text-danger d-none collapseButton"></i>
+                <i class="fas fa-chevron-circle-down text-success expandButton"></i>
+                S.No
+                </th>
+                <th>Report Status</th>
+                <th>Group Name</th>
+                <th>Test Name</th>
+                <th>Sample Name</th>
+                <th>Sample No.</th>
+                <th>Lab/Accession No.</th>
+                <th>Status</th>
+                <th>Lab Name</th>
+                <th>Requisition Date</th>
+                <th>Department</th>
+                <th>Ward Name</th>
+                <th>Lab Name</th>
+                <th>Requisition Date</th>
+                <th>Department</th>
+                <th>Ward Name</th>
+            </tr>
+        </thead>
+        <tbody>
+          <!-- <tr>
+              <td>1</td>
+              <td>R S1</td>
+              <td>G N1</td>
+              <td>T N1</td>
+              <td>S N1</td>
+              <td>S N1</td>
+              <td>L/A N1</td>
+              <td>St1</td>
+              <td>L N1</td>
+              <td>R D1</td>
+              <td>Dt1</td>
+              <td>W N1</td>
+              <td>L N1</td>
+              <td>R D1</td>
+              <td>D1</td>
+              <td>W N1</td>
+          </tr>
+          <tr>
+              <td>2</td>
+              <td>R S2</td>
+              <td>G N2</td>
+              <td>T N2</td>
+              <td>S N2</td>
+              <td>S N2</td>
+              <td>L/A N2</td>
+              <td>St2</td>
+              <td>L N2</td>
+              <td>R D2</td>
+              <td>Dt2</td>
+              <td>W N2</td>
+              <td>L N2</td>
+              <td>R D2</td>
+              <td>D2</td>
+              <td>W N2</td>
+          </tr>
+          <tr>
+              <td>3</td>
+              <td>R S3</td>
+              <td>G N3</td>
+              <td>T N3</td>
+              <td>S N3</td>
+              <td>S N3</td>
+              <td>L/A N3</td>
+              <td>St3</td>
+              <td>L N3</td>
+              <td>R D3</td>
+              <td>Dt3</td>
+              <td>W N3</td>
+              <td>L N3</td>
+              <td>R D3</td>
+              <td>D3</td>
+              <td>W N3</td>
+          </tr> -->
+        </tbody>
+         <tfoot>
+            <!-- <tr style="display: none;">
+                <th>S.No</th>
+                <th>Report Status</th>
+                <th>Group Name</th>
+                <th>Test Name</th>
+                <th>Sample Name</th>
+                <th>Sample No.</th>
+                <th>Lab/Accession No.</th>
+                <th>Status</th>
+                <th>Lab Name</th>
+                <th>Requisition Date</th>
+                <th>Department</th>
+                <th>Ward Name</th>
+                <th>Lab Name</th>
+                <th>Requisition Date</th>
+                <th>Department</th>
+                <th>Ward Name</th>
+            </tr> -->
+            <tr>
+                <th colspan="2">Requisition Raising</th>
+                <th colspan="2">Sample Collection</th>
+                <th colspan="2">Sample Acceptance</th>
+                <th colspan="2">Patient Acceptance</th>
+                <th colspan="2">Result Entry</th>
+                <th colspan="2">Result Validation</th>
+                <th colspan="2">Report Printing</th>
+                <th colspan="2">Addendum And Amendment</th>
+            </tr>
+        </tfoot>
+</table>
+</div>
+
+
+<div id="patReqnListOnCrNo" class="container-fluid mt-md-0 mb-md-4 bg-white " style="display: none;">
+
+<table id="DataTable3" class="table  dt-responsive table-striped table-bordered nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white" style="width:100%">
+    <caption>Investigation Tracking List By Cr. No.</caption>
+        <thead>
+            <tr>
+                <th>
+                <i class="fas fa-chevron-circle-up text-danger d-none collapseButton"></i>
+                <i class="fas fa-chevron-circle-down text-success expandButton"></i>
+                S.No
+                </th>
+                <th>Bill No.</th>
+                <th>Report Status</th>
+                <th>Group Name</th>
+                <th>Test Name</th>
+                <th>Sample Name</th>
+                <th>Sample No.</th>
+                <th>Lab/Accession No.</th>
+                <th>Status</th>
+                <th>Lab Name</th>
+                <th>Requisition Date</th>
+                <th>Department</th>
+                <th>Ward Name</th>
+                <th>Requisition Date</th>
+                <th>Department</th>
+                <th>Ward Name</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+         <tfoot>
+            <!-- <tr style="display: none;">
+                <th>S.No</th>
+                <th>Bill No.</th>
+                <th>Report Status</th>
+                <th>Group Name</th>
+                <th>Test Name</th>
+                <th>Sample Name</th>
+                <th>Sample No.</th>
+                <th>Lab/Accession No.</th>
+                <th>Status</th>
+                <th>Lab Name</th>
+                <th>Requisition Date</th>
+                <th>Department</th>
+                <th>Ward Name</th>
+                <th>Status</th>
+                <th>Lab Name</th>
+                <th>Requisition Date</th>
+                <th>Department</th>
+                <th>Ward Name</th>
+            </tr> -->
+            <tr>
+                <th colspan="2">Requisition Raising</th>
+                <th colspan="2">Sample Collection</th>
+                <th colspan="2">Sample Acceptance</th>
+                <th colspan="2">Patient Acceptance</th>
+                <th colspan="2">Result Entry</th>
+                <th colspan="2">Result Validation</th>
+                <th colspan="2">Report Printing</th>
+                <th colspan="2">Addendum And Amendment</th>
+            </tr>
+        </tfoot>
+</table>
+</div>
+
+</html:form>
+</body>
+
+</html>
