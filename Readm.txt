@@ -1,0 +1,9 @@
+// to create node js express app
+
+express -v ejs -c sass NodeApp_ForMock_Implimentation 
+
+cd NodeApp_ForMock_Implimentation 
+
+npm install
+
+npm start
