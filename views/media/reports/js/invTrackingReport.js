@@ -259,8 +259,8 @@ function AjaxGetPatDetailsOnBillNo(billNo){
 	    },
 
     "ajax": {
-      "url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo, sync:true, postData: "", handleAs: "text",
-			//"url": "/data", sync:true, postData: "", handleAs: "text",
+      //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo, sync:true, postData: "", handleAs: "text",
+			"url": "/data", sync:true, postData: "", handleAs: "text",
 			error: function (jqXHR, statusText, errorThrown) {
     	  console.log(jqXHR.responseText);
     	  console.log(statusText);
@@ -326,8 +326,8 @@ function AjaxGetPatDetailsOnCrNo(crNo){
 	    },
 
 	  "ajax": {
-      "url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&crNo="+crNo, sync:true, postData: "", handleAs: "text",
-			//"url": "/data", sync:true, postData: "", handleAs: "text",
+      //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&crNo="+crNo, sync:true, postData: "", handleAs: "text",
+			"url": "/data", sync:true, postData: "", handleAs: "text",
 			error: function (jqXHR, statusText, errorThrown) {
     	  console.log(jqXHR.responseText);
     	  console.log(statusText);
@@ -482,8 +482,8 @@ function AjaxGetPatReqnListOnBillNo(billNo){
 
 
        "ajax": {
-        "url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo, sync:true, postData: "", handleAs: "text",
-			 //"url": "/data", sync:true, postData: "", handleAs: "text",
+        //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo, sync:true, postData: "", handleAs: "text",
+			 "url": "/data", sync:true, postData: "", handleAs: "text",
 			 error: function (jqXHR, statusText, errorThrown) {
     	  console.log(jqXHR.responseText);
     	  console.log(statusText);
@@ -662,8 +662,8 @@ function AjaxGetPatReqnListOnCrNo(crNo){
 	        ],
 
       "ajax": {
-       "url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&crNo="+crNo+"&fromDate="+fromDate+"&toDate="+toDate, sync:true, postData: "", handleAs: "text",
-			//"url": "/data", sync:true, postData: "", handleAs: "text",
+       //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&crNo="+crNo+"&fromDate="+fromDate+"&toDate="+toDate, sync:true, postData: "", handleAs: "text",
+			"url": "/data", sync:true, postData: "", handleAs: "text",
 			error: function (jqXHR, statusText, errorThrown) {
     	  console.log(jqXHR.responseText);
     	  console.log(statusText);
