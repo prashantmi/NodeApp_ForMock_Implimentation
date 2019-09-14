@@ -6,15 +6,15 @@ $(document).ready(function () {
             showTodayButton: true,
             //showClear: true,
             icons: { today: 'fas fa-calendar-day',
-                   previous: "fa fa-caret-left",
-                   next: "fa fa-caret-right ",
+            	  	 previous: "fa fa-caret-left",
+            	  	 next: "fa fa-caret-right ",
 
-                   //up: "fa fa-arrow-up",
-                 //down: "fa fa-arrow-down",
-                 //date: "fa fa-calendar",
-                   //clear: "fa fa-clear",
-                   //close: "fa fa-close"
-                   },
+            	  	 //up: "fa fa-arrow-up",
+            		 //down: "fa fa-arrow-down",
+            		 //date: "fa fa-calendar",
+            	     //clear: "fa fa-clear",
+            	     //close: "fa fa-close"
+            	  	 },
             useCurrent: true //may cause problem see datetimepicker issue #1075
         });
 
@@ -23,8 +23,8 @@ $(document).ready(function () {
             showTodayButton: true,
             //showClear: true,
             icons: { today: 'fas fa-calendar-day',
-                 previous: "fa fa-caret-left",
-                 next: "fa fa-caret-right ", },
+            	 	 previous: "fa fa-caret-left",
+            		 next: "fa fa-caret-right ", },
             useCurrent: true //may cause problem see datetimepicker issue #1075
         });
 
@@ -55,13 +55,24 @@ function setDate() {
 
 
 $(document).ready(function(){
-  var table = $('#DataTable1').DataTable( {
-  responsive: true,
-  "ordering": false,
-  "dom": "t",
-  lengthChange: false,
-  });
+	var table = $('#DataTable1').DataTable( {
+	responsive: true,
+	"ordering": false,
+	"dom": "t",
+	lengthChange: false,
+	});
 });
+
+
+
+$(document).ready(function(){
+	  $('.hover-shadow').hover(
+	  function(){ $(this).addClass("shadow-lg"); },
+	  function(){ $(this).removeClass("shadow-lg"); }
+	);
+});
+
+
 
 /*------------------------------------------Event Actions------------------------------------------------*/
 
@@ -101,8 +112,8 @@ $(document).ready(function(){
 /*----------On Click Getdata Button starts---------------------------------*/
   $('#getData').click( function(){
 
-  //show loding animation
-    showHideLoding("yes");
+	//show loding animation
+	  showHideLoding("yes");
 
     var inputTypeBC=$('#inputTypeBC').val();
 
@@ -112,18 +123,18 @@ $(document).ready(function(){
     var billNo=$('#billNoInput').val();
 
     if(billNo.length==15) {
-      $('#patDetails').css({"display": ""});
-      $('#patReqnListOnCrNo').css({"display": "none"});
-      $('#patReqnListOnBillNo').css({"display": ""});
+    	$('#patDetails').css({"display": ""});
+    	$('#patReqnListOnCrNo').css({"display": "none"});
+    	$('#patReqnListOnBillNo').css({"display": ""});
 
-      AjaxGetPatDetailsOnBillNo(billNo);
-      AjaxGetPatReqnListOnBillNo(billNo);
+    	AjaxGetPatDetailsOnBillNo(billNo);
+    	AjaxGetPatReqnListOnBillNo(billNo);
     } else {
 
-      alert("Bill No. Should Be Of 15 Digits");
-      $('#billNoInput').focus();
-      showHideLoding("no");
-      }
+    	alert("Bill No. Should Be Of 15 Digits");
+    	$('#billNoInput').focus();
+    	showHideLoding("no");
+     	}
 
     }
 
@@ -133,18 +144,18 @@ $(document).ready(function(){
     var crNo=$('#crNoInput').val();
 
     if(crNo.length==15) {
-      $('#patDetails').css({"display": ""});
-      $('#patReqnListOnBillNo').css({"display": "none"});
-      $('#patReqnListOnCrNo').css({"display": ""});
+    	$('#patDetails').css({"display": ""});
+    	$('#patReqnListOnBillNo').css({"display": "none"});
+    	$('#patReqnListOnCrNo').css({"display": ""});
 
-      AjaxGetPatDetailsOnCrNo(crNo);
-      AjaxGetPatReqnListOnCrNo(crNo);
+    	AjaxGetPatDetailsOnCrNo(crNo);
+    	AjaxGetPatReqnListOnCrNo(crNo);
      } else {
 
-      alert("Cr. No. Should Be Of 15 Digits");
-      $('#crNoInput').focus();
-      showHideLoding("no");
-      }
+    	alert("Cr. No. Should Be Of 15 Digits");
+    	$('#crNoInput').focus();
+    	showHideLoding("no");
+     	}
     }
 
 
@@ -160,18 +171,18 @@ $(document).ready(function(){
 /*----------Loding Button Animation On Click Getdata Button starts----------------*/
 function showHideLoding(showBoolean){
 
-  if(showBoolean=="yes"){
-    $('#getData').css({"display":"none"});
-    $('#getingData').css({"display":""});
-  }
-  else if(showBoolean=="no"){
-    $('#getingData').css({"display":"none"});
-    $('#getData').css({"display":""});
-  }
-  else {
-    $('#getingData').css({"display":"none"});
-    $('#getData').css({"display":""});
-  }
+	if(showBoolean=="yes"){
+		$('#getData').css({"display":"none"});
+		$('#getingData').css({"display":""});
+	}
+	else if(showBoolean=="no"){
+		$('#getingData').css({"display":"none"});
+		$('#getData').css({"display":""});
+	}
+	else {
+		$('#getingData').css({"display":"none"});
+		$('#getData').css({"display":""});
+	}
 }
 /*----------Loding Button Animation On Click Getdata Button starts----------------*/
 
@@ -179,26 +190,26 @@ function showHideLoding(showBoolean){
 
 /*------------Ristrict Only Number Input Validation Start---------------------------------*/
 function setInputFilter(textbox, inputFilter) {
-    ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
-      textbox.addEventListener(event, function() {
-        if (inputFilter(this.value)) {
-          this.oldValue = this.value;
-          this.oldSelectionStart = this.selectionStart;
-          this.oldSelectionEnd = this.selectionEnd;
-        } else if (this.hasOwnProperty("oldValue")) {
-          this.value = this.oldValue;
-          this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-        }
-      });
-    });
-  }
+	  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+	    textbox.addEventListener(event, function() {
+	      if (inputFilter(this.value)) {
+	        this.oldValue = this.value;
+	        this.oldSelectionStart = this.selectionStart;
+	        this.oldSelectionEnd = this.selectionEnd;
+	      } else if (this.hasOwnProperty("oldValue")) {
+	        this.value = this.oldValue;
+	        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+	      }
+	    });
+	  });
+	}
 
 $(document).ready(function(){
 setInputFilter(document.getElementById("billNoInput"), function(value) {
-    return /^\d*$/.test(value); });
+	  return /^\d*$/.test(value); });
 
 setInputFilter(document.getElementById("crNoInput"), function(value) {
-    return /^\d*$/.test(value); });
+	  return /^\d*$/.test(value); });
 });
 /*------------Ristrict Only Number Input Validation End-------------------------------*/
 
@@ -208,22 +219,22 @@ setInputFilter(document.getElementById("crNoInput"), function(value) {
 /*---Call this method for any data table to epand and collapse rows with right argument--*/
 function expandColapseRow(booleanExpand, table){
 
-  if(booleanExpand=="yes"){
-    // Expand row details
-      table.rows(':not(.parent)').nodes().to$().find('td:first-child').trigger('click');
+	if(booleanExpand=="yes"){
+		// Expand row details
+ 	    table.rows(':not(.parent)').nodes().to$().find('td:first-child').trigger('click');
 
-      //Switch buttons
-      $('table .expandButton').addClass('d-none');
-      $('table .collapseButton').removeClass('d-none');
+ 	    //Switch buttons
+ 	    $('table .expandButton').addClass('d-none');
+ 	    $('table .collapseButton').removeClass('d-none');
 
-  } else {
-     // Collapse row details
-     table.rows('.parent').nodes().to$().find('td:first-child').trigger('click');
+	} else {
+		 // Collapse row details
+	 	 table.rows('.parent').nodes().to$().find('td:first-child').trigger('click');
 
-     //Switch buttons
-     $('table .collapseButton').addClass('d-none');
-     $('table .expandButton').removeClass('d-none');
-  }
+	 	 //Switch buttons
+	 	 $('table .collapseButton').addClass('d-none');
+	 	 $('table .expandButton').removeClass('d-none');
+	}
 }
 /*---function to expand and collapse all rows on button click Ends--------------*/
 
@@ -237,25 +248,23 @@ function AjaxGetPatDetailsOnBillNo(billNo){
   $('#DataTable1').DataTable().clear().destroy();
   var table = $('#DataTable1').DataTable( {
 
-   responsive: true,
+	 responsive: true,
     "ordering": false,
     //"dom": "lftipr", //show all features of dattatables
     "dom": "t", //show only table row
     lengthChange: false,
 
-    "language": {
-        "emptyTable": "No Data Is Available "
-      },
+	  "language": {
+	      "emptyTable": "No Data Is Available "
+	    },
 
     "ajax": {
       //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo, sync:true, postData: "", handleAs: "text",
-      "url": "/data", sync:true, postData: "", handleAs: "text",
-      error: function (jqXHR, statusText, errorThrown) {
-        console.log(jqXHR.responseText);
-
-        //console.log(jqXHR.responseText.errors);
-        console.log(statusText);
-        console.log(errorThrown);
+			"url": "/data", sync:true, postData: "", handleAs: "text",
+			error: function (jqXHR, statusText, errorThrown) {
+    	  console.log(jqXHR.responseText);
+    	  console.log(statusText);
+    	  console.log(errorThrown);
       },
       dataSrc: "patDetailsOnBillNo"
       },
@@ -289,11 +298,11 @@ function AjaxGetPatDetailsOnBillNo(billNo){
                        },
 
       "initComplete": function(settings, json) {
-        //show loding animation
-        //showHideLoding("no");
-        //console.log(settings);
-        //console.log(json);
-        }
+    	  //show loding animation
+    	  //showHideLoding("no");
+    	  //console.log(settings);
+    	  //console.log(json);
+    	  }
     });
 
 
@@ -306,23 +315,28 @@ function AjaxGetPatDetailsOnCrNo(crNo){
   $('#DataTable1').DataTable().clear().destroy();
   var table = $('#DataTable1').DataTable( {
 
-    responsive: true,
-    "ordering": false,
-    /*"dom": "lftipr", /*show all features of dattatables*/
-    "dom": "t", /*show only table row*/
-    lengthChange: false,
+	  responsive: true,
+	  "ordering": false,
+	  /*"dom": "lftipr", /*show all features of dattatables*/
+	  "dom": "t", /*show only table row*/
+	  lengthChange: false,
 
-    "language": {
-        "emptyTable": "No Data Is Available "
+	  "language": {
+	      "emptyTable": "No Data Is Available "
+	    },
+
+	  "ajax": {
+      //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&crNo="+crNo, sync:true, postData: "", handleAs: "text",
+			"url": "/data", sync:true, postData: "", handleAs: "text",
+			error: function (jqXHR, statusText, errorThrown) {
+    	  console.log(jqXHR.responseText);
+    	  console.log(statusText);
+    	  console.log(errorThrown);
       },
-
-    "ajax": {
-      //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&crNo="+crNo,sync:true, postData: "", handleAs: "text",
-      "url": "/data", sync:true, postData: "", handleAs: "text",
-      dataSrc: "patDetailsOnCrNo"
+			dataSrc: "patDetailsOnCrNo"
      },
      "columns": [
-       { "data": 'patientName' },
+    	 { "data": 'patientName' },
          { "data": 'crNumber' },
          { "data": 'patientStatus' },
          { "data": 'ageGender' },
@@ -350,9 +364,9 @@ function AjaxGetPatDetailsOnCrNo(crNo){
                     },
 
      "initComplete": function(settings, json) {
-      //show loding animation
-      //showHideLoding("no");
-      }
+   	  //show loding animation
+   	  //showHideLoding("no");
+   	  }
 
     });
 
@@ -372,105 +386,110 @@ function AjaxGetPatReqnListOnBillNo(billNo){
 
      dom: 'Bfrtip',
      "columnDefs": [
-          { "orderable": false, "targets": 0 }
-        ],
+    	    { "orderable": false, "targets": 0 }
+    	  ],
 
      "language": {
-            "emptyTable": "No Data Is Available "
-          },
+    	      "emptyTable": "No Data Is Available "
+    	    },
 
       buttons: [
-       {
-         extend: 'collection',
-         text: 'Trigger Tools',
-         className: "btn-dark",
-         buttons: [
-           { extend: 'colvis', className: "bg-dark text-white" },
-           { extend: 'excel', className: "bg-dark text-white"  },
-           { extend: 'pdfHtml5', className: "bg-dark text-white",
-             title: 'Investigation Tracking Report', text: 'PDF',
-             pageMargins: [ 0, 0, 0, 0 ], // try #1 setting margins
-             margin: [ 0, 0, 0, 0 ], // try #2 setting margins
-             alignment: 'center',
-             exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] }
-           }
-           ]
-       },
-      /* {
-         extend: 'colvisGroup',
-         className: "btn-light"
+    	 {
+    		 extend: 'collection',
+    		 text: 'Trigger Tools',
+    		 className: "btn-dark",
+    		 buttons: [
+    			 { extend: 'colvis', className: "bg-dark text-white" },
+    			 { extend: 'excel', className: "bg-dark text-white"  },
+    			 { extend: 'pdfHtml5', className: "bg-dark text-white",
+    				 title: 'Investigation Tracking Report', text: 'PDF',
+    				 pageMargins: [ 0, 0, 0, 0 ], // try #1 setting margins
+    				 margin: [ 0, 0, 0, 0 ], // try #2 setting margins
+    				 alignment: 'center',
+    				 exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] }
+    			 }
+    			 ]
+    	 },
+    	/* {
+    		 extend: 'colvisGroup',
+    		 className: "btn-light"
          },*/
          {
-         extend: 'collection',
-         text: 'Show Related Columns',
-         className: "btn-success",
-         buttons: [
-           {
-                   extend: 'colvisGroup',
-                   className: "bg-dark text-white",
-                   text: 'Show All',
-                   show: ':hidden'
-                 },
-           {
-               extend: 'colvisGroup',
-                   className: "bg-dark text-white ",
-                   text: 'Requisition Raising',
-                   show: [ 1, 2, 3 ],
-                   hide: [ 4, 5, 6 ]
-               },
-               {
-                   extend: 'colvisGroup',
-                   className: "bg-dark text-white ",
-                   text: 'Sample Collection',
-                   show: [ 3, 4, 5 ],
-                   hide: [ 1, 2 ]
-               },
-               {
-                   extend: 'colvisGroup',
-                   className: "bg-dark text-white",
-                   text: 'Sample Acceptance',
-                   show: ':hidden'
-               },
-               {
-                   extend: 'colvisGroup',
-                   className: "bg-dark text-white ",
-                   text: 'Patient Acceptance',
-                   show: ':hidden'
-               },
-               {
-                   extend: 'colvisGroup',
-                   className: "bg-dark text-white ",
-                   text: 'Result Entry',
-                   show: ':hidden'
-               },
-               {
-                   extend: 'colvisGroup',
-                   className: "bg-dark text-white ",
-                   text: 'Result Validation',
-                   show: ':hidden'
-                },
-                {
-                   extend: 'colvisGroup',
-                   className: "bg-dark text-white ",
-                   text: 'Report Printing',
-                   show: ':hidden'
-                },
-                {
-                   extend: 'colvisGroup',
-                   className: "bg-dark text-white ",
-                   text: 'Addendum And Amendment',
-                   show: ':hidden'
-                }
+    		 extend: 'collection',
+    		 text: 'Show Related Columns',
+    		 className: "btn-success",
+    		 buttons: [
+    			 {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white",
+    	             text: 'Show All',
+    	             show: ':hidden'
+    	           },
+    			 {
+    	    		 extend: 'colvisGroup',
+    	             className: "bg-dark text-white ",
+    	             text: 'Requisition Raising',
+    	             show: [ 1, 2, 3 ],
+    	             hide: [ 4, 5, 6 ]
+    	         },
+    	         {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white ",
+    	             text: 'Sample Collection',
+    	             show: [ 3, 4, 5 ],
+    	             hide: [ 1, 2 ]
+    	         },
+    	         {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white",
+    	             text: 'Sample Acceptance',
+    	             show: ':hidden'
+    	         },
+    	         {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white ",
+    	             text: 'Patient Acceptance',
+    	             show: ':hidden'
+    	         },
+    	         {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white ",
+    	             text: 'Result Entry',
+    	             show: ':hidden'
+    	         },
+    	         {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white ",
+    	             text: 'Result Validation',
+    	             show: ':hidden'
+    	          },
+    	          {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white ",
+    	             text: 'Report Printing',
+    	             show: ':hidden'
+    	          },
+    	          {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white ",
+    	             text: 'Addendum And Amendment',
+    	             show: ':hidden'
+    	          }
 
-         ]
+    		 ]
          },
           ],
 
 
        "ajax": {
         //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo, sync:true, postData: "", handleAs: "text",
-       "url": "/data", sync:true, postData: "", handleAs: "text",
-       dataSrc: "patReqnListOnBillNo"
+			 "url": "/data", sync:true, postData: "", handleAs: "text",
+			 error: function (jqXHR, statusText, errorThrown) {
+    	  console.log(jqXHR.responseText);
+    	  console.log(statusText);
+    	  console.log(errorThrown);
+      },
+				dataSrc: "patReqnListOnBillNo"
          },
     "columns": [
          { "data": 'sno' },
@@ -509,22 +528,22 @@ function AjaxGetPatReqnListOnBillNo(billNo){
                   },
 
        "initComplete": function(settings, json) {
-        //show loding animation
-        showHideLoding("no");
-        }
+     	  //show loding animation
+     	  showHideLoding("no");
+     	  }
 
    } );
 
 
    // Handle click on "Epand All" button
    $('table .expandButton').on('click', function(){
-     expandColapseRow("yes", table);
-  });
+	   expandColapseRow("yes", table);
+ 	});
 
-  // Handle click on "Collapse All" button
-  $('table .collapseButton').on('click', function(){
-    expandColapseRow("no", table);
-  });
+ 	// Handle click on "Collapse All" button
+ 	$('table .collapseButton').on('click', function(){
+ 		expandColapseRow("no", table);
+ 	});
 
 }
 
@@ -545,107 +564,112 @@ function AjaxGetPatReqnListOnCrNo(crNo){
   $.fn.dataTable.moment( 'DD-MMM-YYYY' );
   var table = $('#DataTable3').DataTable( {
 
-    dom: 'Bfrtip',
-    "columnDefs": [
-        { "orderable": false, "targets": 0 }
-      ],
+	  dom: 'Bfrtip',
+	  "columnDefs": [
+  	    { "orderable": false, "targets": 0 }
+  	  ],
 
-      "language": {
-        "emptyTable": "No Data Is Available "
-      },
+  	  "language": {
+	      "emptyTable": "No Data Is Available "
+	    },
 
-      buttons: [
-         {
-           extend: 'collection',
-           text: 'Trigger Tools',
-           className: "btn-dark",
-           buttons: [
-             { extend: 'colvis', className: "bg-dark text-white" },
-             { extend: 'excel', className: "bg-dark text-white"  },
-             { extend: 'pdfHtml5', className: "bg-dark text-white",
-               title: 'Investigation Tracking Report', text: 'PDF',
-               pageMargins: [ 0, 0, 0, 0 ], // try #1 setting margins
-               margin: [ 0, 0, 0, 0 ], // try #2 setting margins
-               alignment: 'center',
-               exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] }
-             }
-             ]
-         },
-      /*   {
-           extend: 'colvisGroup',
-           className: "btn-light"
-           },*/
-         {
-           extend: 'collection',
-           text: 'Show Related Columns',
-           className: "btn-success",
-           buttons: [
-             {
-                     extend: 'colvisGroup',
-                     className: "bg-dark text-white ",
-                     text: 'Show All',
-                     show: ':hidden'
-                   },
-             {
-                 extend: 'colvisGroup',
-                     className: "bg-dark text-white ",
-                     text: 'Requisition Raising',
-                     show: [ 1, 2, 3 ],
-                     hide: [ 4, 5, 6 ]
-                 },
-                 {
-                     extend: 'colvisGroup',
-                     className: "bg-dark text-white ",
-                     text: 'Sample Collection',
-                     show: [ 3, 4, 5 ],
-                     hide: [ 1, 2 ]
-                 },
-                 {
-                     extend: 'colvisGroup',
-                     className: "bg-dark text-white ",
-                     text: 'Sample Acceptance',
-                     show: ':hidden'
-                 },
-                 {
-                     extend: 'colvisGroup',
-                     className: "bg-dark text-white ",
-                     text: 'Patient Acceptance',
-                     show: ':hidden'
-                 },
-                 {
-                     extend: 'colvisGroup',
-                     className: "bg-dark text-white ",
-                     text: 'Result Entry',
-                     show: ':hidden'
-                 },
-                 {
-                     extend: 'colvisGroup',
-                     className: "bg-dark text-white ",
-                     text: 'Result Validation',
-                     show: ':hidden'
-                  },
-                  {
-                     extend: 'colvisGroup',
-                     className: "bg-dark text-white ",
-                     text: 'Report Printing',
-                     show: ':hidden'
-                  },
-                  {
-                     extend: 'colvisGroup',
-                     className: "bg-dark text-white ",
-                     text: 'Addendum And Amendment',
-                     show: ':hidden'
-                  }
+  	  buttons: [
+	    	 {
+	    		 extend: 'collection',
+	    		 text: 'Trigger Tools',
+	    		 className: "btn-dark",
+	    		 buttons: [
+	    			 { extend: 'colvis', className: "bg-dark text-white" },
+	    			 { extend: 'excel', className: "bg-dark text-white"  },
+	    			 { extend: 'pdfHtml5', className: "bg-dark text-white",
+	    				 title: 'Investigation Tracking Report', text: 'PDF',
+	    				 pageMargins: [ 0, 0, 0, 0 ], // try #1 setting margins
+	    				 margin: [ 0, 0, 0, 0 ], // try #2 setting margins
+	    				 alignment: 'center',
+	    				 exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] }
+	    			 }
+	    			 ]
+	    	 },
+	    /*	 {
+	    		 extend: 'colvisGroup',
+	    		 className: "btn-light"
+	         },*/
+	    	 {
+	    		 extend: 'collection',
+	    		 text: 'Show Related Columns',
+	    		 className: "btn-success",
+	    		 buttons: [
+	    			 {
+	    	             extend: 'colvisGroup',
+	    	             className: "bg-dark text-white ",
+	    	             text: 'Show All',
+	    	             show: ':hidden'
+	    	           },
+	    			 {
+	    	    		 extend: 'colvisGroup',
+	    	             className: "bg-dark text-white ",
+	    	             text: 'Requisition Raising',
+	    	             show: [ 1, 2, 3 ],
+	    	             hide: [ 4, 5, 6 ]
+	    	         },
+	    	         {
+	    	             extend: 'colvisGroup',
+	    	             className: "bg-dark text-white ",
+	    	             text: 'Sample Collection',
+	    	             show: [ 3, 4, 5 ],
+	    	             hide: [ 1, 2 ]
+	    	         },
+	    	         {
+	    	             extend: 'colvisGroup',
+	    	             className: "bg-dark text-white ",
+	    	             text: 'Sample Acceptance',
+	    	             show: ':hidden'
+	    	         },
+	    	         {
+	    	             extend: 'colvisGroup',
+	    	             className: "bg-dark text-white ",
+	    	             text: 'Patient Acceptance',
+	    	             show: ':hidden'
+	    	         },
+	    	         {
+	    	             extend: 'colvisGroup',
+	    	             className: "bg-dark text-white ",
+	    	             text: 'Result Entry',
+	    	             show: ':hidden'
+	    	         },
+	    	         {
+	    	             extend: 'colvisGroup',
+	    	             className: "bg-dark text-white ",
+	    	             text: 'Result Validation',
+	    	             show: ':hidden'
+	    	          },
+	    	          {
+	    	             extend: 'colvisGroup',
+	    	             className: "bg-dark text-white ",
+	    	             text: 'Report Printing',
+	    	             show: ':hidden'
+	    	          },
+	    	          {
+	    	             extend: 'colvisGroup',
+	    	             className: "bg-dark text-white ",
+	    	             text: 'Addendum And Amendment',
+	    	             show: ':hidden'
+	    	          }
 
-           ]
-           },
+	    		 ]
+	         },
 
-          ],
+	        ],
 
       "ajax": {
        //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&crNo="+crNo+"&fromDate="+fromDate+"&toDate="+toDate, sync:true, postData: "", handleAs: "text",
-      "url": "/data", sync:true, postData: "", handleAs: "text",
-      dataSrc: "patReqnListOnCrNo"
+			"url": "/data", sync:true, postData: "", handleAs: "text",
+			error: function (jqXHR, statusText, errorThrown) {
+    	  console.log(jqXHR.responseText);
+    	  console.log(statusText);
+    	  console.log(errorThrown);
+      },
+			 dataSrc: "patReqnListOnCrNo"
         },
         "columns": [
             { "data": 'sno' },
@@ -683,28 +707,28 @@ function AjaxGetPatReqnListOnCrNo(crNo){
                        },
 
           "initComplete": function(settings, json) {
-            //show loding animation
-            showHideLoding("no");
-            }
+         	  //show loding animation
+         	  showHideLoding("no");
+         	  }
 
   } );
 
 
   // Handle click on "Epand All" button
   $('table .expandButton').on('click', function(){
-     expandColapseRow("yes", table);
-  });
+	   expandColapseRow("yes", table);
+	});
 
-  // Handle click on "Collapse All" button
-  $('table .collapseButton').on('click', function(){
-    expandColapseRow("no", table);
-  });
+	// Handle click on "Collapse All" button
+	$('table .collapseButton').on('click', function(){
+		expandColapseRow("no", table);
+	});
 
 }
 
 
 function AjaxGetReqDetails() {
-  var _mode = "AjaxGetReqDetails";
+	var _mode = "AjaxGetReqDetails";
 }
 
 
