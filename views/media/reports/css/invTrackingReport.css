@@ -9,7 +9,7 @@ transition-duration: 0.4s; height: 40px; }
 
 .vertical-text{
 writing-mode: vertical-rl !important;
-text-orientation: mixed;;
+text-orientation: mixed;
 }
 
 
