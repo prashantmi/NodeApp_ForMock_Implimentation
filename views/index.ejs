@@ -4,8 +4,8 @@
 <title>Investigation Tracking Report</title>
 <meta charset="ISO-8859-1">
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 <!---New Resources Created by Prashant Start----------------------------------------------------------------------------->
@@ -191,7 +191,7 @@
         </div>
 
         <div class="col-md-10 " id="patDetails-table">
-          <table id="DataTable1" class="table  dt-responsive nowrap table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
+          <table id="DataTable1" class="table table-sm dt-responsive nowrap table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
             <!-- <caption>Patient details By Bill No.</caption> -->
             <thead>
                 <tr>
@@ -222,7 +222,7 @@
 
 <div id="patReqnListOnBillNo" class="container-fluid mt-md-0 mb-md-4 bg-white " style="display: none;">
 
-<ul class="nav nav-tabs">
+<!-- <ul class="nav nav-tabs">
   <li class="nav-item">
     <a class="nav-link active" href="#DataTable2">Active</a>
   </li>
@@ -243,57 +243,39 @@
     <b-tab title="Second"><p>I'm the second tab</p></b-tab>
     <b-tab title="Disabled" disabled><p>I'm a disabled tab!</p></b-tab>
   </b-tabs>
-</div>
+</div> -->
 
-   <table id="DataTable2" class="table  dt-responsive table-striped table-bordered  nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
+   <table id="DataTable2" class="table table-sm dt-responsive  nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
   	<caption>Investigation Tracking List By Bill No.</caption>
         <thead>
             <tr>
-                <th>
+                <th class="all">
                	<i class="fas fa-chevron-circle-up text-danger d-none collapseButton"></i>
                 <i class="fas fa-chevron-circle-down text-success expandButton"></i>
                 S.No
                 </th>
-                <th>Report Status</th>
-                <th>Group Name</th>
-                <th>Test Name</th>
-                <th>Sample Name</th>
-                <th>Sample No.</th>
-                <th>Lab/Accession No.</th>
-                <th>Status</th>
-                <th>Lab Name</th>
-                <th>Requisition Date</th>
-                <th>Department</th>
-                <th>Ward Name</th>
-                <th>Lab Name</th>
-                <th>Requisition Date</th>
-                <th>Department</th>
-                <th>Ward Name</th>
+                <th class="">Report Status</th>
+                <th class="">Group Name</th>
+                <th class="">Test Name</th>
+                <th class="">Sample Name</th>
+                <th class="">Sample No.</th>
+                <th class="none">Lab/Accession No.</th>
+                <th class="none">Status</th>
+                <th class="none">Lab Name</th>
+                <th class="none">Requisition Date</th>
+                <th class="none">Department</th>
+                <th class="none">Ward Name</th>
+                <th class="none">Lab Name</th>
+                <th class="none">Requisition Date</th>
+                <th class="none">Department</th>
+                <th class="none">Ward Name</th>
             </tr>
         </thead>
         <tbody>
 
         </tbody>
          <tfoot>
-            <!-- <tr style="display: none;">
-                <th>S.No</th>
-                <th>Report Status</th>
-                <th>Group Name</th>
-                <th>Test Name</th>
-                <th>Sample Name</th>
-                <th>Sample No.</th>
-                <th>Lab/Accession No.</th>
-                <th>Status</th>
-                <th>Lab Name</th>
-                <th>Requisition Date</th>
-                <th>Department</th>
-                <th>Ward Name</th>
-                <th>Lab Name</th>
-                <th>Requisition Date</th>
-                <th>Department</th>
-                <th>Ward Name</th>
-            </tr> -->
-            <tr>
+            <!-- <tr>
                 <th colspan="2">Requisition Raising</th>
                 <th colspan="2">Sample Collection</th>
                 <th colspan="2">Sample Acceptance</th>
@@ -302,24 +284,24 @@
                 <th colspan="2">Result Validation</th>
                 <th colspan="2">Report Printing</th>
                 <th colspan="2">Addendum And Amendment</th>
-            </tr>
+            </tr> -->
         </tfoot>
 	</table>
 
-	<div id="homeTabDiv">Home Data</div>
+	<!-- <div id="homeTabDiv">Home Data</div>
 
-	<div id="graphTabDiv">Graph Data</div>
+	<div id="graphTabDiv">Graph Data</div> -->
 
 </div>
 
 
 <div id="patReqnListOnCrNo" class="container-fluid mt-md-0 mb-md-4 bg-white " style="display: none;">
 
-<table id="DataTable3" class="table  dt-responsive table-striped table-bordered nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
+<table id="DataTable3" class="table table-sm dt-responsive nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
     <caption>Investigation Tracking List By Cr. No.</caption>
         <thead>
             <tr>
-                <th>
+                <th class="all">
                	<i class="fas fa-chevron-circle-up text-danger d-none collapseButton"></i>
                 <i class="fas fa-chevron-circle-down text-success expandButton"></i>
                 S.No
@@ -329,42 +311,22 @@
                 <th>Group Name</th>
                 <th>Test Name</th>
                 <th>Sample Name</th>
-                <th>Sample No.</th>
-                <th>Lab/Accession No.</th>
-                <th>Status</th>
-                <th>Lab Name</th>
-                <th>Requisition Date</th>
-                <th>Department</th>
-                <th>Ward Name</th>
-                <th>Requisition Date</th>
-                <th>Department</th>
-                <th>Ward Name</th>
+                <th class="none">Sample No.</th>
+                <th class="none">Lab/Accession No.</th>
+                <th class="none">Status</th>
+                <th class="none">Lab Name</th>
+                <th class="none">Requisition Date</th>
+                <th class="none">Department</th>
+                <th class="none">Ward Name</th>
+                <th class="none">Requisition Date</th>
+                <th class="none">Department</th>
+                <th class="none">Ward Name</th>
             </tr>
         </thead>
         <tbody>
         </tbody>
          <tfoot>
-            <!-- <tr style="display: none;">
-                <th>S.No</th>
-                <th>Bill No.</th>
-                <th>Report Status</th>
-                <th>Group Name</th>
-                <th>Test Name</th>
-                <th>Sample Name</th>
-                <th>Sample No.</th>
-                <th>Lab/Accession No.</th>
-                <th>Status</th>
-                <th>Lab Name</th>
-                <th>Requisition Date</th>
-                <th>Department</th>
-                <th>Ward Name</th>
-                <th>Status</th>
-                <th>Lab Name</th>
-                <th>Requisition Date</th>
-                <th>Department</th>
-                <th>Ward Name</th>
-            </tr> -->
-            <tr>
+            <!-- <tr>
                 <th colspan="2">Requisition Raising</th>
                 <th colspan="2">Sample Collection</th>
                 <th colspan="2">Sample Acceptance</th>
@@ -373,7 +335,7 @@
                 <th colspan="2">Result Validation</th>
                 <th colspan="2">Report Printing</th>
                 <th colspan="2">Addendum And Amendment</th>
-            </tr>
+            </tr> -->
         </tfoot>
 </table>
 </div>

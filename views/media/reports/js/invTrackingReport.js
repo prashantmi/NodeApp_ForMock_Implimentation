@@ -215,8 +215,8 @@ setInputFilter(document.getElementById("crNoInput"), function(value) {
 
 
 
-/*---function to expand and collapse all rows on button click Starts--------------*/
-/*---Call this method for any data table to epand and collapse rows with right argument--*/
+/*---function to expand and collapse all rows on button click Starts
+    Call this method for any data table to epand and collapse rows with right argument--*/
 function expandColapseRow(booleanExpand, table){
 
 	if(booleanExpand=="yes"){
@@ -290,7 +290,7 @@ function AjaxGetPatDetailsOnBillNo(billNo){
                            {
                              var data = $.map( columns, function ( col, i )
                                {
-                                 return col.hidden ? customeRowData(col) : '';
+                                 return col.hidden ? customeRowDataType1(col) : '';
                                } ).join('');
                              return data ? customeRowDataAppend(data) : false;
                            }
@@ -356,7 +356,7 @@ function AjaxGetPatDetailsOnCrNo(crNo){
                         {
                           var data = $.map( columns, function ( col, i )
                             {
-                              return col.hidden ? customeRowData(col) : '';
+                              return col.hidden ? customeRowDataType1(col) : '';
                             } ).join('');
                           return data ? customeRowDataAppend(data) : false;
                         }
@@ -372,7 +372,6 @@ function AjaxGetPatDetailsOnCrNo(crNo){
 
 
 }
-
 
 function AjaxGetPatReqnListOnBillNo(billNo){
 
@@ -518,10 +517,7 @@ function AjaxGetPatReqnListOnBillNo(billNo){
          details: {
            renderer: function ( api, rowIdx, columns )
                       {
-                        var data = $.map( columns, function ( col, i )
-                          {
-                            return col.hidden ? customeRowData(col) : '';
-                          } ).join('');
+                        var data=customeRowDataType2(api, rowIdx, columns );
                         return data ? customeRowDataAppend(data) : false;
                       }
                     }
@@ -546,9 +542,6 @@ function AjaxGetPatReqnListOnBillNo(billNo){
  	});
 
 }
-
-
-
 
 function AjaxGetPatReqnListOnCrNo(crNo){
 
@@ -697,10 +690,7 @@ function AjaxGetPatReqnListOnCrNo(crNo){
               details: {
                 renderer: function ( api, rowIdx, columns )
                            {
-                             var data = $.map( columns, function ( col, i )
-                               {
-                                 return col.hidden ? customeRowData(col) : '';
-                               } ).join('');
+                             var data=customeRowDataType2(api, rowIdx, columns );
                              return data ? customeRowDataAppend(data) : false;
                            }
                          }
@@ -726,36 +716,33 @@ function AjaxGetPatReqnListOnCrNo(crNo){
 
 }
 
-
 function AjaxGetReqDetails() {
 	var _mode = "AjaxGetReqDetails";
 }
 
+/*------------------------------------------Ajax Calls Ends------------------------------------------------*/
 
-
-
-/*----Responsive Table Rows According To Screen Size Starts--------------------*/
-
+/*----Responsive Table Rows According To Screen Size Type 1 Starts--------------------*/
 var crcount=0;
 var crcount2=0;
 
-function customeRowData (col) {
+function customeRowDataType1(col) {
   var tbdat='';
   var w = window.innerWidth;
   var h = window.innerHeight;
   if(w>=1100){
-    tbdat=customeRowData1 (col);
+    tbdat=customeRowDataType11(col);
   }  else if (w<1100 && w>800) {
-    tbdat=customeRowData2 (col);
+    tbdat=customeRowDataType12(col);
   } else if (w<800 && w>600) {
-    tbdat=customeRowData3 (col);
+    tbdat=customeRowDataType13(col);
   } else if (w<=600) {
-    tbdat=customeRowData4 (col);
+    tbdat=customeRowDataType14(col);
   }
 return tbdat;
 }
 
-function customeRowData1 (col) {
+function customeRowDataType11(col) {
   var tbdat='';
   if(crcount==0){
     tbdat='<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">';
@@ -766,8 +753,7 @@ tbdat+='<th>'+col.title+':'+'</th> '+
   return tbdat;
 }
 
-
-function customeRowData2 (col) {
+function customeRowDataType12(col) {
   var tbdat='';
   if(crcount==0){
     tbdat='<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">';
@@ -787,8 +773,7 @@ function customeRowData2 (col) {
   return tbdat;
 }
 
-
-function customeRowData3 (col) {
+function customeRowDataType13(col) {
   var tbdat='';
   if(crcount==0){
     tbdat='<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">';
@@ -808,16 +793,237 @@ function customeRowData3 (col) {
   return tbdat;
 }
 
-
-
-function customeRowData4 (col) {
+function customeRowDataType14(col) {
 var tbdat=  '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
       '<th>'+col.title+':'+'</th> '+
       '<td>'+col.data+'</td>'+
   '</tr>';
   return tbdat;
 }
+/*----Responsive Table Rows According To Screen Size Type 1 Ends--------------------*/
 
+
+/*------Responsive Table Rows According To Screen Size Type 2 Ends------------*/
+function customeRowDataType2(api, rowIdx, columns) {
+  var tbdat='';
+  var w = window.innerWidth;
+  var h = window.innerHeight;
+  if(w>=1100){
+    tbdat=customeRowDataType21(api, rowIdx, columns);
+  }  else if (w<1100 && w>800) {
+    tbdat=customeRowDataType22(api, rowIdx, columns);
+  } else if (w<800 && w>600) {
+    tbdat=customeRowDataType23(api, rowIdx, columns);
+  } else if (w<=600) {
+    tbdat=customeRowDataType24(api, rowIdx, columns);
+  }
+return tbdat;
+}
+
+function customeRowDataType21(api, rowIdx, columns) {
+  var tbdat='';
+
+    tbdat='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
+    tbdat+='<td class=""><table>'+dataRow(columns, 6, 8)+'</table></td>';
+
+    tbdat+='<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
+    tbdat+='<td class=""><table>'+dataRow(columns, 8, 10)+'</table></td>';
+
+    tbdat+='<td class="rounded "><div class="vertical-text">Sample Acceptance</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 10, 12)+'</table></td>';
+
+    tbdat+='<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 12, 14)+'</table></td>';
+    tbdat+='</tr>'
+
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Result Entry</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 13, 15)+'</table></td>';
+
+    tbdat+='<td class="rounded "><div class="vertical-text">Result Validation</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 13, 15)+'</table></td>';
+    tbdat+='</tr>'
+
+    return tbdat;
+}
+
+function customeRowDataType22(api, rowIdx, columns) {
+  var tbdat='';
+
+    tbdat='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 6, 8)+'</table></td>';
+
+    tbdat+='<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 8, 10)+'</table></td>';
+
+    tbdat+='<td class="rounded "><div class="vertical-text">Sample Acceptance</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 10, 12)+'</table></td>';
+    tbdat+='</tr>'
+
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 12, 14)+'</table></td>';
+
+    tbdat+='<td class="rounded "><div class="vertical-text">Result Entry</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 13, 15)+'</table></td>';
+
+    tbdat+='<td class="rounded "><div class="vertical-text">Result Validation</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 13, 15)+'</table></td>';
+    tbdat+='</tr>'
+
+    return tbdat;
+}
+
+function customeRowDataType23(api, rowIdx, columns) {
+  var tbdat='';
+
+  /*0 to 5 as columns 0 to 5 are the columns with class not having none and
+  are the max. columns defined to shown on full width screen*/
+  var colHidArray=[];
+  var colHidStart="";
+  var colHidEnd="";
+  var colHidBoolean=false;
+  for(i=0; i<=5; i++){
+    if(columns[i].hidden){
+      colHidBoolean=true;
+      colHidArray.push(i);
+    }
+  }
+  colHidStart=colHidArray[0];
+  colHidEnd=colHidArray[colHidArray.length-1];
+
+    if(colHidBoolean){
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Essential Data</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, colHidStart, colHidEnd)+'</table></td>';
+
+    tbdat+='<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 6, 8)+'</table></td>';
+    tbdat+='</tr>'
+
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 8, 10)+'</table></td>';
+
+    tbdat+='<td class="rounded "><div class="vertical-text">Sample Acceptance</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 10, 12)+'</table></td>';
+    tbdat+='</tr>'
+
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 12, 14)+'</table></td>';
+
+    tbdat+='<td class="rounded "><div class="vertical-text">Result Entry</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 13, 15)+'</table></td>';
+    tbdat+='</tr>'
+
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Result Validation</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 13, 15)+'</table></td>';
+    tbdat+='</tr>'
+
+  } else {  /*case when none of the default Essential columns are hidden*/
+
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 6, 8)+'</table></td>';
+
+    tbdat+='<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 8, 10)+'</table></td>';
+    tbdat+='</tr>'
+
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Sample Acceptance</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 10, 12)+'</table></td>';
+
+    tbdat+='<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 12, 14)+'</table></td>';
+    tbdat+='</tr>'
+
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Result Entry</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 13, 15)+'</table></td>';
+
+    tbdat+='<td class="rounded "><div class="vertical-text">Result Validation</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 13, 15)+'</table></td>';
+    tbdat+='</tr>'
+  }
+    return tbdat;
+}
+
+function customeRowDataType24(api, rowIdx, columns) {
+  var tbdat='';
+
+  /*0 to 5 as columns 0 to 5 are the columns with class not having none and
+  are the max. columns defined to shown on full width screen*/
+  var colHidArray=[];
+  var colHidStart="";
+  var colHidEnd="";
+  var colHidBoolean=false;
+  for(i=0; i<=5; i++){
+    if(columns[i].hidden){
+      colHidBoolean=true;
+      colHidArray.push(i);
+    }
+  }
+  colHidStart=colHidArray[0];
+  colHidEnd=colHidArray[colHidArray.length-1];
+
+    if(colHidBoolean){
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Essential Data</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, colHidStart, colHidEnd)+'</table></td>';
+    tbdat+='</tr>'
+    }
+
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 6, 8)+'</table></td>';
+    tbdat+='</tr>'
+
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 8, 10)+'</table></td>';
+    tbdat+='</tr>'
+
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Sample Acceptance</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 10, 12)+'</table></td>';
+    tbdat+='</tr>'
+
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 12, 14)+'</table></td>';
+    tbdat+='</tr>'
+
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Result Entry</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 13, 15)+'</table></td>';
+    tbdat+='</tr>'
+
+    tbdat+='<tr>'
+    tbdat+='<td class="rounded "><div class="vertical-text">Result Validation</div></td>';
+    tbdat+='<td class="rounded "><table>'+dataRow(columns, 13, 15)+'</table></td>';
+    tbdat+='</tr>'
+
+    return tbdat;
+}
+
+function dataRow(columns, iStart, iEnd){
+ var dataRow='';
+
+  for(i=iStart ; i<=iEnd ; i++){
+    var col=columns[i];
+
+    dataRow+='<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">';
+    dataRow+='<th>'+col.title+':'+'</th> '+ '<td>'+col.data+'</td>';
+    dataRow+='</tr>';
+  }
+  return dataRow;
+}
+/*------Responsive Table Rows According To Screen Size Type 2 Ends------------*/
 
 function customeRowDataAppend(data) {
 crcount=0;
@@ -826,5 +1032,4 @@ crcount2=0;
 var rt= $('<table/>').append( data ) ;
 return rt;
 }
-
-/*----Responsive Table Rows According To Screen Size Ends--------------------*/
+/*----Responsive Table Rows According To Screen Size final return type1,2 Ends--------------------*/

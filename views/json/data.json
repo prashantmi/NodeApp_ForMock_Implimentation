@@ -39,25 +39,25 @@
       "sampleName" : "BloodA",
       "sampleNum" : "452445",
       "labNum" : "7824",
-      "status" : "Report Printed",
+      "status" : "IPD",
       "labName" : "Biochemistry",
       "reqDate" : "09-03-2019",
       "department" : "Biochemistry",
-      "wardName" : "Ward 3"
+      "wardName" : "As ward"
    },
    {
-      "sno" : "1",
-      "reportStatus" : "Report Printed",
-      "groupName" : "KFT",
-      "testName" : "Himoglobin",
-      "sampleName" : "BloodA",
-      "sampleNum" : "452445",
-      "labNum" : "7824",
-      "status" : "Report Printed",
-      "labName" : "Biochemistry",
-      "reqDate" : "09-03-2019",
-      "department" : "Biochemistry",
-      "wardName" : "Ward 3"
+      "sno" : "2",
+      "reportStatus" : "Result Validated",
+      "groupName" : "RFT",
+      "testName" : "HIV",
+      "sampleName" : "BloodB",
+      "sampleNum" : "545453",
+      "labNum" : "83468",
+      "status" : "OPD",
+      "labName" : "Radiology",
+      "reqDate" : "08-05-2020",
+      "department" : "RD",
+      "wardName" : "qwerty ward"
    }
    ],
 
@@ -92,5 +92,5 @@
       "wardName" : "Ward 4"
    }
    ]
-   
+
 }
