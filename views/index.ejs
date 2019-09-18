@@ -104,7 +104,7 @@
 <!--Custome Resources----->
 <script type="text/javascript" src="media/reports/js/invTrackingReport.js"></script>
 <link rel="stylesheet" href="media/reports/css/invTrackingReport.css" />
-
+<script type="text/javascript" src="media/processing().js"></script>
 
 
 <link rel="stylesheet" href="media/vue-js/b/bootstrap-vue.min.css" />
@@ -209,6 +209,7 @@
                     <th>Patient Name</th>
                     <th>CR Number</th>
                     <th>Patient Status</th>
+                    <th>Ward Name</th>
                     <th>Age/Gender</th>
                     <th>Phone</th>
                     <th>Email Id</th>
@@ -233,32 +234,19 @@
 
 <div id="patReqnListOnBillNo" class="container-fluid mt-md-0 mb-md-4 bg-white " style="display: none;">
 
-<!-- <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" href="#DataTable2">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#homeTabDiv">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#graphTabDiv">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#historyTabDiv">Disabled</a>
-  </li>
-</ul>
--->
-  <div id='app'>
+  <div id='app1'>
     <b-tabs content-class="mt-3">
 
-      <b-tab title="Home"><p>I'm the second tab</p></b-tab>
+      <b-tab title="Home"><p>Here comes summary</p></b-tab>
 
-      <b-tab title="History" active>
+      <b-tab title="Graph"><p>Here Comes Graph</p></b-tab>
+
+      <b-tab title="History Sample Based Bill" active>
         <table id="DataTable2" class="table table-sm dt-responsive  nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
-       	<caption>Investigation Tracking List By Bill No.</caption>
+       	  <caption>Investigation Tracking List By Bill No.</caption>
              <thead>
                  <tr>
-                     <th class="all">
+                     <!-- <th class="all">
                     	<i class="fas fa-chevron-circle-up text-danger d-none collapseButton"></i>
                      <i class="fas fa-chevron-circle-down text-success expandButton"></i>
                      S.No
@@ -277,7 +265,123 @@
                      <th class="none">Lab Name</th>
                      <th class="none">Requisition Date</th>
                      <th class="none">Department</th>
+                     <th class="none">Ward Name</th> -->
+
+                     <th class="all">
+                     <i class="fas fa-chevron-circle-up text-danger d-none collapseButton"></i>
+                     <i class="fas fa-chevron-circle-down text-success expandButton"></i>
+                     S.No
+                     </th>
+                     <th class="">Requisition Date</th>
+                     <th class="">Group Name</th>
+                     <th class="">Test Name</th>
+                     <th class="">Requisition By</th><!--new-->
+
+                     <th class="none">Sample Name</th>
+                     <th class="none">Sample No.</th>
+                     <th class="">Sample Coll. Date</th><!--new-->
+                     <th class="none">Sample Coll. By</th><!--new-->
+
+                     <th class="none">Packing List No.</th><!--new-->
+                     <th class="none">Sample Accep. Date</th><!--new-->
+                     <th class="none">Sample Accep. By</th><!--new-->
+                     <th class="none">Sample Accep. Mode</th><!--new-->
+                     <th class="none">Machine Name</th><!--new-->
+
+                     <th class="none">Cancel/Rejec. By</th><!--new-->
+                     <th class="none">Cancel/Rejec. Date</th><!--new-->
+                     <th class="none">Cancel/Rejec. Reason</th><!--new-->
+
+                     <th class="none">Result Entry Date</th><!--new-->
+                     <th class="none">Result Entry By</th><!--new-->
+                     <th class="none"><a href="#">Result Entry Parameters</a></th><!--new-->
+
+                     <th class="none">Result Valid. Date</th><!--new-->
+                     <th class="none">Result Valid. By</th><!--new-->
+
+                     <th class="none">Report Generation</th><!--new-->
+                     <!-- <th class="">Report Status</th> -->
+                     <th class="none">Report Printing</th><!--new-->
+
+                 </tr>
+             </thead>
+             <tbody>
+             </tbody>
+              <tfoot>
+                 <!-- <tr>
+                     <th colspan="2">Requisition Raising</th>
+                     <th colspan="2">Sample Collection</th>
+                     <th colspan="2">Sample Acceptance</th>
+                     <th colspan="2">Patient Acceptance</th>
+                     <th colspan="2">Result Entry</th>
+                     <th colspan="2">Result Validation</th>
+                     <th colspan="2">Report Printing</th>
+                     <th colspan="2">Addendum And Amendment</th>
+                 </tr> -->
+             </tfoot>
+     	</table>
+    </b-tab>
+
+      <b-tab title="History Patient Based Bill">
+        <table id="DataTable3" class="table table-sm dt-responsive  nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
+       	  <caption>Investigation Tracking List By Bill No.</caption>
+             <thead>
+                 <tr>
+                     <!-- <th class="all">
+                    	<i class="fas fa-chevron-circle-up text-danger d-none collapseButton"></i>
+                     <i class="fas fa-chevron-circle-down text-success expandButton"></i>
+                     S.No
+                     </th>
+                     <th class="">Report Status</th>
+                     <th class="">Group Name</th>
+                     <th class="">Test Name</th>
+                     <th class="">Sample Name</th>
+                     <th class="">Sample No.</th>
+                     <th class="none">Lab/Accession No.</th>
+                     <th class="none">Status</th>
+                     <th class="none">Lab Name</th>
+                     <th class="none">Requisition Date</th>
+                     <th class="none">Department</th>
                      <th class="none">Ward Name</th>
+                     <th class="none">Lab Name</th>
+                     <th class="none">Requisition Date</th>
+                     <th class="none">Department</th>
+                     <th class="none">Ward Name</th> -->
+
+                     <th class="all">
+                     <i class="fas fa-chevron-circle-up text-danger d-none collapseButton"></i>
+                     <i class="fas fa-chevron-circle-down text-success expandButton"></i>
+                     S.No
+                     </th>
+                     <th class="">Requisition Date</th>
+                     <th class="">Group Name</th>
+                     <th class="">Test Name</th>
+                     <th class="">Requisition By</th><!--new-->
+
+                     <th class="none">Lab Name</th>
+                     <th class="none">Lab No.</th>
+
+                     <th class="none">Patient Accep. Date</th><!--new-->
+                     <th class="none">Patient Accep. By</th><!--new-->
+                     <th class="none">Patient Accep. Mode</th><!--new-->
+                     <th class="none">Machine Name</th><!--new-->
+
+                     <th class="none">Cancel/Rejec. By</th><!--new-->
+                     <th class="none">Cancel/Rejec. Date</th><!--new-->
+                     <th class="none">Cancel/Rejec. Reason</th><!--new-->
+
+                     <th class="none">Result Entry Date</th><!--new-->
+                     <th class="none">Result Entry By</th><!--new-->
+                     <th class="none"><a href="#">Result Entry Parameters</a></th><!--new-->
+
+                     <th class="none">Result Valid. Date</th><!--new-->
+                     <th class="none">Result Valid. By</th><!--new-->
+                     <th class="none"><a href="#">Result Valid. Parameters</a></th><!--new-->
+
+                     <th class="none">Report Generation</th><!--new-->
+                     <!-- <th class="">Report Status</th> -->
+                     <th class="none">Report Printing</th><!--new-->
+
                  </tr>
              </thead>
              <tbody>
@@ -296,9 +400,7 @@
                  </tr> -->
              </tfoot>
      	</table>
-      </b-tab>
-
-      <b-tab title="Graph" disabled><p>I'm a disabled tab!</p></b-tab>
+    </b-tab>
 
     </b-tabs>
 
@@ -310,47 +412,114 @@
 
 <div id="patReqnListOnCrNo" class="container-fluid mt-md-0 mb-md-4 bg-white " style="display: none;">
 
-<table id="DataTable3" class="table table-sm dt-responsive nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
-    <caption>Investigation Tracking List By Cr. No.</caption>
-        <thead>
-            <tr>
-                <th class="all">
-               	<i class="fas fa-chevron-circle-up text-danger d-none collapseButton"></i>
-                <i class="fas fa-chevron-circle-down text-success expandButton"></i>
-                S.No
-                </th>
-                <th>Bill No.</th>
-                <th>Report Status</th>
-                <th>Group Name</th>
-                <th>Test Name</th>
-                <th>Sample Name</th>
-                <th class="none">Sample No.</th>
-                <th class="none">Lab/Accession No.</th>
-                <th class="none">Status</th>
-                <th class="none">Lab Name</th>
-                <th class="none">Requisition Date</th>
-                <th class="none">Department</th>
-                <th class="none">Ward Name</th>
-                <th class="none">Requisition Date</th>
-                <th class="none">Department</th>
-                <th class="none">Ward Name</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-         <tfoot>
-            <!-- <tr>
-                <th colspan="2">Requisition Raising</th>
-                <th colspan="2">Sample Collection</th>
-                <th colspan="2">Sample Acceptance</th>
-                <th colspan="2">Patient Acceptance</th>
-                <th colspan="2">Result Entry</th>
-                <th colspan="2">Result Validation</th>
-                <th colspan="2">Report Printing</th>
-                <th colspan="2">Addendum And Amendment</th>
-            </tr> -->
-        </tfoot>
-</table>
+<div id='app2'>
+  <b-tabs content-class="mt-3">
+
+    <b-tab title="Home"><p>Here comes summary</p></b-tab>
+
+    <b-tab title="Graph"><p>Here Comes Graph</p></b-tab>
+
+    <b-tab title="History Sample Based CR" active>
+      <table id="DataTable4" class="table table-sm dt-responsive nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
+          <caption>Investigation Tracking List By Cr. No.</caption>
+           <thead>
+               <tr>
+                   <th class="all">
+                   <i class="fas fa-chevron-circle-up text-danger d-none collapseButton"></i>
+                   <i class="fas fa-chevron-circle-down text-success expandButton"></i>
+                   S.No
+                   </th>
+                   <th class="">Requisition Date</th>
+                   <th class="">Group Name</th>
+                   <th class="">Test Name</th>
+                   <th class="">Requisition By</th><!--new-->
+
+                   <th class="none">Sample Name</th>
+                   <th class="none">Sample No.</th>
+                   <th class="">Sample Coll. Date</th><!--new-->
+                   <th class="none">Sample Coll. By</th><!--new-->
+
+                   <th class="none">Packing List No.</th><!--new-->
+                   <th class="none">Sample Accep. Date</th><!--new-->
+                   <th class="none">Sample Accep. By</th><!--new-->
+                   <th class="none">Sample Accep. Mode</th><!--new-->
+                   <th class="none">Machine Name</th><!--new-->
+
+                   <th class="none">Cancel/Rejec. By</th><!--new-->
+                   <th class="none">Cancel/Rejec. Date</th><!--new-->
+                   <th class="none">Cancel/Rejec. Reason</th><!--new-->
+
+                   <th class="none">Result Entry Date</th><!--new-->
+                   <th class="none">Result Entry By</th><!--new-->
+                   <th class="none"><a href="#">Result Entry Parameters</a></th><!--new-->
+
+                   <th class="none">Result Valid. Date</th><!--new-->
+                   <th class="none">Result Valid. By</th><!--new-->
+
+                   <th class="none">Report Generation</th><!--new-->
+                   <!-- <th class="">Report Status</th> -->
+                   <th class="none">Report Printing</th><!--new-->
+               </tr>
+           </thead>
+           <tbody>
+           </tbody>
+            <tfoot>
+           </tfoot>
+    </table>
+  </b-tab>
+
+  <b-tab title="History Patient Based CR">
+      <table id="DataTable5" class="table table-sm dt-responsive nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
+          <caption>Investigation Tracking List By Cr. No.</caption>
+           <thead>
+               <tr>
+                   <th class="all">
+                   <i class="fas fa-chevron-circle-up text-danger d-none collapseButton"></i>
+                   <i class="fas fa-chevron-circle-down text-success expandButton"></i>
+                   S.No
+                   </th>
+                   <th class="">Requisition Date</th>
+                   <th class="">Group Name</th>
+                   <th class="">Test Name</th>
+                   <th class="">Requisition By</th><!--new-->
+
+                   <th class="none">Lab Name</th>
+                   <th class="none">Lab No.</th>
+
+                   <th class="none">Patient Accep. Date</th><!--new-->
+                   <th class="none">Patient Accep. By</th><!--new-->
+                   <th class="none">Patient Accep. Mode</th><!--new-->
+                   <th class="none">Machine Name</th><!--new-->
+
+                   <th class="none">Cancel/Rejec. By</th><!--new-->
+                   <th class="none">Cancel/Rejec. Date</th><!--new-->
+                   <th class="none">Cancel/Rejec. Reason</th><!--new-->
+
+                   <th class="none">Result Entry Date</th><!--new-->
+                   <th class="none">Result Entry By</th><!--new-->
+                   <th class="none"><a href="#">Result Entry Parameters</a></th><!--new-->
+
+                   <th class="none">Result Valid. Date</th><!--new-->
+                   <th class="none">Result Valid. By</th><!--new-->
+                   <th class="none"><a href="#">Result Valid. Parameters</a></th><!--new-->
+
+                   <th class="none">Report Generation</th><!--new-->
+                   <!-- <th class="">Report Status</th> -->
+                   <th class="none">Report Printing</th><!--new-->
+               </tr>
+           </thead>
+           <tbody>
+
+           </tbody>
+            <tfoot>
+           </tfoot>
+    </table>
+  </b-tab>
+
+  </b-tabs>
+
+</div>
+
 </div>
 
 </html:form>
@@ -360,7 +529,14 @@
 
 <script>
   new Vue({
-    el: "#app",
+    el: "#app1",
+    data: {
+      name: "Sitepoint"
+    }
+  });
+
+  new Vue({
+    el: "#app2",
     data: {
       name: "Sitepoint"
     }

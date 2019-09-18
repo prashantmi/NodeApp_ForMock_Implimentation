@@ -128,7 +128,8 @@ $(document).ready(function(){
     	$('#patReqnListOnBillNo').css({"display": ""});
 
     	AjaxGetPatDetailsOnBillNo(billNo);
-    	AjaxGetPatReqnListOnBillNo(billNo);
+    	AjaxGetReqnListOnBillNo(billNo);
+    //  AjaxGetPatientBasedReqnListOnBillNo(billNo);
     } else {
 
     	alert("Bill No. Should Be Of 15 Digits");
@@ -272,6 +273,7 @@ function AjaxGetPatDetailsOnBillNo(billNo){
           { "data": 'patientName' },
           { "data": 'crNumber' },
           { "data": 'patientStatus' },
+          { "data": 'patientStatus' },
           { "data": 'ageGender' },
           { "data": 'phoneNo' },
           { "data": 'emailId' },
@@ -339,6 +341,7 @@ function AjaxGetPatDetailsOnCrNo(crNo){
     	 { "data": 'patientName' },
          { "data": 'crNumber' },
          { "data": 'patientStatus' },
+         { "data": 'patientStatus' },
          { "data": 'ageGender' },
          { "data": 'phoneNo' },
          { "data": 'emailId' },
@@ -373,17 +376,35 @@ function AjaxGetPatDetailsOnCrNo(crNo){
 
 }
 
-function AjaxGetPatReqnListOnBillNo(billNo){
+
+// function AjaxGetPatReqnListOnBillNo(billNo){
+function AjaxGetReqnListOnBillNo(billNo){
+
+  var url="/data";
+  $.getJSON(url, function(data){
+    if(data) {
+          dataTableSampleBasedReqnListOnBillNo(data.sampleBasedReqnListOnBillNo);
+          dataTablePatientBasedReqnListOnBillNo(data.patientBasedReqnListOnBillNo);
+        }
+      })
+  .done(function() {
+    console.log( "AjaxGetMachineList success" );
+  })
+  .fail(function() {
+    console.log( "AjaxGetMachineList error" );
+  });
+ }
 
 
-   var _mode = "AjaxGetPatReqnListOnBillNo";
+function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo){
 
    $('#DataTable2').DataTable().clear().destroy();
 
    $.fn.dataTable.moment( 'DD-MMM-YYYY' );
    var table = $('#DataTable2').DataTable( {
+     dom: 'lBfrtip',
+     processing: true,
 
-     dom: 'Bfrtip',
      "columnDefs": [
     	    { "orderable": false, "targets": 0 }
     	  ],
@@ -402,17 +423,13 @@ function AjaxGetPatReqnListOnBillNo(billNo){
     			 { extend: 'excel', className: "bg-dark text-white"  },
     			 { extend: 'pdfHtml5', className: "bg-dark text-white",
     				 title: 'Investigation Tracking Report', text: 'PDF',
-    				 pageMargins: [ 0, 0, 0, 0 ], // try #1 setting margins
-    				 margin: [ 0, 0, 0, 0 ], // try #2 setting margins
+    				 pageMargins: [ 0, 0, 0, 0 ],
+    				 margin: [ 0, 0, 0, 0 ],
     				 alignment: 'center',
     				 exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] }
     			 }
     			 ]
     	 },
-    	/* {
-    		 extend: 'colvisGroup',
-    		 className: "btn-light"
-         },*/
          {
     		 extend: 'collection',
     		 text: 'Show Related Columns',
@@ -425,7 +442,7 @@ function AjaxGetPatReqnListOnBillNo(billNo){
     	             show: ':hidden'
     	           },
     			 {
-    	    		 extend: 'colvisGroup',
+    	    		     extend: 'colvisGroup',
     	             className: "bg-dark text-white ",
     	             text: 'Requisition Raising',
     	             show: [ 1, 2, 3 ],
@@ -474,23 +491,22 @@ function AjaxGetPatReqnListOnBillNo(billNo){
     	             text: 'Addendum And Amendment',
     	             show: ':hidden'
     	          }
-
     		 ]
          },
           ],
 
-
-       "ajax": {
-        //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo, sync:true, postData: "", handleAs: "text",
-			 "url": "/data", sync:true, postData: "", handleAs: "text",
-			 error: function (jqXHR, statusText, errorThrown) {
-    	  console.log(jqXHR.responseText);
-    	  console.log(statusText);
-    	  console.log(errorThrown);
-      },
-				dataSrc: "patReqnListOnBillNo"
-         },
-    "columns": [
+      //  "ajax": {
+      //   //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo, sync:true, postData: "", handleAs: "text",
+			//  "url": "/data", sync:true, postData: "", handleAs: "text",
+			//  error: function (jqXHR, statusText, errorThrown) {
+    	//   console.log(jqXHR.responseText);
+    	//   console.log(statusText);
+    	//   console.log(errorThrown);
+      // },
+			// 	dataSrc: "patientBasedReqnListOnBillNo"
+      //    },
+      "aaData": sampleBasedReqnListOnBillNo,
+      "columns": [
          { "data": 'sno' },
          { "data": 'reportStatus' },
          { "data": 'groupName' },
@@ -512,8 +528,7 @@ function AjaxGetPatReqnListOnBillNo(billNo){
 
        "sPaginationType": "full_numbers",
        "bJQueryUI": true,
-       //"scrollX": true,
-       responsive: {
+        responsive: {
          details: {
            renderer: function ( api, rowIdx, columns )
                       {
@@ -522,14 +537,174 @@ function AjaxGetPatReqnListOnBillNo(billNo){
                       }
                     }
                   },
-
        "initComplete": function(settings, json) {
      	  //show loding animation
      	  showHideLoding("no");
      	  }
-
    } );
+   // if(sampleBasedReqnListOnBillNo!=null){
+   // table.processing( false );
+   // }else{
+   //   table.rows().remove().draw();
+   //   table.processing( true );
+   // }
+   // Handle click on "Epand All" button
+   $('table .expandButton').on('click', function(){
+	   expandColapseRow("yes", table);
+ 	});
 
+ 	// Handle click on "Collapse All" button
+ 	$('table .collapseButton').on('click', function(){
+ 		expandColapseRow("no", table);
+ 	});
+
+}
+
+
+
+function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo){
+   $('#DataTable3').DataTable().clear().destroy();
+
+   $.fn.dataTable.moment( 'DD-MMM-YYYY' );
+   var table = $('#DataTable3').DataTable( {
+
+     dom: 'Bfrtip',
+     "columnDefs": [
+    	    { "orderable": false, "targets": 0 }
+    	  ],
+
+     "language": {
+    	      "emptyTable": "No Data Is Available "
+    	    },
+
+      buttons: [
+    	 {
+    		 extend: 'collection',
+    		 text: 'Trigger Tools',
+    		 className: "btn-dark",
+    		 buttons: [
+    			 { extend: 'colvis', className: "bg-dark text-white" },
+    			 { extend: 'excel', className: "bg-dark text-white"  },
+    			 { extend: 'pdfHtml5', className: "bg-dark text-white",
+    				 title: 'Investigation Tracking Report', text: 'PDF',
+    				 pageMargins: [ 0, 0, 0, 0 ],
+    				 margin: [ 0, 0, 0, 0 ],
+    				 alignment: 'center',
+    				 exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] }
+    			 }
+    			 ]
+    	 },
+         {
+    		 extend: 'collection',
+    		 text: 'Show Related Columns',
+    		 className: "btn-success",
+    		 buttons: [
+    			 {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white",
+    	             text: 'Show All',
+    	             show: ':hidden'
+    	           },
+    			 {
+    	    		     extend: 'colvisGroup',
+    	             className: "bg-dark text-white ",
+    	             text: 'Requisition Raising',
+    	             show: [ 1, 2, 3 ],
+    	             hide: [ 4, 5, 6 ]
+    	         },
+    	         {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white ",
+    	             text: 'Sample Collection',
+    	             show: [ 3, 4, 5 ],
+    	             hide: [ 1, 2 ]
+    	         },
+    	         {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white",
+    	             text: 'Sample Acceptance',
+    	             show: ':hidden'
+    	         },
+    	         {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white ",
+    	             text: 'Patient Acceptance',
+    	             show: ':hidden'
+    	         },
+    	         {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white ",
+    	             text: 'Result Entry',
+    	             show: ':hidden'
+    	         },
+    	         {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white ",
+    	             text: 'Result Validation',
+    	             show: ':hidden'
+    	          },
+    	          {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white ",
+    	             text: 'Report Printing',
+    	             show: ':hidden'
+    	          },
+    	          {
+    	             extend: 'colvisGroup',
+    	             className: "bg-dark text-white ",
+    	             text: 'Addendum And Amendment',
+    	             show: ':hidden'
+    	          }
+    		 ]
+         },
+          ],
+
+      //  "ajax": {
+      //   //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo, sync:true, postData: "", handleAs: "text",
+			//  "url": "/data", sync:true, postData: "", handleAs: "text",
+			//  error: function (jqXHR, statusText, errorThrown) {
+    	//   console.log(jqXHR.responseText);
+    	//   console.log(statusText);
+    	//   console.log(errorThrown);
+      // },
+			// 	dataSrc: "patientBasedReqnListOnBillNo"
+      //    },
+      "aaData": patientBasedReqnListOnBillNo,
+      "columns": [
+         { "data": 'sno' },
+         { "data": 'reportStatus' },
+         { "data": 'groupName' },
+         { "data": 'testName' },
+         { "data": 'sampleName' },
+         { "data": 'sampleNum' },
+         { "data": 'labNum' },
+         { "data": 'status' },
+         { "data": 'labName' },
+         { "data": 'reqDate' },
+         { "data": 'department' },
+         { "data": 'wardName' },
+         { "data": 'labName' },
+         { "data": 'reqDate' },
+         { "data": 'department' },
+         { "data": 'wardName' }
+        ],
+
+       "sPaginationType": "full_numbers",
+       "bJQueryUI": true,
+        responsive: {
+         details: {
+           renderer: function ( api, rowIdx, columns )
+                      {
+                        var data=customeRowDataType2(api, rowIdx, columns );
+                        return data ? customeRowDataAppend(data) : false;
+                      }
+                    }
+                  },
+       "initComplete": function(settings, json) {
+     	  //show loding animation
+     	  showHideLoding("no");
+     	  }
+   } );
 
    // Handle click on "Epand All" button
    $('table .expandButton').on('click', function(){
@@ -546,16 +721,14 @@ function AjaxGetPatReqnListOnBillNo(billNo){
 function AjaxGetPatReqnListOnCrNo(crNo){
 
   var _mode = "AjaxGetPatReqnListOnCrNo";
-  //var fromDate=document.getElementsByName("fromDate")[0].value;
-  //var toDate=document.getElementsByName("toDate")[0].value;
 
   var fromDate=document.getElementsByClassName("fromDateInput")[0].value;
   var toDate=document.getElementsByClassName("toDateInput")[0].value;
 
-  $('#DataTable3').DataTable().clear().destroy();
+  $('#DataTable4').DataTable().clear().destroy();
 
   $.fn.dataTable.moment( 'DD-MMM-YYYY' );
-  var table = $('#DataTable3').DataTable( {
+  var table = $('#DataTable4').DataTable( {
 
 	  dom: 'Bfrtip',
 	  "columnDefs": [
@@ -576,8 +749,8 @@ function AjaxGetPatReqnListOnCrNo(crNo){
 	    			 { extend: 'excel', className: "bg-dark text-white"  },
 	    			 { extend: 'pdfHtml5', className: "bg-dark text-white",
 	    				 title: 'Investigation Tracking Report', text: 'PDF',
-	    				 pageMargins: [ 0, 0, 0, 0 ], // try #1 setting margins
-	    				 margin: [ 0, 0, 0, 0 ], // try #2 setting margins
+	    				 pageMargins: [ 0, 0, 0, 0 ],
+	    				 margin: [ 0, 0, 0, 0 ],
 	    				 alignment: 'center',
 	    				 exportOptions: { columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] }
 	    			 }
