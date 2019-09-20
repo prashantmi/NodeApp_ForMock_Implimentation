@@ -442,6 +442,8 @@ function AjaxGetReqnListOnBillNo(billNo) {
 
 function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
 
+  var groupColumn = 1;
+
   $('#DataTable2').DataTable().clear().destroy();
 
   $.fn.dataTable.moment('DD-MMM-YYYY');
@@ -449,15 +451,30 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
     dom: 'lBfrtip',
     processing: true,
 
-    "columnDefs": [{
-      "orderable": false,
-      "targets": 0
-    }],
+    "columnDefs": [
+      { "orderable": false, "targets": 0 },
+      { "visible": false, "targets": groupColumn }
+    ],
 
     "language": {
       "emptyTable": "No Data Is Available "
     },
+    "order": [[ groupColumn, 'asc' ]],
+    "drawCallback": function ( settings ) {
+           var api = this.api();
+           var rows = api.rows( {page:'current'} ).nodes();
+           var last=null;
 
+           api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
+               if ( last !== group ) {
+                   $(rows).eq( i ).before(
+                       '<tr class="group"><td colspan="5"><strong>Requisition Date : </strong>'+group+'</td></tr>'
+                   );
+
+                   last = group;
+               }
+           } );
+       },
     buttons: [{
         extend: 'collection',
         text: 'Trigger Tools',
@@ -561,6 +578,21 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
     "aaData": sampleBasedReqnListOnBillNo,
     "columns": [
       { "data": 'sno' },
+      { "data": 'reqDate' },
+      { "data": 'groupName' },
+      { "data": 'testName' },
+      { "data": 'sampleName' },
+      { "data": 'sampleNum' },
+      { "data": 'labNum' },
+      { "data": 'status' },
+      { "data": 'labName' },
+      { "data": 'reqDate' },
+      { "data": 'department' },
+      { "data": 'wardName' },
+      { "data": 'labName' },
+      { "data": 'reqDate' },
+      { "data": 'department' },
+      { "data": 'wardName' },
       { "data": 'reportStatus' },
       { "data": 'groupName' },
       { "data": 'testName' },
@@ -571,6 +603,11 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
       { "data": 'labName' },
       { "data": 'reqDate' },
       { "data": 'department' },
+      { "data": 'wardName' },
+      { "data": 'labName' },
+      { "data": 'reqDate' },
+      { "data": 'department' },
+      { "data": 'wardName' },
       { "data": 'wardName' },
       { "data": 'labName' },
       { "data": 'reqDate' },
@@ -610,26 +647,53 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
     expandColapseRow("no", table);
   });
 
+  // Order by the grouping
+    $('#example tbody').on( 'click', 'tr.group', function () {
+        var currentOrder = table.order()[0];
+        if ( currentOrder[0] === groupColumn && currentOrder[1] === 'asc' ) {
+            table.order( [ groupColumn, 'desc' ] ).draw();
+        }
+        else {
+            table.order( [ groupColumn, 'asc' ] ).draw();
+        }
+    } );
+
 }
 
 
 
 function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
+  var groupColumn = 1;
   $('#DataTable3').DataTable().clear().destroy();
 
   $.fn.dataTable.moment('DD-MMM-YYYY');
   var table = $('#DataTable3').DataTable({
 
     dom: 'Bfrtip',
-    "columnDefs": [{
-      "orderable": false,
-      "targets": 0
-    }],
+    "columnDefs": [
+      { "orderable": false, "targets": 0 },
+      { "visible": false, "targets": groupColumn }
+  ],
 
     "language": {
       "emptyTable": "No Data Is Available "
     },
+    "order": [[ groupColumn, 'asc' ]],
+    "drawCallback": function ( settings ) {
+           var api = this.api();
+           var rows = api.rows( {page:'current'} ).nodes();
+           var last=null;
 
+           api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
+               if ( last !== group ) {
+                   $(rows).eq( i ).before(
+                       '<tr class="group"><td colspan="5"><strong>Requisition Date : </strong>'+group+'</td></tr>'
+                   );
+
+                   last = group;
+               }
+           } );
+       },
     buttons: [{
         extend: 'collection',
         text: 'Trigger Tools',
@@ -775,6 +839,17 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
   $('table .collapseButton').on('click', function() {
     expandColapseRow("no", table);
   });
+
+  // Order by the grouping
+    $('#example tbody').on( 'click', 'tr.group', function () {
+        var currentOrder = table.order()[0];
+        if ( currentOrder[0] === groupColumn && currentOrder[1] === 'asc' ) {
+            table.order( [ groupColumn, 'desc' ] ).draw();
+        }
+        else {
+            table.order( [ groupColumn, 'asc' ] ).draw();
+        }
+    } );
 
 }
 
