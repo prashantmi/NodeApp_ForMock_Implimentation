@@ -1169,24 +1169,28 @@ function customeRowDataType21(api, rowIdx, columns) {
 
   tbdat = '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 6, 8) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
 
   tbdat += '<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 8, 10) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
+
+  tbdat += '<td class="rounded "><div class="vertical-text">PackingList Generation</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 20) + '</table></td>';
 
   tbdat += '<td class="rounded "><div class="vertical-text">Sample Acceptance</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 10, 12) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 21, 25) + '</table></td>';
+  tbdat += '</tr>'
 
-  tbdat += '<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 12, 14) + '</table></td>';
+  tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 26, 28) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
-  tbdat += '<td class="rounded "><div class="vertical-text">Result Entry</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 13, 15) + '</table></td>';
+  tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 29, 34) + '</table></td>';
 
-  tbdat += '<td class="rounded "><div class="vertical-text">Result Validation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 13, 15) + '</table></td>';
+  tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 35, 36) + '</table></td>';
   tbdat += '</tr>'
 
   return tbdat;
