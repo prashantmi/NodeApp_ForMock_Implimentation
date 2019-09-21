@@ -976,7 +976,7 @@ function AjaxGetPatReqnListOnCrNo(crNo) {
     ],
     "sPaginationType": "full_numbers",
     "bJQueryUI": true,
-    "scrollX": true,
+    
 
     responsive: {
       details: {
