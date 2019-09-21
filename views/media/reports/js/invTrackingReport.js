@@ -475,95 +475,40 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
                }
            } );
        },
-    buttons: [{
+    buttons:
+    [{
         extend: 'collection',
-        text: 'Trigger Tools',
-        className: "btn-dark",
-        buttons: [{
-            extend: 'colvis',
-            className: "bg-dark text-white"
-          },
-          {
+        text: '',
+        className: "fas fa-cogs text-primary btn-lg bg-white btn-outline-light",
+        buttons:
+        [{
             extend: 'excel',
-            className: "bg-dark text-white"
+            title: 'Investigation Tracking Report',
+            text: ' Excel',
+            className: "fas fa-file-excel text-primary bg-white btn-outline-light"
           },
           {
             extend: 'pdfHtml5',
-            className: "bg-dark text-white",
+            className: "fas fa-file-pdf text-primary bg-white btn-outline-light",
             title: 'Investigation Tracking Report',
-            text: 'PDF',
+            text: ' Pdf',
             pageMargins: [0, 0, 0, 0],
             margin: [0, 0, 0, 0],
             alignment: 'center',
             exportOptions: {
-              columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-            }
-          }
-        ]
+              columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                        17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35]
+            },
+            orientation: 'landscape',
+            pageSize: 'A3',
+            customize: function ( doc ) {
+                  doc.styles.tableHeader.fontSize = 6 ;
+                  doc.defaultStyle.fontSize = 5;
+                  doc.defaultStyle.alignment = 'left';
+                  }
+          }]
       },
-      {
-        extend: 'collection',
-        text: 'Show Related Columns',
-        className: "btn-success",
-        buttons: [{
-            extend: 'colvisGroup',
-            className: "bg-dark text-white",
-            text: 'Show All',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Requisition Raising',
-            show: [1, 2, 3],
-            hide: [4, 5, 6]
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Sample Collection',
-            show: [3, 4, 5],
-            hide: [1, 2]
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white",
-            text: 'Sample Acceptance',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Patient Acceptance',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Result Entry',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Result Validation',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Report Printing',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Addendum And Amendment',
-            show: ':hidden'
-          }
-        ]
-      },
-    ],
+      ],
 
     //  "ajax": {
     //   //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo, sync:true, postData: "", handleAs: "text",
@@ -697,7 +642,7 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
     buttons: [{
         extend: 'collection',
         text: 'Trigger Tools',
-        className: "btn-dark",
+        className: "fas fa-tools btn-success",
         buttons: [{
             extend: 'colvis',
             className: "bg-dark text-white"
@@ -1167,7 +1112,7 @@ function customeRowDataType2(api, rowIdx, columns) {
 function customeRowDataType21(api, rowIdx, columns) {
   var tbdat = '';
 
-  tbdat = '<tr>'
+  tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
   tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
 
@@ -1181,16 +1126,15 @@ function customeRowDataType21(api, rowIdx, columns) {
   tbdat += '<td class="rounded "><table>' + dataRow(columns, 21, 25) + '</table></td>';
   tbdat += '</tr>'
 
+  tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
   tbdat += '<td class="rounded "><table>' + dataRow(columns, 26, 28) + '</table></td>';
-  tbdat += '</tr>'
 
-  tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 29, 34) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 29, 33) + '</table></td>';
 
   tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 35, 36) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 34, 35) + '</table></td>';
   tbdat += '</tr>'
 
   return tbdat;
