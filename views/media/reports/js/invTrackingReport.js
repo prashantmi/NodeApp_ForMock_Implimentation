@@ -335,7 +335,7 @@ function AjaxGetPatDetailsOnBillNo(billNo) {
       details: {
         renderer: function(api, rowIdx, columns) {
           var data = $.map(columns, function(col, i) {
-            return col.hidden ? customeRowDataType1(col) : '';
+            return col.hidden ? customeRowType1(col) : '';
           }).join('');
           return data ? customeRowDataAppend(data) : false;
         }
