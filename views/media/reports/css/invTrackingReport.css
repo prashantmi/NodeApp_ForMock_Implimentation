@@ -1,3 +1,26 @@
+
+html { font-size: 15px }
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 1.2rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 1.4rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1.6rem;
+  }
+}
+
+
+
 .divShadow {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 12px 16px 0px, rgba(0, 0, 0, 0.19) 0px 17px 50px 0px;
   background-color: green;

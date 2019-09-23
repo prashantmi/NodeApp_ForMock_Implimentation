@@ -181,7 +181,7 @@ $(document).ready(function() {
         });
 
         AjaxGetPatDetailsOnCrNo(crNo);
-        AjaxGetPatReqnListOnCrNo(crNo);
+        AjaxGetReqnListOnCrNo(crNo);
       } else {
 
         alert("Cr. No. Should Be Of 15 Digits");
@@ -404,7 +404,7 @@ function AjaxGetPatDetailsOnCrNo(crNo) {
       details: {
         renderer: function(api, rowIdx, columns) {
           var data = $.map(columns, function(col, i) {
-            return col.hidden ? customeRowDataType1(col) : '';
+            return col.hidden ? customeRowType1(col) : '';
           }).join('');
           return data ? customeRowDataAppend(data) : false;
         }
@@ -420,13 +420,25 @@ function AjaxGetPatDetailsOnCrNo(crNo) {
 
 }
 
+var globalSampleBasedReqnListOnBillNo=null;
+var globalPatientBasedReqnListOnBillNo=null;
+
+var globalSampleBasedReqnListOnCrNo=null;
+var globalPatientBasedReqnListOnCrNo=null;
 
 // function AjaxGetPatReqnListOnBillNo(billNo){
 function AjaxGetReqnListOnBillNo(billNo) {
-
+  globalSampleBasedReqnListOnBillNo=null;
+  globalPatientBasedReqnListOnBillNo=null;
+  var _mode = "AjaxGetReqnListOnBillNo";
+  //var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo;
   var url = "/data";
+
   $.getJSON(url, function(data) {
       if (data) {
+        globalSampleBasedReqnListOnBillNo=data.sampleBasedReqnListOnBillNo;
+        globalPatientBasedReqnListOnBillNo=data.patientBasedReqnListOnBillNo;
+
         dataTableSampleBasedReqnListOnBillNo(data.sampleBasedReqnListOnBillNo);
         dataTablePatientBasedReqnListOnBillNo(data.patientBasedReqnListOnBillNo);
       }
@@ -439,6 +451,33 @@ function AjaxGetReqnListOnBillNo(billNo) {
     });
 }
 
+// function AjaxGetPatReqnListOnCrNo(crNo){
+function AjaxGetReqnListOnCrNo(crNo) {
+  globalSampleBasedReqnListOnCrNo=null;
+  globalPatientBasedReqnListOnCrNo=null;
+  var _mode = "AjaxGetReqnListOnCrNo";
+  //var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&crNo="+crNo+"&fromDate="+fromDate+"&toDate="+toDate;
+  var url = "/data";
+
+  var fromDate = document.getElementsByClassName("fromDateInput")[0].value;
+  var toDate = document.getElementsByClassName("toDateInput")[0].value;
+
+  $.getJSON(url, function(data) {
+      if (data) {
+        globalSampleBasedReqnListOnCrNo=data.sampleBasedReqnListOnCrNo;
+        globalPatientBasedReqnListOnCrNo=data.patientBasedReqnListOnCrNo;
+
+        dataTableSampleBasedReqnListOnCrNo(data.sampleBasedReqnListOnCrNo);
+        dataTablePatientBasedReqnListOnCrNo(data.patientBasedReqnListOnCrNo);
+      }
+    })
+    .done(function() {
+      console.log("AjaxGetMachineList success");
+    })
+    .fail(function() {
+      console.log("AjaxGetMachineList error");
+    });
+}
 
 function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
 
@@ -523,50 +562,55 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
     "aaData": sampleBasedReqnListOnBillNo,
     "columns": [
       { "data": 'sno' },
-      { "data": 'reqDate' },
-      { "data": 'groupName' },
-      { "data": 'testName' },
-      { "data": 'sampleName' },
-      { "data": 'sampleNum' },
-      { "data": 'labNum' },
+      { "data": 'requisitionDate' },
+      { "data": 'labName' },
+      { "data": 'groupNameTestName'},
+      { "data": 'advisedByDep' },
+      { "data": 'billDate' },
       { "data": 'status' },
-      { "data": 'labName' },
-      { "data": 'reqDate' },
-      { "data": 'department' },
-      { "data": 'wardName' },
-      { "data": 'labName' },
-      { "data": 'reqDate' },
-      { "data": 'department' },
-      { "data": 'wardName' },
-      { "data": 'reportStatus' },
-      { "data": 'groupName' },
-      { "data": 'testName' },
-      { "data": 'sampleName' },
-      { "data": 'sampleNum' },
-      { "data": 'labNum' },
-      { "data": 'status' },
-      { "data": 'labName' },
-      { "data": 'reqDate' },
-      { "data": 'department' },
-      { "data": 'wardName' },
-      { "data": 'labName' },
-      { "data": 'reqDate' },
-      { "data": 'department' },
-      { "data": 'wardName' },
-      { "data": 'wardName' },
-      { "data": 'labName' },
-      { "data": 'reqDate' },
-      { "data": 'department' },
-      { "data": 'wardName' }
-    ],
 
+      { "data": 'requisitionDate' },
+      { "data": 'requisitionBy' },
+      { "data": 'groupNameTestName'},
+      { "data": 'appointmentDate'},
+      { "data": 'billdate'},
+
+      { "data": 'sampleName' },
+      { "data": 'sampleNum' },
+      { "data": 'sampleCollDate'},
+      { "data": 'sampleCollBy'},
+
+      { "data": 'packingListNo'},
+      { "data": 'labNo'},
+      { "data": 'packingListDateTime'},
+      { "data": 'packingListBy'},
+
+      { "data": 'labNum' },
+      { "data": 'sampleAccepDate'},
+      { "data": 'sampleAccepBy'},
+      { "data": 'sampleAccepMode'},
+      { "data": 'machineName'},
+
+      { "data": 'sampleRejecDate'},
+      { "data": 'sampleRejecBy'},
+      { "data": 'sampleRejecReason'},
+
+      { "data": 'resultEntryDate'},
+      { "data": 'resultEntryBy'},
+      { "data": 'resultEntryParam'},
+      { "data": 'resultValidDate'},
+      { "data": 'resultValidBy'},
+
+      { "data": 'reportGeneration'},
+      { "data": 'reportPrinting'}
+    ],
 
     "sPaginationType": "full_numbers",
     "bJQueryUI": true,
     responsive: {
       details: {
         renderer: function(api, rowIdx, columns) {
-          var data = customeRowDataType2(api, rowIdx, columns);
+          var data = customeRowSmType2(api, rowIdx, columns);
           return data ? customeRowDataAppend(data) : false;
         }
       }
@@ -576,12 +620,15 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
       showHideLoding("no");
     }
   });
+
+  //show hide processing message
   // if(sampleBasedReqnListOnBillNo!=null){
   // table.processing( false );
   // }else{
   //   table.rows().remove().draw();
   //   table.processing( true );
   // }
+
   // Handle click on "Epand All" button
   $('table .expandButton').on('click', function() {
     expandColapseRow("yes", table);
@@ -593,15 +640,15 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
   });
 
   // Order by the grouping
-    $('#example tbody').on( 'click', 'tr.group', function () {
-        var currentOrder = table.order()[0];
-        if ( currentOrder[0] === groupColumn && currentOrder[1] === 'asc' ) {
-            table.order( [ groupColumn, 'desc' ] ).draw();
-        }
-        else {
-            table.order( [ groupColumn, 'asc' ] ).draw();
-        }
-    } );
+  $('#table tbody').on( 'click', 'tr.group', function () {
+    var currentOrder = table.order()[0];
+    if ( currentOrder[0] === groupColumn && currentOrder[1] === 'asc' ) {
+      table.order( [ groupColumn, 'desc' ] ).draw();
+    }
+    else {
+      table.order( [ groupColumn, 'asc' ] ).draw();
+    }
+  });
 
 }
 
@@ -614,11 +661,13 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
   $.fn.dataTable.moment('DD-MMM-YYYY');
   var table = $('#DataTable3').DataTable({
 
-    dom: 'Bfrtip',
+    dom: 'lBfrtip',
+    processing: true,
+
     "columnDefs": [
       { "orderable": false, "targets": 0 },
       { "visible": false, "targets": groupColumn }
-  ],
+    ],
 
     "language": {
       "emptyTable": "No Data Is Available "
@@ -639,124 +688,74 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
                }
            } );
        },
-    buttons: [{
+    buttons:
+    [{
         extend: 'collection',
-        text: 'Trigger Tools',
-        className: "fas fa-tools btn-success",
-        buttons: [{
-            extend: 'colvis',
-            className: "bg-dark text-white"
-          },
-          {
+        text: '',
+        className: "fas fa-cogs text-primary btn-lg bg-white btn-outline-light",
+        buttons:
+        [{
             extend: 'excel',
-            className: "bg-dark text-white"
+            title: 'Investigation Tracking Report',
+            text: ' Excel',
+            className: "fas fa-file-excel text-primary bg-white btn-outline-light"
           },
           {
             extend: 'pdfHtml5',
-            className: "bg-dark text-white",
+            className: "fas fa-file-pdf text-primary bg-white btn-outline-light",
             title: 'Investigation Tracking Report',
-            text: 'PDF',
+            text: ' Pdf',
             pageMargins: [0, 0, 0, 0],
             margin: [0, 0, 0, 0],
             alignment: 'center',
             exportOptions: {
-              columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-            }
-          }
-        ]
+              columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                        17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35]
+            },
+            orientation: 'landscape',
+            pageSize: 'A3',
+            customize: function ( doc ) {
+                  doc.styles.tableHeader.fontSize = 6 ;
+                  doc.defaultStyle.fontSize = 5;
+                  doc.defaultStyle.alignment = 'left';
+                  }
+          }]
       },
-      {
-        extend: 'collection',
-        text: 'Show Related Columns',
-        className: "btn-success",
-        buttons: [{
-            extend: 'colvisGroup',
-            className: "bg-dark text-white",
-            text: 'Show All',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Requisition Raising',
-            show: [1, 2, 3],
-            hide: [4, 5, 6]
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Sample Collection',
-            show: [3, 4, 5],
-            hide: [1, 2]
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white",
-            text: 'Sample Acceptance',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Patient Acceptance',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Result Entry',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Result Validation',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Report Printing',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Addendum And Amendment',
-            show: ':hidden'
-          }
-        ]
-      },
-    ],
-
-    //  "ajax": {
-    //   //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo, sync:true, postData: "", handleAs: "text",
-    //  "url": "/data", sync:true, postData: "", handleAs: "text",
-    //  error: function (jqXHR, statusText, errorThrown) {
-    //   console.log(jqXHR.responseText);
-    //   console.log(statusText);
-    //   console.log(errorThrown);
-    // },
-    // 	dataSrc: "patientBasedReqnListOnBillNo"
-    //    },
+      ],
     "aaData": patientBasedReqnListOnBillNo,
     "columns": [
       { "data": 'sno' },
-      { "data": 'reportStatus' },
-      { "data": 'groupName' },
-      { "data": 'testName' },
-      { "data": 'sampleName' },
-      { "data": 'sampleNum' },
-      { "data": 'labNum' },
+      { "data": 'requisitionDate' },
+      { "data": 'labName' },
+      { "data": 'groupNameTestName'},
+      { "data": 'advisedByDep' },
+      { "data": 'billDate' },
       { "data": 'status' },
-      { "data": 'labName' },
-      { "data": 'reqDate' },
-      { "data": 'department' },
-      { "data": 'wardName' },
-      { "data": 'labName' },
-      { "data": 'reqDate' },
-      { "data": 'department' },
-      { "data": 'wardName' }
+
+      { "data": 'requisitionDate' },
+      { "data": 'requisitionBy' },
+      { "data": 'groupNameTestName'},
+      { "data": 'appointmentDate'},
+      { "data": 'billdate'},
+
+      { "data": 'accessionNo' },
+      { "data": 'patientAccepDate'},
+      { "data": 'patientAccepBy'},
+      { "data": 'patientAccepMode'},
+      { "data": 'machineName'},
+
+      { "data": 'patientRejecDate'},
+      { "data": 'patientRejecBy'},
+      { "data": 'patientRejecReason'},
+
+      { "data": 'resultEntryDate'},
+      { "data": 'resultEntryBy'},
+      { "data": 'resultEntryParam'},
+      { "data": 'resultValidDate'},
+      { "data": 'resultValidBy'},
+
+      { "data": 'reportGeneration'},
+      { "data": 'reportPrinting'}
     ],
 
     "sPaginationType": "full_numbers",
@@ -764,7 +763,7 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
     responsive: {
       details: {
         renderer: function(api, rowIdx, columns) {
-          var data = customeRowDataType2(api, rowIdx, columns);
+          var data = customeRowPtType2(api, rowIdx, columns);
           return data ? customeRowDataAppend(data) : false;
         }
       }
@@ -774,6 +773,14 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
       showHideLoding("no");
     }
   });
+
+  //show hide processing message
+  // if(sampleBasedReqnListOnBillNo!=null){
+  // table.processing( false );
+  // }else{
+  //   table.rows().remove().draw();
+  //   table.processing( true );
+  // }
 
   // Handle click on "Epand All" button
   $('table .expandButton').on('click', function() {
@@ -786,202 +793,150 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
   });
 
   // Order by the grouping
-    $('#example tbody').on( 'click', 'tr.group', function () {
-        var currentOrder = table.order()[0];
-        if ( currentOrder[0] === groupColumn && currentOrder[1] === 'asc' ) {
-            table.order( [ groupColumn, 'desc' ] ).draw();
-        }
-        else {
-            table.order( [ groupColumn, 'asc' ] ).draw();
-        }
-    } );
-
+  $('#table tbody').on( 'click', 'tr.group', function () {
+    var currentOrder = table.order()[0];
+    if ( currentOrder[0] === groupColumn && currentOrder[1] === 'asc' ) {
+      table.order( [ groupColumn, 'desc' ] ).draw();
+    }
+    else {
+      table.order( [ groupColumn, 'asc' ] ).draw();
+    }
+  });
 }
 
-function AjaxGetPatReqnListOnCrNo(crNo) {
 
-  var _mode = "AjaxGetPatReqnListOnCrNo";
-
-  var fromDate = document.getElementsByClassName("fromDateInput")[0].value;
-  var toDate = document.getElementsByClassName("toDateInput")[0].value;
-
+function dataTableSampleBasedReqnListOnCrNo(sampleBasedReqnListOnCrNo){
+  var groupColumn = 1;
   $('#DataTable4').DataTable().clear().destroy();
 
   $.fn.dataTable.moment('DD-MMM-YYYY');
   var table = $('#DataTable4').DataTable({
 
-    dom: 'Bfrtip',
-    "columnDefs": [{
-      "orderable": false,
-      "targets": 0
-    }],
+    dom: 'lBfrtip',
+    processing: true,
+
+    "columnDefs": [
+      { "orderable": false, "targets": 0 },
+      { "visible": false, "targets": groupColumn }
+    ],
 
     "language": {
       "emptyTable": "No Data Is Available "
     },
+    "order": [[ groupColumn, 'asc' ]],
+    "drawCallback": function ( settings ) {
+           var api = this.api();
+           var rows = api.rows( {page:'current'} ).nodes();
+           var last=null;
 
-    buttons: [{
+           api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
+               if ( last !== group ) {
+                   $(rows).eq( i ).before(
+                       '<tr class="group"><td colspan="5"><strong>Requisition Date : </strong>'+group+'</td></tr>'
+                   );
+
+                   last = group;
+               }
+           } );
+       },
+    buttons:
+    [{
         extend: 'collection',
-        text: 'Trigger Tools',
-        className: "btn-dark",
-        buttons: [{
-            extend: 'colvis',
-            className: "bg-dark text-white"
-          },
-          {
+        text: '',
+        className: "fas fa-cogs text-primary btn-lg bg-white btn-outline-light",
+        buttons:
+        [{
             extend: 'excel',
-            className: "bg-dark text-white"
+            title: 'Investigation Tracking Report',
+            text: ' Excel',
+            className: "fas fa-file-excel text-primary bg-white btn-outline-light"
           },
           {
             extend: 'pdfHtml5',
-            className: "bg-dark text-white",
+            className: "fas fa-file-pdf text-primary bg-white btn-outline-light",
             title: 'Investigation Tracking Report',
-            text: 'PDF',
+            text: ' Pdf',
             pageMargins: [0, 0, 0, 0],
             margin: [0, 0, 0, 0],
             alignment: 'center',
             exportOptions: {
-              columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-            }
-          }
-        ]
+              columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                        17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35]
+            },
+            orientation: 'landscape',
+            pageSize: 'A3',
+            customize: function ( doc ) {
+                  doc.styles.tableHeader.fontSize = 6 ;
+                  doc.defaultStyle.fontSize = 5;
+                  doc.defaultStyle.alignment = 'left';
+                  }
+          }]
       },
-      {
-        extend: 'collection',
-        text: 'Show Related Columns',
-        className: "btn-success",
-        buttons: [{
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Show All',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Requisition Raising',
-            show: [1, 2, 3],
-            hide: [4, 5, 6]
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Sample Collection',
-            show: [3, 4, 5],
-            hide: [1, 2]
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Sample Acceptance',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Patient Acceptance',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Result Entry',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Result Validation',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Report Printing',
-            show: ':hidden'
-          },
-          {
-            extend: 'colvisGroup',
-            className: "bg-dark text-white ",
-            text: 'Addendum And Amendment',
-            show: ':hidden'
-          }
+      ],
+    // "ajax": {
+    //   "url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&crNo="+crNo+"&fromDate="+fromDate+"&toDate="+toDate, sync:true, postData: "", handleAs: "text",
+    //   sync: true,
+    //   postData: "",
+    //   handleAs: "text",
+    //   error: function(jqXHR, statusText, errorThrown) {
+    //     console.log(jqXHR.responseText);
+    //     console.log(statusText);
+    //     console.log(errorThrown);
+    //   },
+    //   dataSrc: "patReqnListOnCrNo"
+    // },
+    "aaData": sampleBasedReqnListOnCrNo,
+    "columns": [
+      { "data": 'sno' },
+      { "data": 'requisitionDate' },
+      { "data": 'labName' },
+      { "data": 'groupNameTestName'},
+      { "data": 'advisedByDep' },
+      { "data": 'billDate' },
+      { "data": 'status' },
 
-        ]
-      },
+      { "data": 'requisitionDate' },
+      { "data": 'requisitionBy' },
+      { "data": 'groupNameTestName'},
+      { "data": 'appointmentDate'},
+      { "data": 'billdate'},
 
+      { "data": 'sampleName' },
+      { "data": 'sampleNum' },
+      { "data": 'sampleCollDate'},
+      { "data": 'sampleCollBy'},
+
+      { "data": 'packingListNo'},
+      { "data": 'labNo'},
+      { "data": 'packingListDateTime'},
+      { "data": 'packingListBy'},
+
+      { "data": 'labNum' },
+      { "data": 'sampleAccepDate'},
+      { "data": 'sampleAccepBy'},
+      { "data": 'sampleAccepMode'},
+      { "data": 'machineName'},
+
+      { "data": 'sampleRejecDate'},
+      { "data": 'sampleRejecBy'},
+      { "data": 'sampleRejecReason'},
+
+      { "data": 'resultEntryDate'},
+      { "data": 'resultEntryBy'},
+      { "data": 'resultEntryParam'},
+      { "data": 'resultValidDate'},
+      { "data": 'resultValidBy'},
+
+      { "data": 'reportGeneration'},
+      { "data": 'reportPrinting'}
     ],
 
-    "ajax": {
-      //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&crNo="+crNo+"&fromDate="+fromDate+"&toDate="+toDate, sync:true, postData: "", handleAs: "text",
-      "url": "/data",
-      sync: true,
-      postData: "",
-      handleAs: "text",
-      error: function(jqXHR, statusText, errorThrown) {
-        console.log(jqXHR.responseText);
-        console.log(statusText);
-        console.log(errorThrown);
-      },
-      dataSrc: "patReqnListOnCrNo"
-    },
-    "columns": [{
-        "data": 'sno'
-      },
-      {
-        "data": 'billNo'
-      },
-      {
-        "data": 'reportStatus'
-      },
-      {
-        "data": 'groupName'
-      },
-      {
-        "data": 'testName'
-      },
-      {
-        "data": 'sampleName'
-      },
-      {
-        "data": 'sampleNum'
-      },
-      {
-        "data": 'labNum'
-      },
-      {
-        "data": 'status'
-      },
-      {
-        "data": 'labName'
-      },
-      {
-        "data": 'reqDate'
-      },
-      {
-        "data": 'department'
-      },
-      {
-        "data": 'wardName'
-      },
-      {
-        "data": 'reqDate'
-      },
-      {
-        "data": 'department'
-      },
-      {
-        "data": 'wardName'
-      }
-    ],
     "sPaginationType": "full_numbers",
     "bJQueryUI": true,
-    
-
     responsive: {
       details: {
         renderer: function(api, rowIdx, columns) {
-          var data = customeRowDataType2(api, rowIdx, columns);
+          var data = customeRowSmType2(api, rowIdx, columns);
           return data ? customeRowDataAppend(data) : false;
         }
       }
@@ -992,6 +947,13 @@ function AjaxGetPatReqnListOnCrNo(crNo) {
     }
   });
 
+  //show hide processing message
+  // if(sampleBasedReqnListOnBillNo!=null){
+  // table.processing( false );
+  // }else{
+  //   table.rows().remove().draw();
+  //   table.processing( true );
+  // }
 
   // Handle click on "Epand All" button
   $('table .expandButton').on('click', function() {
@@ -1003,7 +965,172 @@ function AjaxGetPatReqnListOnCrNo(crNo) {
     expandColapseRow("no", table);
   });
 
+  // Order by the grouping
+  $('#table tbody').on( 'click', 'tr.group', function () {
+    var currentOrder = table.order()[0];
+    if ( currentOrder[0] === groupColumn && currentOrder[1] === 'asc' ) {
+      table.order( [ groupColumn, 'desc' ] ).draw();
+    }
+    else {
+      table.order( [ groupColumn, 'asc' ] ).draw();
+    }
+  });
+
 }
+
+
+function dataTablePatientBasedReqnListOnCrNo(patientBasedReqnListOnCrNo){
+  var groupColumn = 1;
+  $('#DataTable5').DataTable().clear().destroy();
+
+  $.fn.dataTable.moment('DD-MMM-YYYY');
+  var table = $('#DataTable5').DataTable({
+
+    dom: 'lBfrtip',
+    processing: true,
+
+    "columnDefs": [
+      { "orderable": false, "targets": 0 },
+      { "visible": false, "targets": groupColumn }
+    ],
+
+    "language": {
+      "emptyTable": "No Data Is Available "
+    },
+    "order": [[ groupColumn, 'asc' ]],
+    "drawCallback": function ( settings ) {
+           var api = this.api();
+           var rows = api.rows( {page:'current'} ).nodes();
+           var last=null;
+
+           api.column(groupColumn, {page:'current'} ).data().each( function ( group, i ) {
+               if ( last !== group ) {
+                   $(rows).eq( i ).before(
+                       '<tr class="group"><td colspan="5"><strong>Requisition Date : </strong>'+group+'</td></tr>'
+                   );
+
+                   last = group;
+               }
+           } );
+       },
+    buttons:
+    [{
+        extend: 'collection',
+        text: '',
+        className: "fas fa-cogs text-primary btn-lg bg-white btn-outline-light",
+        buttons:
+        [{
+            extend: 'excel',
+            title: 'Investigation Tracking Report',
+            text: ' Excel',
+            className: "fas fa-file-excel text-primary bg-white btn-outline-light"
+          },
+          {
+            extend: 'pdfHtml5',
+            className: "fas fa-file-pdf text-primary bg-white btn-outline-light",
+            title: 'Investigation Tracking Report',
+            text: ' Pdf',
+            pageMargins: [0, 0, 0, 0],
+            margin: [0, 0, 0, 0],
+            alignment: 'center',
+            exportOptions: {
+              columns: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
+                        17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35]
+            },
+            orientation: 'landscape',
+            pageSize: 'A3',
+            customize: function ( doc ) {
+                  doc.styles.tableHeader.fontSize = 6 ;
+                  doc.defaultStyle.fontSize = 5;
+                  doc.defaultStyle.alignment = 'left';
+                  }
+          }]
+      },
+      ],
+    "aaData": patientBasedReqnListOnCrNo,
+    "columns": [
+      { "data": 'sno' },
+      { "data": 'requisitionDate' },
+      { "data": 'labName' },
+      { "data": 'groupNameTestName'},
+      { "data": 'advisedByDep' },
+      { "data": 'billDate' },
+      { "data": 'status' },
+
+      { "data": 'requisitionDate' },
+      { "data": 'requisitionBy' },
+      { "data": 'groupNameTestName'},
+      { "data": 'appointmentDate'},
+      { "data": 'billdate'},
+
+      { "data": 'accessionNo' },
+      { "data": 'patientAccepDate'},
+      { "data": 'patientAccepBy'},
+      { "data": 'patientAccepMode'},
+      { "data": 'machineName'},
+
+      { "data": 'patientRejecDate'},
+      { "data": 'patientRejecBy'},
+      { "data": 'patientRejecReason'},
+
+      { "data": 'resultEntryDate'},
+      { "data": 'resultEntryBy'},
+      { "data": 'resultEntryParam'},
+      { "data": 'resultValidDate'},
+      { "data": 'resultValidBy'},
+
+      { "data": 'reportGeneration'},
+      { "data": 'reportPrinting'}
+    ],
+
+    "sPaginationType": "full_numbers",
+    "bJQueryUI": true,
+    responsive: {
+      details: {
+        renderer: function(api, rowIdx, columns) {
+          var data = customeRowPtType2(api, rowIdx, columns);
+          return data ? customeRowDataAppend(data) : false;
+        }
+      }
+    },
+    "initComplete": function(settings, json) {
+      //show loding animation
+      showHideLoding("no");
+    }
+  });
+
+  //show hide processing message
+  // if(sampleBasedReqnListOnBillNo!=null){
+  // table.processing( false );
+  // }else{
+  //   table.rows().remove().draw();
+  //   table.processing( true );
+  // }
+
+  // Handle click on "Epand All" button
+  $('table .expandButton').on('click', function() {
+    expandColapseRow("yes", table);
+  });
+
+  // Handle click on "Collapse All" button
+  $('table .collapseButton').on('click', function() {
+    expandColapseRow("no", table);
+  });
+
+  // Order by the grouping
+  $('#table tbody').on( 'click', 'tr.group', function () {
+    var currentOrder = table.order()[0];
+    if ( currentOrder[0] === groupColumn && currentOrder[1] === 'asc' ) {
+      table.order( [ groupColumn, 'desc' ] ).draw();
+    }
+    else {
+      table.order( [ groupColumn, 'asc' ] ).draw();
+    }
+  });
+
+}
+
+
 
 function AjaxGetReqDetails() {
   var _mode = "AjaxGetReqDetails";
@@ -1015,23 +1142,23 @@ function AjaxGetReqDetails() {
 var crcount = 0;
 var crcount2 = 0;
 
-function customeRowDataType1(col) {
+function customeRowType1(col) {
   var tbdat = '';
   var w = window.innerWidth;
   var h = window.innerHeight;
   if (w >= 1100) {
-    tbdat = customeRowDataType11(col);
+    tbdat = customeRowType11(col);
   } else if (w < 1100 && w > 800) {
-    tbdat = customeRowDataType12(col);
+    tbdat = customeRowType12(col);
   } else if (w < 800 && w > 600) {
-    tbdat = customeRowDataType13(col);
+    tbdat = customeRowType13(col);
   } else if (w <= 600) {
-    tbdat = customeRowDataType14(col);
+    tbdat = customeRowType14(col);
   }
   return tbdat;
 }
 
-function customeRowDataType11(col) {
+function customeRowType11(col) {
   var tbdat = '';
   if (crcount == 0) {
     tbdat = '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">';
@@ -1042,7 +1169,7 @@ function customeRowDataType11(col) {
   return tbdat;
 }
 
-function customeRowDataType12(col) {
+function customeRowType12(col) {
   var tbdat = '';
   if (crcount == 0) {
     tbdat = '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">';
@@ -1062,7 +1189,7 @@ function customeRowDataType12(col) {
   return tbdat;
 }
 
-function customeRowDataType13(col) {
+function customeRowType13(col) {
   var tbdat = '';
   if (crcount == 0) {
     tbdat = '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">';
@@ -1082,7 +1209,7 @@ function customeRowDataType13(col) {
   return tbdat;
 }
 
-function customeRowDataType14(col) {
+function customeRowType14(col) {
   var tbdat = '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
     '<th>' + col.title + ':' + '</th> ' +
     '<td>' + col.data + '</td>' +
@@ -1093,23 +1220,39 @@ function customeRowDataType14(col) {
 
 
 /*------Responsive Table Rows According To Screen Size Type 2 Ends------------*/
-function customeRowDataType2(api, rowIdx, columns) {
+function customeRowSmType2(api, rowIdx, columns) {
   var tbdat = '';
   var w = window.innerWidth;
   var h = window.innerHeight;
   if (w >= 1100) {
-    tbdat = customeRowDataType21(api, rowIdx, columns);
+    tbdat = customeRowSmType21(api, rowIdx, columns);
   } else if (w < 1100 && w > 800) {
-    tbdat = customeRowDataType22(api, rowIdx, columns);
+    tbdat = customeRowSmType22(api, rowIdx, columns);
   } else if (w < 800 && w > 600) {
-    tbdat = customeRowDataType23(api, rowIdx, columns);
+    tbdat = customeRowSmType23(api, rowIdx, columns);
   } else if (w <= 600) {
-    tbdat = customeRowDataType24(api, rowIdx, columns);
+    tbdat = customeRowSmType24(api, rowIdx, columns);
   }
   return tbdat;
 }
 
-function customeRowDataType21(api, rowIdx, columns) {
+function customeRowPtType2(api, rowIdx, columns) {
+  var tbdat = '';
+  var w = window.innerWidth;
+  var h = window.innerHeight;
+  if (w >= 1100) {
+    tbdat = customeRowPtType21(api, rowIdx, columns);
+  } else if (w < 1100 && w > 800) {
+    tbdat = customeRowPtType22(api, rowIdx, columns);
+  } else if (w < 800 && w > 600) {
+    tbdat = customeRowPtType23(api, rowIdx, columns);
+  } else if (w <= 600) {
+    tbdat = customeRowPtType24(api, rowIdx, columns);
+  }
+  return tbdat;
+}
+
+function customeRowSmType21(api, rowIdx, columns) {
   var tbdat = '';
 
   tbdat += '<tr>'
@@ -1120,55 +1263,60 @@ function customeRowDataType21(api, rowIdx, columns) {
   tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
 
   tbdat += '<td class="rounded "><div class="vertical-text">PackingList Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 20) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 19) + '</table></td>';
 
   tbdat += '<td class="rounded "><div class="vertical-text">Sample Acceptance</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 21, 25) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 26, 28) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 27) + '</table></td>';
 
   tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 29, 33) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 28, 32) + '</table></td>';
 
   tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 34, 35) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 33, 34) + '</table></td>';
   tbdat += '</tr>'
 
   return tbdat;
 }
 
-function customeRowDataType22(api, rowIdx, columns) {
+function customeRowSmType22(api, rowIdx, columns) {
   var tbdat = '';
 
-  tbdat = '<tr>'
+  tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 6, 8) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
 
   tbdat += '<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 8, 10) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
 
-  tbdat += '<td class="rounded "><div class="vertical-text">Sample Acceptance</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 10, 12) + '</table></td>';
+  tbdat += '<td class="rounded "><div class="vertical-text">PackingList Generation</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 19) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
-  tbdat += '<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 12, 14) + '</table></td>';
+  tbdat += '<td class="rounded "><div class="vertical-text">Sample Acceptance</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
 
-  tbdat += '<td class="rounded "><div class="vertical-text">Result Entry</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 13, 15) + '</table></td>';
+  tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 27) + '</table></td>';
 
-  tbdat += '<td class="rounded "><div class="vertical-text">Result Validation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 13, 15) + '</table></td>';
+  tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 28, 32) + '</table></td>';
+  tbdat += '</tr>'
+
+  tbdat += '<tr>'
+  tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 33, 34) + '</table></td>';
   tbdat += '</tr>'
 
   return tbdat;
 }
 
-function customeRowDataType23(api, rowIdx, columns) {
+function customeRowSmType23(api, rowIdx, columns) {
   var tbdat = '';
 
   /*0 to 5 as columns 0 to 5 are the columns with class not having none and
@@ -1192,28 +1340,31 @@ function customeRowDataType23(api, rowIdx, columns) {
     tbdat += '<td class="rounded "><table>' + dataRow(columns, colHidStart, colHidEnd) + '</table></td>';
 
     tbdat += '<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 6, 8) + '</table></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
     tbdat += '<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 8, 10) + '</table></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
 
+    tbdat += '<td class="rounded "><div class="vertical-text">PackingList Generation</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 19) + '</table></td>';
+    tbdat += '</tr>'
+
+    tbdat += '<tr>'
     tbdat += '<td class="rounded "><div class="vertical-text">Sample Acceptance</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 10, 12) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
+
+    tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 27) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
-    tbdat += '<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 12, 14) + '</table></td>';
+    tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 30, 32) + '</table></td>';
 
-    tbdat += '<td class="rounded "><div class="vertical-text">Result Entry</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 13, 15) + '</table></td>';
-    tbdat += '</tr>'
-
-    tbdat += '<tr>'
-    tbdat += '<td class="rounded "><div class="vertical-text">Result Validation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 13, 15) + '</table></td>';
+    tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 33, 34) + '</table></td>';
     tbdat += '</tr>'
 
   } else {
@@ -1221,32 +1372,37 @@ function customeRowDataType23(api, rowIdx, columns) {
 
     tbdat += '<tr>'
     tbdat += '<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 6, 8) + '</table></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
 
     tbdat += '<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 8, 10) + '</table></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
+    tbdat += '<td class="rounded "><div class="vertical-text">PackingList Generation</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 19) + '</table></td>';
+
     tbdat += '<td class="rounded "><div class="vertical-text">Sample Acceptance</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 10, 12) + '</table></td>';
-
-    tbdat += '<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 12, 14) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
-    tbdat += '<td class="rounded "><div class="vertical-text">Result Entry</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 13, 15) + '</table></td>';
+    tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 27) + '</table></td>';
 
-    tbdat += '<td class="rounded "><div class="vertical-text">Result Validation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 13, 15) + '</table></td>';
+    tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 28, 32) + '</table></td>';
+    tbdat += '</tr>'
+
+    tbdat += '<tr>'
+    tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 33, 34) + '</table></td>';
     tbdat += '</tr>'
   }
   return tbdat;
 }
 
-function customeRowDataType24(api, rowIdx, columns) {
+function customeRowSmType24(api, rowIdx, columns) {
   var tbdat = '';
 
   /*0 to 5 as columns 0 to 5 are the columns with class not having none and
@@ -1273,36 +1429,230 @@ function customeRowDataType24(api, rowIdx, columns) {
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 6, 8) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 8, 10) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
+  tbdat += '</tr>'
+
+  tbdat += '<tr>'
+  tbdat += '<td class="rounded "><div class="vertical-text">PackingList Generation</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 20) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Sample Acceptance</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 10, 12) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 21, 25) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
-  tbdat += '<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 12, 14) + '</table></td>';
+  tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 26, 28) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
-  tbdat += '<td class="rounded "><div class="vertical-text">Result Entry</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 13, 15) + '</table></td>';
+  tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 29, 33) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
-  tbdat += '<td class="rounded "><div class="vertical-text">Result Validation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 13, 15) + '</table></td>';
+  tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 34, 35) + '</table></td>';
   tbdat += '</tr>'
 
   return tbdat;
 }
+
+function customeRowPtType21(api, rowIdx, columns) {
+  var tbdat = '';
+
+  tbdat += '<tr>'
+  tbdat += '<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
+
+  tbdat += '<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 12, 16) + '</table></td>';
+
+  tbdat += '<td class="rounded "><div class="vertical-text">Patient Rejection</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 17, 19) + '</table></td>';
+
+  tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
+  tbdat += '</tr>'
+
+  tbdat += '<tr>'
+  tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 36) + '</table></td>';
+  tbdat += '</tr>'
+
+  return tbdat;
+}
+
+function customeRowPtType22(api, rowIdx, columns) {
+  var tbdat = '';
+
+  tbdat += '<tr>'
+  tbdat += '<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
+
+  tbdat += '<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
+
+  tbdat += '<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 20) + '</table></td>';
+  tbdat += '</tr>'
+
+  tbdat += '<tr>'
+  tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 21, 23) + '</table></td>';
+
+  tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 24, 28) + '</table></td>';
+
+  tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 29, 30) + '</table></td>';
+  tbdat += '</tr>'
+
+  return tbdat;
+}
+
+function customeRowPtType23(api, rowIdx, columns) {
+  var tbdat = '';
+
+  /*0 to 5 as columns 0 to 5 are the columns with class not having none and
+  are the max. columns defined to shown on full width screen*/
+  var colHidArray = [];
+  var colHidStart = "";
+  var colHidEnd = "";
+  var colHidBoolean = false;
+  for (i = 0; i <= 5; i++) {
+    if (columns[i].hidden) {
+      colHidBoolean = true;
+      colHidArray.push(i);
+    }
+  }
+  colHidStart = colHidArray[0];
+  colHidEnd = colHidArray[colHidArray.length - 1];
+
+  if (colHidBoolean) {
+    tbdat += '<tr>'
+    tbdat += '<td class="rounded "><div class="vertical-text">Essential Data</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, colHidStart, colHidEnd) + '</table></td>';
+
+    tbdat += '<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
+    tbdat += '</tr>'
+
+    tbdat += '<tr>'
+    tbdat += '<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
+
+    tbdat += '<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 20) + '</table></td>';
+    tbdat += '</tr>'
+
+    tbdat += '<tr>'
+    tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 21, 23) + '</table></td>';
+
+    tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 24, 28) + '</table></td>';
+    tbdat += '</tr>'
+
+    tbdat += '<tr>'
+    tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 29, 30) + '</table></td>';
+    tbdat += '</tr>'
+
+  } else {
+    /*case when none of the default Essential columns are hidden*/
+
+    tbdat += '<tr>'
+    tbdat += '<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
+
+    tbdat += '<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
+    tbdat += '</tr>'
+
+    tbdat += '<tr>'
+    tbdat += '<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 20) + '</table></td>';
+
+    tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 21, 23) + '</table></td>';
+    tbdat += '</tr>'
+
+    tbdat += '<tr>'
+    tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 24, 28) + '</table></td>';
+
+    tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 29, 30) + '</table></td>';
+    tbdat += '</tr>'
+  }
+  return tbdat;
+}
+
+function customeRowPtType24(api, rowIdx, columns) {
+  var tbdat = '';
+
+  /*0 to 5 as columns 0 to 5 are the columns with class not having none and
+  are the max. columns defined to shown on full width screen*/
+  var colHidArray = [];
+  var colHidStart = "";
+  var colHidEnd = "";
+  var colHidBoolean = false;
+  for (i = 0; i <= 5; i++) {
+    if (columns[i].hidden) {
+      colHidBoolean = true;
+      colHidArray.push(i);
+    }
+  }
+  colHidStart = colHidArray[0];
+  colHidEnd = colHidArray[colHidArray.length - 1];
+
+  if (colHidBoolean) {
+    tbdat += '<tr>'
+    tbdat += '<td class="rounded "><div class="vertical-text">Essential Data</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, colHidStart, colHidEnd) + '</table></td>';
+    tbdat += '</tr>'
+  }
+
+  tbdat += '<tr>'
+  tbdat += '<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
+  tbdat += '</tr>'
+
+  tbdat += '<tr>'
+  tbdat += '<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
+  tbdat += '</tr>'
+
+  tbdat += '<tr>'
+  tbdat += '<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 20) + '</table></td>';
+  tbdat += '</tr>'
+
+  tbdat += '<tr>'
+  tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 21, 23) + '</table></td>';
+  tbdat += '</tr>'
+
+  tbdat += '<tr>'
+  tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 24, 28) + '</table></td>';
+  tbdat += '</tr>'
+
+  tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 29, 30) + '</table></td>';
+  tbdat += '</tr>'
+
+  return tbdat;
+}
+
 
 function dataRow(columns, iStart, iEnd) {
   var dataRow = '';

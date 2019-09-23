@@ -35,6 +35,9 @@
 
   <!--Bootstrap Added by Prashant-->
   <link href="media/bootstrap/bootstrap-4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <!-- <link href="media/bootstrap/bootstrap-themes/css/litera/bootstrap.min.css" rel="stylesheet" type="text/css" />  -->
+  <!-- <link href="media/bootstrap/bootstrap-themes/css/slate/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+  <!-- <link href="media/bootstrap/bootstrap-themes/css/material/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
   <script src="media/bootstrap/bootstrap-4.3.1/js/bootstrap.min.js" type="text/javascript"></script>
 
 
@@ -106,25 +109,29 @@
   <script src="media/vue-js/portal-vue.umd.min.js" type="text/javascript"></script>
   <link rel="stylesheet" href="media/vue-js/bootstrap-vue/bootstrap-vue.min.css" />
 
+  <!--canvasjs Added by Prashant-->
+  <script src="media/canvasjs/canvasjs-2.3.2/jquery.canvasjs.min.js" type="text/javascript"></script>
+
   <!--Custome Resources----->
   <script type="text/javascript" src="media/reports/js/invTrackingReport.js"></script>
+  <script type="text/javascript" src="media/reports/js/invTrackingReportChart.js"></script>
   <link rel="stylesheet" href="media/reports/css/invTrackingReport.css" />
 
   <!---New Resources Created by Prashant End--------------------------------------------------------------------------------------->
 
 </head>
 
-<body>
+<body class="bg-white">
   <html:form action="/InvestigationTrackingReport" enctype="multipart/form-data">
 
     <!-- <bean:define name="InvTrackingReportFB" property="fromDate" id="frDate" type="java.lang.String" />
     <bean:define name="InvTrackingReportFB" property="toDate" id="tDate" type="java.lang.String" /> -->
 
-    <div class="container-fluid mt-md-2 mb-md-4 bg-white" id="container1">
+    <div class="container-fluid mt-2 mb-3" id="container1">
       <div class="mx-md-0 row p-3 p-md-1 align-items-center shadow rounded bg-white no-gutters hover-shadow">
 
         <div class="col-md-3.5 mr-md-2 ml-md-1 ">
-          <p class="" style="font-weight: bold;font-size: 25px;"><span class="text-primary"><img height="45" width="45" src='media/images/report.svg'></span> Investigation Tracking Report </p>
+          <p class="" style="font-weight: bold;font-size: 25px;"><span class="text-primary"><img height="45" width="45" src='media/images/report.svg'></span> Investigation Tracking </p>
         </div>
 
         <div class="col-md-3 form-group mr-md-2 mt-md-2">
@@ -135,8 +142,8 @@
                 <option value="2">Cr No :</option>
               </select>
             </div>
-            <input type="number" class="form-control" id="billNoInput" placeholder="Enter Bill No." maxlength="15" value="961019190000641">
-            <input type="number" class="form-control" id="crNoInput" placeholder="Enter Cr. No." maxlength="20" style="display: none" value="961011900005083">
+            <input type="text" class="form-control" id="billNoInput" placeholder="Enter Bill No." maxlength="15" value="961019190000641">
+            <input type="text" class="form-control" id="crNoInput" placeholder="Enter Cr. No." maxlength="20" style="display: none" value="961011900005083">
           </div>
         </div>
 
@@ -173,7 +180,7 @@
         </div>
 
         <div class="col-md-1 p-md-1 ">
-          <button id="getData" type="button" class="btn btn-primary "><i class="text-nowrap">Get Data</i></button>
+          <button id="getData" type="button" class="btn btn-primary "><i class="text-nowrap">Track</i></button>
 
           <button id="getingData" class="btn btn-primary text-nowrap" style="display: none;" disabled>
             <span class="spinner-border spinner-border-sm"></span> Loading..
@@ -184,7 +191,7 @@
     </div>
 
 
-    <div class="container-fluid mt-md-0 mb-md-4 bg-white" id="patDetails" style="display:none;">
+    <div class="container-fluid mt-2 mb-3" id="patDetails" style="display:none;">
       <div class="mx-md-0 row p-2 align-items-center shadow rounded bg-white no-gutters hover-shadow">
 
         <div class="col-md-1 " id="patDetails-icon">
@@ -199,7 +206,7 @@
         </div>
 
         <div class="col-md-11 " id="patDetails-table">
-          <table id="DataTable1" class="table table-sm dt-responsive nowrap table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
+          <table id="DataTable1" class="table table-sm dt-responsive nowrap table-condensed mx-md-0 rounded bg-white hover-shadow" style="width:100%">
             <thead>
               <tr>
                 <th>Patient Name</th>
@@ -226,19 +233,94 @@
     </div>
 
 
-    <div id="patReqnListOnBillNo" class="container-fluid mt-md-0 mb-md-4 bg-white " style="display: none;">
-      <div id='app1'>
+    <div id="patReqnListOnBillNo" class="container-fluid mt-2 mb-3" style="display: none;">
+      <div id='app1' class="p-2 shadow rounded bg-white hover-shadow">
         <b-tabs content-class="mt-3">
 
           <b-tab title="Home">
-            <p>Here comes summary</p>
+            <div class="row no-gutters">
+
+              <div class="col-md-9">
+
+                <div class="row p-2 align-items-center no-gutters">
+                  <div class="card col-md-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Pending Tests</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+
+                  <div class="card col-md-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Apcoming Appointments</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+
+                  <div class="card col-md-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Previous Requisitions</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row p-2 align-items-center no-gutters">
+                  <div class="card col-md-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Abnormal Tests Reports</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+
+                  <div class="card col-md-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Pending Reports</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+
+                  <div class="card col-md-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-md-3" style="border-left: 3px solid gray;">
+                <p class="d-flex justify-content-center">Notification Space</p>
+              </div>
+
+            </div>
           </b-tab>
 
           <b-tab title="Graph">
             <p>Here Comes Graph</p>
+            <div id="chartContainer" style="height: 250px; width: 100%;"></div>
           </b-tab>
 
-          <b-tab title="History Sample Based Bill" active>
+          <b-tab title="SampleBased Test" active>
             <table id="DataTable2" class="table table-sm dt-responsive  nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
               <caption>Investigation Tracking for Sample Based Test List By Bill No.</caption>
               <thead>
@@ -268,7 +350,6 @@
 
                   <th class="none">Packing List No.</th> <!--new-->
                   <th class="none">Lab No.</th> <!--new-->
-                  <th class="none">Packing List No.</th> <!--new-->
                   <th class="none">Packing List Gene. DateTime</th> <!--new-->
                   <th class="none">Packing List Gene. By</th> <!--new-->
 
@@ -285,7 +366,6 @@
                   <th class="none">Result Entry Date</th> <!--new-->
                   <th class="none">Result Entry By</th> <!--new-->
                   <th class="none"><a href="#">Result Entry Parameters</a></th> <!--new-->
-
                   <th class="none">Result Valid. Date</th> <!--new-->
                   <th class="none">Result Valid. By</th> <!--new-->
 
@@ -301,7 +381,7 @@
             </table>
           </b-tab>
 
-          <b-tab title="History Patient Based Bill">
+          <b-tab title="PatientBased Test">
             <table id="DataTable3" class="table table-sm dt-responsive  nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
               <caption>Investigation Tracking List By Bill No.</caption>
               <thead>
@@ -312,49 +392,37 @@
                     S.No
                   </th>
                   <th class="">Requisition Date</th>
-                  <th class="">Group Name</th>
-                  <th class="">Test Name</th>
-                  <th class="">Requisition By</th>
-                  <!--new-->
+                  <th class="">Lab Name</th>
+                  <th class="">Group/Test Name</th>
+                  <th class="">Advised By Dep.</th> <!--new-->
+                  <th class="">Bill Date</th> <!--new-->
+                  <th class="">Status</th> <!--new-->
 
-                  <th class="none">Lab Name</th>
-                  <th class="none">Lab No.</th>
+                  <th class="none">Requisition Date</th>
+                  <th class="none">Requisition By</th> <!--new-->
+                  <th class="none">Group/Test Name</th>
+                  <th class="none">Appointment DateTime</th> <!--new-->
+                  <th class="none">Bill Date/No.</th> <!--new-->
 
-                  <th class="none">Patient Accep. Date</th>
-                  <!--new-->
-                  <th class="none">Patient Accep. By</th>
-                  <!--new-->
-                  <th class="none">Patient Accep. Mode</th>
-                  <!--new-->
-                  <th class="none">Machine Name</th>
-                  <!--new-->
+                  <th class="none">Accession No.</th> <!--new-->
+                  <th class="none">Patient Accep. Date</th> <!--new-->
+                  <th class="none">Patient Accep. By</th> <!--new-->
+                  <th class="none">Patient Accep. Mode</th> <!--new-->
+                  <th class="none">Machine Name</th> <!--new-->
 
-                  <th class="none">Cancel/Rejec. By</th>
-                  <!--new-->
-                  <th class="none">Cancel/Rejec. Date</th>
-                  <!--new-->
-                  <th class="none">Cancel/Rejec. Reason</th>
-                  <!--new-->
+                  <th class="none">Patient Rejec. Date</th> <!--new-->
+                  <th class="none">Patient Rejec. By</th> <!--new-->
+                  <th class="none">Patient Rejec. Reason</th><!--new-->
 
-                  <th class="none">Result Entry Date</th>
-                  <!--new-->
-                  <th class="none">Result Entry By</th>
-                  <!--new-->
-                  <th class="none"><a href="#">Result Entry Parameters</a></th>
-                  <!--new-->
+                  <th class="none">Result Entry Date</th> <!--new-->
+                  <th class="none">Result Entry By</th> <!--new-->
+                  <th class="none"><a href="#">Result Entry Parameters</a></th> <!--new-->
+                  <th class="none">Result Valid. Date</th> <!--new-->
+                  <th class="none">Result Valid. By</th> <!--new-->
 
-                  <th class="none">Result Valid. Date</th>
-                  <!--new-->
-                  <th class="none">Result Valid. By</th>
-                  <!--new-->
-                  <th class="none"><a href="#">Result Valid. Parameters</a></th>
-                  <!--new-->
-
-                  <th class="none">Report Generation</th>
-                  <!--new-->
+                  <th class="none">Report Generation</th> <!--new-->
                   <!-- <th class="">Report Status</th> -->
-                  <th class="none">Report Printing</th>
-                  <!--new-->
+                  <th class="none">Report Printing</th> <!--new-->
                 </tr>
               </thead>
               <tbody>
@@ -369,19 +437,93 @@
     </div>
 
 
-    <div id="patReqnListOnCrNo" class="container-fluid mt-md-0 mb-md-4 bg-white " style="display: none;">
-      <div id='app2'>
+    <div id="patReqnListOnCrNo" class="container-fluid mt-2 mb-3" style="display: none;">
+      <div id='app2' class="p-2 shadow rounded bg-white hover-shadow">
         <b-tabs content-class="mt-3">
 
           <b-tab title="Home">
-            <p>Here comes summary</p>
+            <div class="row no-gutters">
+
+              <div class="col-md-9">
+
+                <div class="row p-2 align-items-center no-gutters">
+                  <div class="card col-md-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Pending Tests</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+
+                  <div class="card col-md-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Apcoming Appointments</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+
+                  <div class="card col-md-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Previous Requisitions</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row p-2 align-items-center no-gutters">
+                  <div class="card col-md-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Abnormal Tests Reports</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+
+                  <div class="card col-md-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Pending Reports</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+
+                  <div class="card col-md-4" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Card title</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-md-3" style="border-left: 3px solid gray;">
+                <p class="d-flex justify-content-center">Notification Space</p>
+              </div>
+
+            </div>
           </b-tab>
 
           <b-tab title="Graph">
             <p>Here Comes Graph</p>
           </b-tab>
 
-          <b-tab title="History Sample Based CR" active>
+          <b-tab title="SampleBased Test" active>
             <table id="DataTable4" class="table table-sm dt-responsive  nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
               <caption>Investigation Tracking List By Cr. No.</caption>
               <thead>
@@ -392,53 +534,47 @@
                     S.No
                   </th>
                   <th class="">Requisition Date</th>
-                  <th class="">Group Name</th>
-                  <th class="">Test Name</th>
-                  <th class="">Requisition By</th>
-                  <!--new-->
+                  <th class="">Lab Name</th>
+                  <th class="">Group/Test Name</th>
+                  <th class="">Advised By Dep.</th> <!--new-->
+                  <th class="">Bill Date</th> <!--new-->
+                  <th class="">Status</th> <!--new-->
+
+                  <th class="none">Requisition Date</th>
+                  <th class="none">Requisition By</th> <!--new-->
+                  <th class="none">Group/Test Name</th>
+                  <th class="none">Appointment DateTime</th> <!--new-->
+                  <th class="none">Bill Date/No.</th> <!--new-->
 
                   <th class="none">Sample Name</th>
                   <th class="none">Sample No.</th>
-                  <th class="">Sample Coll. Date</th>
-                  <!--new-->
-                  <th class="none">Sample Coll. By</th>
-                  <!--new-->
+                  <th class="none">Sample Coll. Date</th> <!--new-->
+                  <th class="none">Sample Coll. By</th> <!--new-->
 
-                  <th class="none">Packing List No.</th>
-                  <!--new-->
-                  <th class="none">Sample Accep. Date</th>
-                  <!--new-->
-                  <th class="none">Sample Accep. By</th>
-                  <!--new-->
-                  <th class="none">Sample Accep. Mode</th>
-                  <!--new-->
-                  <th class="none">Machine Name</th>
-                  <!--new-->
+                  <th class="none">Packing List No.</th> <!--new-->
+                  <th class="none">Lab No.</th> <!--new-->
+                  <th class="none">Packing List Gene. DateTime</th> <!--new-->
+                  <th class="none">Packing List Gene. By</th> <!--new-->
 
-                  <th class="none">Cancel/Rejec. By</th>
-                  <!--new-->
-                  <th class="none">Cancel/Rejec. Date</th>
-                  <!--new-->
-                  <th class="none">Cancel/Rejec. Reason</th>
-                  <!--new-->
+                  <th class="none">Lab No.</th> <!--new-->
+                  <th class="none">Sample Accep. Date</th> <!--new-->
+                  <th class="none">Sample Accep. By</th> <!--new-->
+                  <th class="none">Sample Accep. Mode</th> <!--new-->
+                  <th class="none">Machine Name</th> <!--new-->
 
-                  <th class="none">Result Entry Date</th>
-                  <!--new-->
-                  <th class="none">Result Entry By</th>
-                  <!--new-->
-                  <th class="none"><a href="#">Result Entry Parameters</a></th>
-                  <!--new-->
+                  <th class="none">Sample Rejec. Date</th> <!--new-->
+                  <th class="none">Sample Rejec. By</th> <!--new-->
+                  <th class="none">Sample Rejec. Reason</th><!--new-->
 
-                  <th class="none">Result Valid. Date</th>
-                  <!--new-->
-                  <th class="none">Result Valid. By</th>
-                  <!--new-->
+                  <th class="none">Result Entry Date</th> <!--new-->
+                  <th class="none">Result Entry By</th> <!--new-->
+                  <th class="none"><a href="#">Result Entry Parameters</a></th> <!--new-->
+                  <th class="none">Result Valid. Date</th> <!--new-->
+                  <th class="none">Result Valid. By</th> <!--new-->
 
-                  <th class="none">Report Generation</th>
-                  <!--new-->
+                  <th class="none">Report Generation</th> <!--new-->
                   <!-- <th class="">Report Status</th> -->
-                  <th class="none">Report Printing</th>
-                  <!--new-->
+                  <th class="none">Report Printing</th> <!--new-->
                 </tr>
               </thead>
               <tbody>
@@ -448,61 +584,50 @@
             </table>
           </b-tab>
 
-          <b-tab title="History Patient Based CR">
-            <table id="DataTable5" class="table table-sm dt-responsive nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
+          <b-tab title="PatientBased Test">
+            <table id="DataTable5" class="table table-sm dt-responsive  nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
               <caption>Investigation Tracking List By Cr. No.</caption>
               <thead>
                 <tr>
-                  <th class="all">
-                    <i class="fas fa-chevron-circle-up text-danger d-none collapseButton"></i>
-                    <i class="fas fa-chevron-circle-down text-success expandButton"></i>
-                    S.No
-                  </th>
-                  <th class="">Requisition Date</th>
-                  <th class="">Group Name</th>
-                  <th class="">Test Name</th>
-                  <th class="">Requisition By</th>
-                  <!--new-->
+                  <tr>
+                    <th class="all">
+                      <i class="fas fa-chevron-circle-up text-danger d-none collapseButton"></i>
+                      <i class="fas fa-chevron-circle-down text-success expandButton"></i>
+                      S.No
+                    </th>
+                    <th class="">Requisition Date</th>
+                    <th class="">Lab Name</th>
+                    <th class="">Group/Test Name</th>
+                    <th class="">Advised By Dep.</th> <!--new-->
+                    <th class="">Bill Date</th> <!--new-->
+                    <th class="">Status</th> <!--new-->
 
-                  <th class="none">Lab Name</th>
-                  <th class="none">Lab No.</th>
+                    <th class="none">Requisition Date</th>
+                    <th class="none">Requisition By</th> <!--new-->
+                    <th class="none">Group/Test Name</th>
+                    <th class="none">Appointment DateTime</th> <!--new-->
+                    <th class="none">Bill Date/No.</th> <!--new-->
 
-                  <th class="none">Patient Accep. Date</th>
-                  <!--new-->
-                  <th class="none">Patient Accep. By</th>
-                  <!--new-->
-                  <th class="none">Patient Accep. Mode</th>
-                  <!--new-->
-                  <th class="none">Machine Name</th>
-                  <!--new-->
+                    <th class="none">Accession No.</th> <!--new-->
+                    <th class="none">Patient Accep. Date</th> <!--new-->
+                    <th class="none">Patient Accep. By</th> <!--new-->
+                    <th class="none">Patient Accep. Mode</th> <!--new-->
+                    <th class="none">Machine Name</th> <!--new-->
 
-                  <th class="none">Cancel/Rejec. By</th>
-                  <!--new-->
-                  <th class="none">Cancel/Rejec. Date</th>
-                  <!--new-->
-                  <th class="none">Cancel/Rejec. Reason</th>
-                  <!--new-->
+                    <th class="none">Patient Rejec. Date</th> <!--new-->
+                    <th class="none">Patient Rejec. By</th> <!--new-->
+                    <th class="none">Patient Rejec. Reason</th><!--new-->
 
-                  <th class="none">Result Entry Date</th>
-                  <!--new-->
-                  <th class="none">Result Entry By</th>
-                  <!--new-->
-                  <th class="none"><a href="#">Result Entry Parameters</a></th>
-                  <!--new-->
+                    <th class="none">Result Entry Date</th> <!--new-->
+                    <th class="none">Result Entry By</th> <!--new-->
+                    <th class="none"><a href="#">Result Entry Parameters</a></th> <!--new-->
+                    <th class="none">Result Valid. Date</th> <!--new-->
+                    <th class="none">Result Valid. By</th> <!--new-->
 
-                  <th class="none">Result Valid. Date</th>
-                  <!--new-->
-                  <th class="none">Result Valid. By</th>
-                  <!--new-->
-                  <th class="none"><a href="#">Result Valid. Parameters</a></th>
-                  <!--new-->
-
-                  <th class="none">Report Generation</th>
-                  <!--new-->
-                  <!-- <th class="">Report Status</th> -->
-                  <th class="none">Report Printing</th>
-                  <!--new-->
-                </tr>
+                    <th class="none">Report Generation</th> <!--new-->
+                    <!-- <th class="">Report Status</th> -->
+                    <th class="none">Report Printing</th> <!--new-->
+                  </tr>
               </thead>
               <tbody>
               </tbody>
