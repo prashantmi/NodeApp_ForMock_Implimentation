@@ -585,7 +585,7 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
       { "data": 'packingListDateTime'},
       { "data": 'packingListBy'},
 
-      { "data": 'labNum' },
+      { "data": 'labNo'},
       { "data": 'sampleAccepDate'},
       { "data": 'sampleAccepBy'},
       { "data": 'sampleAccepMode'},
@@ -911,7 +911,7 @@ function dataTableSampleBasedReqnListOnCrNo(sampleBasedReqnListOnCrNo){
       { "data": 'packingListDateTime'},
       { "data": 'packingListBy'},
 
-      { "data": 'labNum' },
+      { "data": 'labNo' },
       { "data": 'sampleAccepDate'},
       { "data": 'sampleAccepBy'},
       { "data": 'sampleAccepMode'},
@@ -1484,7 +1484,7 @@ function customeRowPtType21(api, rowIdx, columns) {
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 36) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 26) + '</table></td>';
   tbdat += '</tr>'
 
   return tbdat;
@@ -1497,22 +1497,19 @@ function customeRowPtType22(api, rowIdx, columns) {
   tbdat += '<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
   tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
 
-  tbdat += '<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
-
   tbdat += '<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 20) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 12, 16) + '</table></td>';
+
+  tbdat += '<td class="rounded "><div class="vertical-text">Patient Rejection</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 17, 19) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
-  tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 21, 23) + '</table></td>';
-
   tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 24, 28) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
 
   tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 29, 30) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 26) + '</table></td>';
   tbdat += '</tr>'
 
   return tbdat;
@@ -1546,51 +1543,42 @@ function customeRowPtType23(api, rowIdx, columns) {
     tbdat += '</tr>'
 
     tbdat += '<tr>'
-    tbdat += '<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
-    tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
-
     tbdat += '<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 20) + '</table></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 12, 16) + '</table></td>';
+
+    tbdat += '<td class="rounded "><div class="vertical-text">Patient Rejection</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 17, 19) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
-    tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 21, 23) + '</table></td>';
-
     tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 24, 28) + '</table></td>';
-    tbdat += '</tr>'
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
 
-    tbdat += '<tr>'
     tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 29, 30) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 26) + '</table></td>';
     tbdat += '</tr>'
 
   } else {
     /*case when none of the default Essential columns are hidden*/
-
     tbdat += '<tr>'
     tbdat += '<td class="rounded "><div class="vertical-text">Requisition Raising</div></td>';
     tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
 
-    tbdat += '<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
-    tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
-    tbdat += '</tr>'
-
-    tbdat += '<tr>'
     tbdat += '<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 20) + '</table></td>';
-
-    tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 21, 23) + '</table></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 12, 16) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
-    tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 24, 28) + '</table></td>';
+    tbdat += '<td class="rounded "><div class="vertical-text">Patient Rejection</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 17, 19) + '</table></td>';
 
+    tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
+    tbdat += '</tr>'
+
+    tbdat += '<tr>'
     tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 29, 30) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 26) + '</table></td>';
     tbdat += '</tr>'
   }
   return tbdat;
@@ -1627,27 +1615,23 @@ function customeRowPtType24(api, rowIdx, columns) {
   tbdat += '</tr>'
 
   tbdat += '<tr>'
-  tbdat += '<td class="rounded "><div class="vertical-text">Sample Collection</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
-  tbdat += '</tr>'
-
-  tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Patient Acceptance</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 20) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 12, 16) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
-  tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 21, 23) + '</table></td>';
+  tbdat += '<td class="rounded "><div class="vertical-text">Patient Rejection</div></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 17, 19) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 24, 28) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
   tbdat += '</tr>'
 
+  tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 29, 30) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 26) + '</table></td>';
   tbdat += '</tr>'
 
   return tbdat;
