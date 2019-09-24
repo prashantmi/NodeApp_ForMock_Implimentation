@@ -197,7 +197,21 @@ $(document).ready(function() {
   /*----------On Click Getdata Button Ends---------------------------------*/
 
 });
-
+;
+$(document).ready(function(){
+  $("[aria-controls='sampleBasedTabBillNo']").click(function(){
+    $('#DataTable2').DataTable().columns.adjust().responsive.recalc();
+  });
+  $("[aria-controls='patientBasedTabBillNo']").click(function(){
+    $('#DataTable3').DataTable().columns.adjust().responsive.recalc();
+  });
+  $("[aria-controls='sampleBasedTabCrNo']").click(function(){
+    $('#DataTable4').DataTable().columns.adjust().responsive.recalc();
+  });
+  $("[aria-controls='patientBasedTabCrNo']").click(function(){
+    $('#DataTable5').DataTable().columns.adjust().responsive.recalc();
+  });
+});
 
 
 /*----------Loding Button Animation On Click Getdata Button starts----------------*/
@@ -303,8 +317,8 @@ function AjaxGetPatDetailsOnBillNo(billNo) {
     },
 
     "ajax": {
-      //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo, sync:true, postData: "", handleAs: "text",
-      "url": "/data",
+      "url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo, sync:true, postData: "", handleAs: "text",
+      //"url": "/data",
       sync: true,
       postData: "",
       handleAs: "text",
@@ -372,8 +386,8 @@ function AjaxGetPatDetailsOnCrNo(crNo) {
     },
 
     "ajax": {
-      //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&crNo="+crNo, sync:true, postData: "", handleAs: "text",
-      "url": "/data",
+      "url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&crNo="+crNo, sync:true, postData: "", handleAs: "text",
+      //"url": "/data",
       sync: true,
       postData: "",
       handleAs: "text",
@@ -431,8 +445,8 @@ function AjaxGetReqnListOnBillNo(billNo) {
   globalSampleBasedReqnListOnBillNo=null;
   globalPatientBasedReqnListOnBillNo=null;
   var _mode = "AjaxGetReqnListOnBillNo";
-  //var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo;
-  var url = "/data";
+  var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&billNo="+billNo;
+  //var url = "/data";
 
   $.getJSON(url, function(data) {
       if (data) {
@@ -456,8 +470,8 @@ function AjaxGetReqnListOnCrNo(crNo) {
   globalSampleBasedReqnListOnCrNo=null;
   globalPatientBasedReqnListOnCrNo=null;
   var _mode = "AjaxGetReqnListOnCrNo";
-  //var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&crNo="+crNo+"&fromDate="+fromDate+"&toDate="+toDate;
-  var url = "/data";
+  var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&crNo="+crNo+"&fromDate="+fromDate+"&toDate="+toDate;
+  //var url = "/data";
 
   var fromDate = document.getElementsByClassName("fromDateInput")[0].value;
   var toDate = document.getElementsByClassName("toDateInput")[0].value;
@@ -573,10 +587,10 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
       { "data": 'requisitionBy' },
       { "data": 'groupNameTestName'},
       { "data": 'appointmentDate'},
-      { "data": 'billdate'},
+      { "data": 'billDate'},
 
       { "data": 'sampleName' },
-      { "data": 'sampleNum' },
+      { "data": 'sampleNo' },
       { "data": 'sampleCollDate'},
       { "data": 'sampleCollBy'},
 
@@ -736,7 +750,7 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
       { "data": 'requisitionBy' },
       { "data": 'groupNameTestName'},
       { "data": 'appointmentDate'},
-      { "data": 'billdate'},
+      { "data": 'billDate'},
 
       { "data": 'accessionNo' },
       { "data": 'patientAccepDate'},
@@ -899,10 +913,10 @@ function dataTableSampleBasedReqnListOnCrNo(sampleBasedReqnListOnCrNo){
       { "data": 'requisitionBy' },
       { "data": 'groupNameTestName'},
       { "data": 'appointmentDate'},
-      { "data": 'billdate'},
+      { "data": 'billDate'},
 
       { "data": 'sampleName' },
-      { "data": 'sampleNum' },
+      { "data": 'sampleNo' },
       { "data": 'sampleCollDate'},
       { "data": 'sampleCollBy'},
 
@@ -911,7 +925,7 @@ function dataTableSampleBasedReqnListOnCrNo(sampleBasedReqnListOnCrNo){
       { "data": 'packingListDateTime'},
       { "data": 'packingListBy'},
 
-      { "data": 'labNo' },
+      { "data": 'labNo'},
       { "data": 'sampleAccepDate'},
       { "data": 'sampleAccepBy'},
       { "data": 'sampleAccepMode'},
@@ -1061,7 +1075,7 @@ function dataTablePatientBasedReqnListOnCrNo(patientBasedReqnListOnCrNo){
       { "data": 'requisitionBy' },
       { "data": 'groupNameTestName'},
       { "data": 'appointmentDate'},
-      { "data": 'billdate'},
+      { "data": 'billDate'},
 
       { "data": 'accessionNo' },
       { "data": 'patientAccepDate'},
@@ -1439,27 +1453,27 @@ function customeRowSmType24(api, rowIdx, columns) {
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">PackingList Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 20) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 19) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Sample Acceptance</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 21, 25) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Sample Rejection</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 26, 28) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 27) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 29, 33) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 28, 32) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Result Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 34, 35) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 33, 34) + '</table></td>';
   tbdat += '</tr>'
 
   return tbdat;

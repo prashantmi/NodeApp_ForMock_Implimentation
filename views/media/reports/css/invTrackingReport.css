@@ -1,5 +1,5 @@
 
-html { font-size: 15px }
+html { font-size: 14px  }
 
 @include media-breakpoint-up(sm) {
   html {
@@ -77,4 +77,47 @@ html { font-size: 15px }
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #0575E6, #00F260);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+#DataTable1 td, #DataTable2 td, #DataTable3 td, #DataTable4 td, #DataTable5 td,
+#DataTable1 th, #DataTable2  th, #DataTable3  th, #DataTable4  th, #DataTable5  th{
+  border-top:0px !important;
+}
+
+
+/* #DataTable2 table tr td tr {
+    border: 1px solid grey;
+    box-shadow: -3px 3px 6px 0px grey;
+} */
+
+#DataTable2 table tr td,
+#DataTable3 table tr td,
+#DataTable4 table tr td,
+#DataTable5 table tr td {
+    box-shadow: -3px 3px 6px 0px grey;
+}
+
+#DataTable2 tbody table table tr :hover,
+#DataTable3 tbody table table tr :hover,
+#DataTable4 tbody table table tr :hover,
+#DataTable5 tbody table table tr :hover {
+    box-shadow: -3px 3px 6px 0px #007BFF;
+}
+
+#DataTable2 table tr td tr td,
+#DataTable3 table tr td tr td,
+#DataTable4 table tr td tr td,
+#DataTable5 table tr td tr td {
+    box-shadow: 0px 0px 0px 0px ;
+}
+
+
+.hoverCards:hover {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  animation-name: example;
+  animation-duration: 0.25s;
+  border-left: 8px solid #007BFF;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }

@@ -5,6 +5,23 @@
 ## Module Name				    : INVESTIGATION
 -->
 
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
+
+<%--
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
+<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles"%>
+<%@ taglib uri="/WEB-INF/dateTag.tld" prefix="date"%>
+<%@ taglib uri="/WEB-INF/hisTab.tld" prefix="tag"%>
+<%@ taglib uri="/WEB-INF/HisTools.tld" prefix="his"%>
+<%@page import="hisglobal.hisconfig.Config"%>
+--%>
+
+<%@page import="java.util.*"%>
+<%@page import="com.ibm.icu.text.SimpleDateFormat"%>
+
 <!doctype html>
 <html lang="en">
 
@@ -124,14 +141,24 @@
 <body class="bg-white">
   <html:form action="/InvestigationTrackingReport" enctype="multipart/form-data">
 
-    <!-- <bean:define name="InvTrackingReportFB" property="fromDate" id="frDate" type="java.lang.String" />
-    <bean:define name="InvTrackingReportFB" property="toDate" id="tDate" type="java.lang.String" /> -->
+  <bean:define name="InvTrackingReportFB" property="fromDate" id="frDate" type="java.lang.String" />
+<bean:define name="InvTrackingReportFB" property="toDate" id="tDate" type="java.lang.String" />
 
+<%
+ if(frDate==null||frDate.equalsIgnoreCase(""))
+    {Date date = new Date(System.currentTimeMillis());
+     SimpleDateFormat formatter= new SimpleDateFormat("dd-MMM-yyyy");
+     frDate=formatter.format(date); }
+ if(tDate==null||tDate.equalsIgnoreCase(""))
+    {Date date = new Date(System.currentTimeMillis());
+     SimpleDateFormat formatter= new SimpleDateFormat("dd-MMM-yyyy");
+     tDate=formatter.format(date); }
+%>
     <div class="container-fluid mt-2 mb-3" id="container1">
       <div class="mx-md-0 row p-3 p-md-1 align-items-center shadow rounded bg-white no-gutters hover-shadow">
 
         <div class="col-md-3.5 mr-md-2 ml-md-1 ">
-          <p class="" style="font-weight: bold;font-size: 25px;"><span class="text-primary"><img height="45" width="45" src='media/images/report.svg'></span> Investigation Tracking </p>
+          <p class="" style="font-weight: bold;font-size: 25px;"><span class="text-primary"><img height="45" width="45" src='media/images/reportBlue.svg'></span> Investigation Tracking </p>
         </div>
 
         <div class="col-md-3 form-group mr-md-2 mt-md-2">
@@ -153,7 +180,7 @@
               <div class="input-group-append">
                 <span class="input-group-text px-1">From Date:</span>
               </div>
-              <input type='text' class="form-control px-1 fromDateInput" onkeydown="return false" />
+              <input type='text' class="form-control px-1 fromDateInput" value="<%=frDate%>" onkeydown="return false" />
               <span class="input-group-addon">
                 <span class="input-group-text">
                   <i class="fas fa-calendar-alt" style="color: #007BFF; font-size:23px;"></i>
@@ -169,7 +196,7 @@
               <div class="input-group-append">
                 <span class="input-group-text px-1">To Date:</span>
               </div>
-              <input type='text' class="form-control px-1 toDateInput " onkeydown="return false" />
+              <input type='text' class="form-control px-1 toDateInput " value="<%=tDate%>" onkeydown="return false" />
               <span class="input-group-addon">
                 <span class="input-group-text">
                   <i class="fas fa-calendar-alt" style="color: #007BFF; font-size:23px;"></i>
@@ -243,7 +270,7 @@
               <div class="col-md-9">
 
                 <div class="row p-2 align-items-center no-gutters">
-                  <div class="card col-md-4" style="width: 18rem;">
+                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">Pending Tests</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -253,7 +280,7 @@
                     </div>
                   </div>
 
-                  <div class="card col-md-4" style="width: 18rem;">
+                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">Apcoming Appointments</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -263,7 +290,7 @@
                     </div>
                   </div>
 
-                  <div class="card col-md-4" style="width: 18rem;">
+                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">Previous Requisitions</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -275,7 +302,7 @@
                 </div>
 
                 <div class="row p-2 align-items-center no-gutters">
-                  <div class="card col-md-4" style="width: 18rem;">
+                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">Abnormal Tests Reports</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -285,7 +312,7 @@
                     </div>
                   </div>
 
-                  <div class="card col-md-4" style="width: 18rem;">
+                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">Pending Reports</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -295,7 +322,7 @@
                     </div>
                   </div>
 
-                  <div class="card col-md-4" style="width: 18rem;">
+                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">Card title</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -316,12 +343,21 @@
           </b-tab>
 
           <b-tab title="Graph">
-            <p>Here Comes Graph</p>
-            <div id="chartContainer" style="height: 250px; width: 100%;"></div>
+          	<div class="row p-2 align-items-center no-gutters">
+
+            	<div class="card col-md-4 hoverCards" style="width: 18rem;">
+                	<div class="card-body">
+                      <h5 class="card-title">Pending Tests</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                      <!-- <div id="chartContainer" style="height: 250px; width: 100%;"></div> -->
+                    </div>
+                 </div>
+
+            </div>
           </b-tab>
 
-          <b-tab title="SampleBased Test" active>
-            <table id="DataTable2" class="table table-sm dt-responsive  nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
+          <b-tab title="SampleBased Test" id="sampleBasedTabBillNo" active>
+            <table id="DataTable2" class="table table-sm dt-responsive  nowrap table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
               <caption>Investigation Tracking for Sample Based Test List By Bill No.</caption>
               <thead>
                 <tr>
@@ -381,8 +417,8 @@
             </table>
           </b-tab>
 
-          <b-tab title="PatientBased Test">
-            <table id="DataTable3" class="table table-sm dt-responsive  nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
+          <b-tab title="PatientBased Test" id="patientBasedTabBillNo">
+            <table id="DataTable3" class="table table-sm dt-responsive  nowrap table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
               <caption>Investigation Tracking List By Bill No.</caption>
               <thead>
                 <tr>
@@ -447,7 +483,7 @@
               <div class="col-md-9">
 
                 <div class="row p-2 align-items-center no-gutters">
-                  <div class="card col-md-4" style="width: 18rem;">
+                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">Pending Tests</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -457,7 +493,7 @@
                     </div>
                   </div>
 
-                  <div class="card col-md-4" style="width: 18rem;">
+                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">Apcoming Appointments</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -467,7 +503,7 @@
                     </div>
                   </div>
 
-                  <div class="card col-md-4" style="width: 18rem;">
+                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">Previous Requisitions</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -479,7 +515,7 @@
                 </div>
 
                 <div class="row p-2 align-items-center no-gutters">
-                  <div class="card col-md-4" style="width: 18rem;">
+                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">Abnormal Tests Reports</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -489,7 +525,7 @@
                     </div>
                   </div>
 
-                  <div class="card col-md-4" style="width: 18rem;">
+                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">Pending Reports</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -499,7 +535,7 @@
                     </div>
                   </div>
 
-                  <div class="card col-md-4" style="width: 18rem;">
+                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
                     <div class="card-body">
                       <h5 class="card-title">Card title</h5>
                       <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -523,8 +559,8 @@
             <p>Here Comes Graph</p>
           </b-tab>
 
-          <b-tab title="SampleBased Test" active>
-            <table id="DataTable4" class="table table-sm dt-responsive  nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
+          <b-tab title="SampleBased Test" id="sampleBasedTabCrNo" active>
+            <table id="DataTable4" class="table table-sm dt-responsive  nowrap table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
               <caption>Investigation Tracking List By Cr. No.</caption>
               <thead>
                 <tr>
@@ -584,8 +620,8 @@
             </table>
           </b-tab>
 
-          <b-tab title="PatientBased Test">
-            <table id="DataTable5" class="table table-sm dt-responsive  nowrap table-hover table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
+          <b-tab title="PatientBased Test" id="patientBasedTabCrNo">
+            <table id="DataTable5" class="table table-sm dt-responsive  nowrap table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
               <caption>Investigation Tracking List By Cr. No.</caption>
               <thead>
                 <tr>
