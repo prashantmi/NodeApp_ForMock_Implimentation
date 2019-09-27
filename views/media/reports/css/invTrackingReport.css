@@ -19,7 +19,14 @@ html { font-size: 14px  }
   }
 }
 
-
+/* Remove input type number up and down arrow */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
 
 .divShadow {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 12px 16px 0px, rgba(0, 0, 0, 0.19) 0px 17px 50px 0px;
@@ -54,34 +61,88 @@ html { font-size: 14px  }
 
 .CoolSky {
   background: #2980B9;
-  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);
-  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .WitchingHour {
   background: #c31432;
-  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #240b36, #c31432);
-  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #240b36, #c31432);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .RainbowBlue {
   background: #00F260;
-  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #0575E6, #00F260);
-  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #0575E6, #00F260);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.martini{
+  background: #FDFC47;
+background: -webkit-linear-gradient(to right, #24FE41, #FDFC47);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #24FE41, #FDFC47); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.instgram{
+  background: #833ab4;
+background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.velvetsun{
+  background: #e1eec3;
+background: -webkit-linear-gradient(to left, #f05053, #e1eec3);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #f05053, #e1eec3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.essenDataColor{
+background: #00F260;
+  background: -webkit-linear-gradient(to right, #0575E6, #00F260);
+  background: linear-gradient(to right, #0575E6, #00F260);
+}
+
+.reqnRaisingColor{
+background: #76ff03;
+}
+
+.sampleCollColor{
+background: #f9a825;
+}
+
+.packListGenColor{
+background: #1de9b6;
+}
+
+.sampleAccepColor{
+background: #00b0ff;
+}
+
+.sampleRejeColor{
+background: #D4E157;
+}
+
+.patAccepColor{
+background: #ef5350;
+}
+
+.patRejeColor{
+background: #7c4dff;
+}
+
+.resultEntColor{
+background: #ffff00;
+}
+
+.reportGenColor{
+background: #ff80ab;
 }
 
 
-#DataTable1 td, #DataTable2 td, #DataTable3 td, #DataTable4 td, #DataTable5 td,
-#DataTable1 th, #DataTable2  th, #DataTable3  th, #DataTable4  th, #DataTable5  th{
+#DataTable1 td, #DataTable2 td, #DataTable3 td, #DataTable4 td, #DataTable5 td, #DataTable6 td, #DataTable7 td,
+#DataTable1 th, #DataTable2  th, #DataTable3  th, #DataTable4  th, #DataTable5  th, #DataTable6  th, #DataTable7  th{
   border-top:0px !important;
 }
 
@@ -94,24 +155,60 @@ html { font-size: 14px  }
 #DataTable2 table tr td,
 #DataTable3 table tr td,
 #DataTable4 table tr td,
-#DataTable5 table tr td {
-    box-shadow: -3px 3px 6px 0px grey;
+#DataTable5 table tr td,
+#DataTable6 table tr td,
+#DataTable7 table tr td {
+box-shadow: -3px 3px 6px 0px grey;
 }
 
-#DataTable2 tbody table table tr :hover,
+/* #DataTable2 tbody table table tr :hover,
 #DataTable3 tbody table table tr :hover,
 #DataTable4 tbody table table tr :hover,
 #DataTable5 tbody table table tr :hover {
     box-shadow: -3px 3px 6px 0px #007BFF;
+} */
+
+.rowhover :hover{
+  box-shadow: -3px 3px 6px 0px #007BFF;
 }
 
 #DataTable2 table tr td tr td,
 #DataTable3 table tr td tr td,
 #DataTable4 table tr td tr td,
-#DataTable5 table tr td tr td {
+#DataTable5 table tr td tr td,
+#DataTable6 table tr td tr td,
+#DataTable7 table tr td tr td {
     box-shadow: 0px 0px 0px 0px ;
 }
 
+
+#patDetails-table {
+    /* box-shadow: -4px 3px 9px 0px #007bff; */
+    /* transform: scale(1,0); */
+  /* border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black; */
+  border: 1px solid grey;
+}
+
+#DataTable1 th {
+  border-bottom:0px !important;
+}
+/* #DataTable1 :hover{
+     box-shadow: -4px 3px 9px 0px #007bff;
+
+
+  border-top: 0px solid  !important;
+  border-bottom: 0px solid  !important;
+  border-left: 0px solid  !important;
+  border-right: 0px solid !important;;
+} */
+
+
+#DataTable1 :hover{
+    box-shadow: 0px 0px 0px 0px !important;
+}
 
 .hoverCards:hover {
   border-top-left-radius: 10px;
@@ -120,4 +217,25 @@ html { font-size: 14px  }
   animation-duration: 0.25s;
   border-left: 8px solid #007BFF;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+    top: 7px;
+    left: 4px;
+    height: 14px;
+    width: 14px;
+    display: block;
+    position: absolute;
+    color: white;
+    border: 2px solid white;
+    border-radius: 14px;
+    box-shadow: 0 0 3px #444;
+    box-sizing: content-box;
+    text-align: center;
+    text-indent: 0 !important;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 14px;
+    content: '+';
+    background-color: #0275d8;
 }
