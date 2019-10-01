@@ -1,5 +1,7 @@
 
-html { font-size: 14px  }
+html { font-size: 14px;
+font-family: 'averta-regularuploaded_file';
+  }
 
 @include media-breakpoint-up(sm) {
   html {
@@ -17,6 +19,66 @@ html { font-size: 14px  }
   html {
     font-size: 1.6rem;
   }
+}
+
+body{
+  background-color: #F3FBFF;
+  /* color: #F2F2F2; */
+}
+
+container-fluid{
+background-color: #F3FBFF;
+color: #F2F9FF;
+}
+
+.btn-primary{
+  background-color:  #13A1FE !important;
+  border-color: #13A1FE !important;
+  box-shadow: -0.1px 1px 20px -7px #007bff !important;
+}
+
+.btn-warning{
+  background-color:  #ffc107 !important;
+  box-shadow: -0.1px 1px 20px -7px #ffc107 !important;
+
+}
+
+.text-primary{
+  color:  #13A1FE !important;
+}
+
+th, td, a, p, label, button, span{
+  font-family: 'averta-regularuploaded_file';
+}
+
+i {
+  font-family: 'averta-semibolduploaded_file';
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #12B796;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.nav-tabs .nav-link {
+    border-bottom-color:  #12B796;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.nav-tabs .nav-link:hover {
+ border: 1px solid #12B796;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #12B796;
+    background-color: #fff;
+}
+
+.nav-tabs .nav-link.active {
+    border: 1px solid #12B796;
+    border-bottom: 1px solid transparent;
 }
 
 /* Remove input type number up and down arrow */
@@ -193,7 +255,7 @@ box-shadow: -3px 3px 6px 0px grey;
 }
 
 #DataTable1 th {
-  border-bottom:0px !important;
+  border-bottom:0px;
 }
 /* #DataTable1 :hover{
      box-shadow: -4px 3px 9px 0px #007bff;
@@ -210,6 +272,11 @@ box-shadow: -3px 3px 6px 0px grey;
     box-shadow: 0px 0px 0px 0px !important;
 }
 
+.ctmBorderBottom {
+border-bottom: 1px solid #c5c5c5  !important;
+/* border-left: 1px solid #c5c5c5  !important;  */
+}
+
 .hoverCards:hover {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -221,21 +288,17 @@ box-shadow: -3px 3px 6px 0px grey;
 
 
 table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
-    top: 7px;
-    left: 4px;
-    height: 14px;
-    width: 14px;
-    display: block;
-    position: absolute;
-    color: white;
-    border: 2px solid white;
-    border-radius: 14px;
-    box-shadow: 0 0 3px #444;
-    box-sizing: content-box;
-    text-align: center;
-    text-indent: 0 !important;
-    font-family: 'Courier New', Courier, monospace;
-    line-height: 14px;
-    content: '+';
-    background-color: #0275d8;
+top: 7px;
+}
+
+.fa-chevron-circle-up , .fa-chevron-circle-down{
+font-size: 15.5px !important;
+}
+
+.fa-chevron-circle-down:hover{
+text-shadow: -1px 2px 11px #00ff18b8;
+}
+
+.fa-chevron-circle-up:hover{
+text-shadow: -1px 2px 11px #dc3545;
 }

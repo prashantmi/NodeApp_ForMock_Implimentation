@@ -330,7 +330,7 @@ $(document).ready(function() {
 });
 /*----------On Click Getdata Button Ends------------------------------------------------------*/
 
-/*----------On Change in Radio months and archival starts-------------------------------------*/
+/*----------On Change in Archival Radio Show From to Months for archival search Starts--------*/
 $(document).ready(function() {
   $('.dataFromArchival').change(function() {
     var dataFromArchival = $('.dataFromArchival:checked').val();
@@ -349,7 +349,34 @@ $(document).ready(function() {
   // $("input[name=dataFromMonth]").change(function ()
   // { alert("type2 "+this.value); });
 });
-/*----------On Change in Radio months and archival Ends---------------------------------------*/
+/*----------On Change in Archival Radio Show From to Months for archival search Ends----------*/
+
+/*----------On Button Click Show From to Months for archival search Starts--------------------*/
+$(document).ready(function() {
+  $('#btnDataFromArchival1').click(function (){
+      $('.inputDates').css({
+        "display": ""
+      });
+      $('.divArchivalbtn1').css({
+        "display": "none"
+      });
+      $('.divArchivalbtn2').css({
+        "display": ""
+      });
+  });
+  $('#btnDataFromArchival2').click(function (){
+      $('.inputDates').css({
+        "display": "none"
+      });
+      $('.divArchivalbtn2').css({
+        "display": "none"
+      });
+      $('.divArchivalbtn1').css({
+        "display": ""
+      });
+  });
+});
+/*----------On Button Click Show From to Months for archival search Ends----------------------*/
 
 /*----------Loding Button Animation On Click Getdata Button starts----------------------------*/
 function showHideLoding(showBoolean) {
@@ -472,10 +499,10 @@ function AjaxGetPatDetailsOnBillNo(billNo) {
       sync: true,
       postData: "",
       handleAs: "text",
-      error: function(jqXHR, statusText, errorThrown) {
-        console.log(jqXHR.responseText);
-        console.log(statusText);
-        console.log(errorThrown);
+      error: function( jqxhr, textStatus, error ) {
+      console.log("AjaxGetPatDetailsOnBillNo Failed | ResponseError Is Below");
+      var err = textStatus + ", " + error;
+      console.log( "Request Failed: " + err );
       },
       dataSrc: "patDetailsOnBillNo"
     },
@@ -533,10 +560,10 @@ function AjaxGetPatDetailsOnBillNo(billNo) {
 
     "initComplete": function(settings, json) {
       globalPatientDetailsOnBillNo=json;
+      console.log("AjaxGetPatDetailsOnBillNo success | ResponseData Is Below");
+      console.log(json);
       //show loding animation
       //showHideLoding("no");
-      //console.log(settings);
-      //console.log(json);
     }
   });
 
@@ -569,10 +596,10 @@ function AjaxGetPatDetailsOnCrNo(crNo) {
       sync: true,
       postData: "",
       handleAs: "text",
-      error: function(jqXHR, statusText, errorThrown) {
-        console.log(jqXHR.responseText);
-        console.log(statusText);
-        console.log(errorThrown);
+      error: function( jqxhr, textStatus, error ) {
+      console.log("AjaxGetPatDetailsOnCrNo Failed | ResponseError Is Below");
+      var err = textStatus + ", " + error;
+      console.log( "Request Failed: " + err );
       },
       dataSrc: "patDetailsOnCrNo"
     },
@@ -630,6 +657,8 @@ function AjaxGetPatDetailsOnCrNo(crNo) {
 
     "initComplete": function(settings, json) {
       globalPatientDetailsOnCrNo=json;
+      console.log("AjaxGetPatDetailsOnCrNo success | ResponseData Is Below");
+      console.log(json);
       //show loding animation
       //showHideLoding("no");
     }
@@ -664,10 +693,10 @@ function AjaxGetPatDetailsOnSampleNo(sampleNo) {
       sync: true,
       postData: "",
       handleAs: "text",
-      error: function(jqXHR, statusText, errorThrown) {
-        console.log(jqXHR.responseText);
-        console.log(statusText);
-        console.log(errorThrown);
+      error: function( jqxhr, textStatus, error ) {
+        console.log("AjaxGetPatDetailsOnSampleNo Failed | ResponseError Is Below");
+        var err = textStatus + ", " + error;
+        console.log( "Request Failed: " + err );
       },
       dataSrc: "patDetailsOnSampleNo"
     },
@@ -725,6 +754,8 @@ function AjaxGetPatDetailsOnSampleNo(sampleNo) {
 
     "initComplete": function(settings, json) {
       globalPatientDetailsOnSampleNo=json;
+      console.log("AjaxGetPatDetailsOnSampleNo success | ResponseData Is Below");
+      console.log(json);
       //show loding animation
       //showHideLoding("no");
     }
@@ -759,10 +790,10 @@ function AjaxGetPatDetailsOnLabNo(labNo) {
       sync: true,
       postData: "",
       handleAs: "text",
-      error: function(jqXHR, statusText, errorThrown) {
-        console.log(jqXHR.responseText);
-        console.log(statusText);
-        console.log(errorThrown);
+      error: function( jqxhr, textStatus, error ) {
+        console.log("AjaxGetPatDetailsOnLabNo Failed | ResponseError Is Below");
+        var err = textStatus + ", " + error;
+        console.log( "Request Failed: " + err );
       },
       dataSrc: "patDetailsOnSampleNo"
     },
@@ -820,6 +851,8 @@ function AjaxGetPatDetailsOnLabNo(labNo) {
 
     "initComplete": function(settings, json) {
       globalPatientDetailsOnLabNo=json;
+      console.log("AjaxGetPatDetailsOnLabNo success | ResponseData Is Below");
+      console.log(json);
       //show loding animation
       //showHideLoding("no");
     }
@@ -827,6 +860,7 @@ function AjaxGetPatDetailsOnLabNo(labNo) {
   });
 
 }
+
 
 function AjaxGetReqnListOnBillNo(billNo) {
   globalSampleBasedReqnListOnBillNo = null;
@@ -836,8 +870,8 @@ function AjaxGetReqnListOnBillNo(billNo) {
   var fromDate = document.getElementsByClassName("fromDateInput")[0].value;
   var toDate = document.getElementsByClassName("toDateInput")[0].value;
 
-  var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" +_mode+ "&billNo=" +billNo+ "&dataFromArchival" +dataFromArchival+
-  "&fromDate" +fromDate+ "&toDate" +toDate;
+  var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" +_mode+ "&billNo=" +billNo+ "&dataFromArchival=" +dataFromArchival+
+  "&fromDate=" +fromDate+ "&toDate=" +toDate;
   //var url = "/data";
 
   $.getJSON(url, function(data) {
@@ -849,11 +883,14 @@ function AjaxGetReqnListOnBillNo(billNo) {
         dataTablePatientBasedReqnListOnBillNo(data.patientBasedReqnListOnBillNo);
       }
     })
-    .done(function() {
-      console.log("AjaxGetMachineList success");
+    .done(function(data) {
+      console.log("AjaxGetReqnListOnBillNo success | ResponseData Is Below");
+      console.log(data);
     })
-    .fail(function() {
-      console.log("AjaxGetMachineList error");
+    .fail(function( jqxhr, textStatus, error ) {
+      console.log("AjaxGetReqnListOnBillNo Failed | ResponseError Is Below");
+      var err = textStatus + ", " + error;
+      console.log( "Request Failed: " + err );
     });
 }
 
@@ -861,14 +898,20 @@ function AjaxGetReqnListOnCrNo(crNo) {
   globalSampleBasedReqnListOnCrNo = null;
   globalPatientBasedReqnListOnCrNo = null;
   var _mode = "AjaxGetReqnListOnCrNo";
-  var dataFromArchival = $('.dataFromArchival:checked').val();
+  //var dataFromArchival = $('.dataFromArchival:checked').val();
+  var dataFromArchival="0";
+  if($('.inputDates').is(":hidden")){
+    dataFromArchival="0";
+  } else {
+    dataFromArchival="1";
+  }
+
   var fromDate = document.getElementsByClassName("fromDateInput")[0].value;
   var toDate = document.getElementsByClassName("toDateInput")[0].value;
 
-  var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&crNo=" + crNo + "&dataFromArchival" +dataFromArchival+
-  "&fromDate" +fromDate+ "&toDate" +toDate;
+  var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&crNo=" + crNo + "&dataFromArchival=" +dataFromArchival+
+  "&fromDate=" +fromDate+ "&toDate=" +toDate;
   //var url = "/data";
-
   $.getJSON(url, function(data) {
       if (data) {
         globalSampleBasedReqnListOnCrNo = data.sampleBasedReqnListOnCrNo;
@@ -878,11 +921,14 @@ function AjaxGetReqnListOnCrNo(crNo) {
         dataTablePatientBasedReqnListOnCrNo(data.patientBasedReqnListOnCrNo);
       }
     })
-    .done(function() {
-      console.log("AjaxGetMachineList success");
+    .done(function(data) {
+      console.log("AjaxGetReqnListOnCrNo success | ResponseData Is Below");
+      console.log(data);
     })
-    .fail(function() {
-      console.log("AjaxGetMachineList error");
+    .fail(function( jqxhr, textStatus, error ) {
+      console.log("AjaxGetReqnListOnCrNo Failed | ResponseError Is Below");
+      var err = textStatus + ", " + error;
+      console.log( "Request Failed: " + err );
     });
 }
 
@@ -893,8 +939,8 @@ function AjaxGetReqnListOnSampleNo(sampleNo) {
   var fromDate = document.getElementsByClassName("fromDateInput")[0].value;
   var toDate = document.getElementsByClassName("toDateInput")[0].value;
 
-  var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&sampleNo=" + sampleNo + "&dataFromArchival" +dataFromArchival+
-  "&fromDate" +fromDate+ "&toDate" +toDate;
+  var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&sampleNo=" + sampleNo + "&dataFromArchival=" +dataFromArchival+
+  "&fromDate=" +fromDate+ "&toDate=" +toDate;
   //var url = "/data";
 
   $.getJSON(url, function(data) {
@@ -904,11 +950,14 @@ function AjaxGetReqnListOnSampleNo(sampleNo) {
         dataTableSampleBasedReqnListOnSampleNo(data.sampleBasedReqnListOnSampleNo);
       }
     })
-    .done(function() {
-      console.log("AjaxGetMachineList success");
+    .done(function(data) {
+      console.log("AjaxGetReqnListOnSampleNo success | ResponseData Is Below");
+      console.log(data);
     })
-    .fail(function() {
-      console.log("AjaxGetMachineList error");
+    .fail(function( jqxhr, textStatus, error ) {
+      console.log("AjaxGetReqnListOnSampleNo Failed | ResponseError Is Below");
+      var err = textStatus + ", " + error;
+      console.log( "Request Failed: " + err );
     });
 }
 
@@ -919,8 +968,8 @@ function AjaxGetReqnListOnLabNo(labNo) {
   var fromDate = document.getElementsByClassName("fromDateInput")[0].value;
   var toDate = document.getElementsByClassName("toDateInput")[0].value;
 
-  var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&labNo=" + labNo + "&dataFromArchival" +dataFromArchival+
-  "&fromDate" +fromDate+ "&toDate" +toDate;
+  var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&labNo=" + labNo + "&dataFromArchival=" +dataFromArchival+
+  "&fromDate=" +fromDate+ "&toDate=" +toDate;
   //var url = "/data";
 
   $.getJSON(url, function(data) {
@@ -930,11 +979,14 @@ function AjaxGetReqnListOnLabNo(labNo) {
         dataTablePatientBasedReqnListOnlabNo(data.patientBasedReqnListOnlabNo);
       }
     })
-    .done(function() {
-      console.log("AjaxGetMachineList success");
+    .done(function(data) {
+      console.log("AjaxGetReqnListOnLabNo success | ResponseData Is Below");
+      console.log(data);
     })
-    .fail(function() {
-      console.log("AjaxGetMachineList error");
+    .fail(function( jqxhr, textStatus, error ) {
+      console.log("AjaxGetReqnListOnLabNo Failed | ResponseError Is Below");
+      var err = textStatus + ", " + error;
+      console.log( "Request Failed: " + err );
     });
 }
 
@@ -954,10 +1006,10 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
 
   $('#DataTable2').DataTable().clear().destroy();
 
-  $.fn.dataTable.moment('DD-MMM-YYYY');
+  $.fn.dataTable.moment('DD-MMM-YYYY HH:mm');
   var table = $('#DataTable2').DataTable({
     //dom: 'lBfrtip',
-    "dom": '<"row"<"col-md-4"l><"col-md-4"B><"col-md-4"f>>rt<"row"<"col-md-6"i><"col-md-6"p>><"clear">',
+    "dom": '<"row no-gutters row-no-gutters"<"col-md-4"l><"col-md-4 "B><"col-md-4 "f>>rt<"row"<"col-md-6"i><"col-md-6"p>><"clear">',
     processing: true,
 
     "columnDefs": [{
@@ -969,7 +1021,7 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
         "targets": groupColumn
       }
     ],
-
+    "order": [[ 1, "desc" ]],
     "language": {
       "emptyTable": "No Data Is Available "
     },
@@ -988,7 +1040,7 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
       }).data().each(function(group, i) {
         if (last !== group) {
           $(rows).eq(i).before(
-            '<tr class="group"><td colspan="5"><strong>Requisition Date : </strong>' + group + '</td></tr>'
+            '<tr class="group"><td colspan="6" class="ctmBorderBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
           );
 
           last = group;
@@ -1037,7 +1089,7 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
     //   console.log(statusText);
     //   console.log(errorThrown);
     // },
-    // 	dataSrc: "patientBasedReqnListOnBillNo"
+    // 	dataSrc: "sampleBasedReqnListOnBillNo"
     //    },
     "aaData": sampleBasedReqnListOnBillNo,
     "columns": [{
@@ -1072,10 +1124,11 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
         "data": 'groupNameTestName'
       },
       {
+
         "data": 'appointmentDate'
       },
       {
-        "data": 'billDate'
+        "data": 'billNo'
       },
 
       {
@@ -1192,7 +1245,7 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
   });
 
   // Order by the grouping
-  $('#table tbody').on('click', 'tr.group', function() {
+  $('#DataTable2 tbody').on('click', 'tr.group', function() {
     var currentOrder = table.order()[0];
     if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
       table.order([groupColumn, 'desc']).draw();
@@ -1203,12 +1256,11 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
 
 }
 
-
 function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
   var groupColumn = 1;
   $('#DataTable3').DataTable().clear().destroy();
 
-  $.fn.dataTable.moment('DD-MMM-YYYY');
+  $.fn.dataTable.moment('DD-MMM-YYYY HH:mm');
   var table = $('#DataTable3').DataTable({
 
     //dom: 'lBfrtip',
@@ -1224,7 +1276,7 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
         "targets": groupColumn
       }
     ],
-
+    "order": [[ 1, "desc" ]],
     "language": {
       "emptyTable": "No Data Is Available "
     },
@@ -1243,7 +1295,7 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
       }).data().each(function(group, i) {
         if (last !== group) {
           $(rows).eq(i).before(
-            '<tr class="group"><td colspan="5"><strong>Requisition Date : </strong>' + group + '</td></tr>'
+            '<tr class="group"><td colspan="6" class="ctmBorderBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
           );
 
           last = group;
@@ -1319,7 +1371,7 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
         "data": 'appointmentDate'
       },
       {
-        "data": 'billDate'
+        "data": 'billNo'
       },
 
       {
@@ -1391,14 +1443,6 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
     }
   });
 
-  //show hide processing message
-  // if(sampleBasedReqnListOnBillNo!=null){
-  // table.processing( false );
-  // }else{
-  //   table.rows().remove().draw();
-  //   table.processing( true );
-  // }
-
   // Handle click on "Epand All" button
   $('table .expandButton').on('click', function() {
     expandColapseRow("yes", table);
@@ -1410,7 +1454,7 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
   });
 
   // Order by the grouping
-  $('#table tbody').on('click', 'tr.group', function() {
+  $('#DataTable3 tbody').on('click', 'tr.group', function() {
     var currentOrder = table.order()[0];
     if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
       table.order([groupColumn, 'desc']).draw();
@@ -1425,7 +1469,7 @@ function dataTableSampleBasedReqnListOnCrNo(sampleBasedReqnListOnCrNo) {
   var groupColumn = 1;
   $('#DataTable4').DataTable().clear().destroy();
 
-  $.fn.dataTable.moment('DD-MMM-YYYY');
+  $.fn.dataTable.moment('DD-MMM-YYYY HH:mm');
   var table = $('#DataTable4').DataTable({
 
     //dom: 'lBfrtip',
@@ -1441,7 +1485,7 @@ function dataTableSampleBasedReqnListOnCrNo(sampleBasedReqnListOnCrNo) {
         "targets": groupColumn
       }
     ],
-
+    "order": [[ 1, "desc" ]],
     "language": {
       "emptyTable": "No Data Is Available "
     },
@@ -1460,7 +1504,7 @@ function dataTableSampleBasedReqnListOnCrNo(sampleBasedReqnListOnCrNo) {
       }).data().each(function(group, i) {
         if (last !== group) {
           $(rows).eq(i).before(
-            '<tr class="group"><td colspan="5"><strong>Requisition Date : </strong>' + group + '</td></tr>'
+            '<tr class="group"><td colspan="6" class="ctmBorderBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
           );
 
           last = group;
@@ -1500,18 +1544,7 @@ function dataTableSampleBasedReqnListOnCrNo(sampleBasedReqnListOnCrNo) {
         }
       ]
     }, ],
-    // "ajax": {
-    //   "url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode="+_mode+"&crNo="+crNo+"&fromDate="+fromDate+"&toDate="+toDate, sync:true, postData: "", handleAs: "text",
-    //   sync: true,
-    //   postData: "",
-    //   handleAs: "text",
-    //   error: function(jqXHR, statusText, errorThrown) {
-    //     console.log(jqXHR.responseText);
-    //     console.log(statusText);
-    //     console.log(errorThrown);
-    //   },
-    //   dataSrc: "patReqnListOnCrNo"
-    // },
+
     "aaData": sampleBasedReqnListOnCrNo,
     "columns": [{
         "data": 'sno'
@@ -1548,7 +1581,7 @@ function dataTableSampleBasedReqnListOnCrNo(sampleBasedReqnListOnCrNo) {
         "data": 'appointmentDate'
       },
       {
-        "data": 'billDate'
+        "data": 'billNo'
       },
 
       {
@@ -1665,7 +1698,7 @@ function dataTableSampleBasedReqnListOnCrNo(sampleBasedReqnListOnCrNo) {
   });
 
   // Order by the grouping
-  $('#table tbody').on('click', 'tr.group', function() {
+  $('#DataTable4 tbody').on('click', 'tr.group', function() {
     var currentOrder = table.order()[0];
     if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
       table.order([groupColumn, 'desc']).draw();
@@ -1676,12 +1709,11 @@ function dataTableSampleBasedReqnListOnCrNo(sampleBasedReqnListOnCrNo) {
 
 }
 
-
 function dataTablePatientBasedReqnListOnCrNo(patientBasedReqnListOnCrNo) {
   var groupColumn = 1;
   $('#DataTable5').DataTable().clear().destroy();
 
-  $.fn.dataTable.moment('DD-MMM-YYYY');
+  $.fn.dataTable.moment('DD-MMM-YYYY HH:mm');
   var table = $('#DataTable5').DataTable({
 
     //dom: 'lBfrtip',
@@ -1697,7 +1729,7 @@ function dataTablePatientBasedReqnListOnCrNo(patientBasedReqnListOnCrNo) {
         "targets": groupColumn
       }
     ],
-
+    "order": [[ 1, "desc" ]],
     "language": {
       "emptyTable": "No Data Is Available "
     },
@@ -1716,7 +1748,7 @@ function dataTablePatientBasedReqnListOnCrNo(patientBasedReqnListOnCrNo) {
       }).data().each(function(group, i) {
         if (last !== group) {
           $(rows).eq(i).before(
-            '<tr class="group"><td colspan="5"><strong>Requisition Date : </strong>' + group + '</td></tr>'
+            '<tr class="group"><td colspan="6" class="ctmBorderBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
           );
 
           last = group;
@@ -1792,7 +1824,7 @@ function dataTablePatientBasedReqnListOnCrNo(patientBasedReqnListOnCrNo) {
         "data": 'appointmentDate'
       },
       {
-        "data": 'billDate'
+        "data": 'billNo'
       },
 
       {
@@ -1864,14 +1896,6 @@ function dataTablePatientBasedReqnListOnCrNo(patientBasedReqnListOnCrNo) {
     }
   });
 
-  //show hide processing message
-  // if(sampleBasedReqnListOnBillNo!=null){
-  // table.processing( false );
-  // }else{
-  //   table.rows().remove().draw();
-  //   table.processing( true );
-  // }
-
   // Handle click on "Epand All" button
   $('table .expandButton').on('click', function() {
     expandColapseRow("yes", table);
@@ -1883,7 +1907,7 @@ function dataTablePatientBasedReqnListOnCrNo(patientBasedReqnListOnCrNo) {
   });
 
   // Order by the grouping
-  $('#table tbody').on('click', 'tr.group', function() {
+  $('#DataTable5 tbody').on('click', 'tr.group', function() {
     var currentOrder = table.order()[0];
     if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
       table.order([groupColumn, 'desc']).draw();
@@ -1894,11 +1918,12 @@ function dataTablePatientBasedReqnListOnCrNo(patientBasedReqnListOnCrNo) {
 
 }
 
+
 function dataTableSampleBasedReqnListOnSampleNo(sampleBasedReqnListOnSampleNo) {
   var groupColumn = 1;
   $('#DataTable6').DataTable().clear().destroy();
 
-  $.fn.dataTable.moment('DD-MMM-YYYY');
+  $.fn.dataTable.moment('DD-MMM-YYYY HH:mm');
   var table = $('#DataTable6').DataTable({
 
     //dom: 'lBfrtip',
@@ -1914,7 +1939,7 @@ function dataTableSampleBasedReqnListOnSampleNo(sampleBasedReqnListOnSampleNo) {
         "targets": groupColumn
       }
     ],
-
+    "order": [[ 1, "desc" ]],
     "language": {
       "emptyTable": "No Data Is Available "
     },
@@ -1933,7 +1958,7 @@ function dataTableSampleBasedReqnListOnSampleNo(sampleBasedReqnListOnSampleNo) {
       }).data().each(function(group, i) {
         if (last !== group) {
           $(rows).eq(i).before(
-            '<tr class="group"><td colspan="5"><strong>Requisition Date : </strong>' + group + '</td></tr>'
+            '<tr class="group"><td colspan="6" class="ctmBorderBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
           );
 
           last = group;
@@ -2021,7 +2046,7 @@ function dataTableSampleBasedReqnListOnSampleNo(sampleBasedReqnListOnSampleNo) {
         "data": 'appointmentDate'
       },
       {
-        "data": 'billDate'
+        "data": 'billNo'
       },
 
       {
@@ -2130,7 +2155,7 @@ function dataTableSampleBasedReqnListOnSampleNo(sampleBasedReqnListOnSampleNo) {
   });
 
   // Order by the grouping
-  $('#table tbody').on('click', 'tr.group', function() {
+  $('#DataTable6 tbody').on('click', 'tr.group', function() {
     var currentOrder = table.order()[0];
     if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
       table.order([groupColumn, 'desc']).draw();
@@ -2141,12 +2166,11 @@ function dataTableSampleBasedReqnListOnSampleNo(sampleBasedReqnListOnSampleNo) {
 
 }
 
-
 function dataTablePatientBasedReqnListOnLabNo(patientBasedReqnListOnLabNo) {
   var groupColumn = 1;
   $('#DataTable7').DataTable().clear().destroy();
 
-  $.fn.dataTable.moment('DD-MMM-YYYY');
+  $.fn.dataTable.moment('DD-MMM-YYYY HH:mm');
   var table = $('#DataTable7').DataTable({
 
     //dom: 'lBfrtip',
@@ -2162,7 +2186,8 @@ function dataTablePatientBasedReqnListOnLabNo(patientBasedReqnListOnLabNo) {
         "targets": groupColumn
       }
     ],
-
+    "order": [[ 1, "desc" ]],
+    "order": [[ 1, "desc" ]],
     "language": {
       "emptyTable": "No Data Is Available "
     },
@@ -2181,7 +2206,7 @@ function dataTablePatientBasedReqnListOnLabNo(patientBasedReqnListOnLabNo) {
       }).data().each(function(group, i) {
         if (last !== group) {
           $(rows).eq(i).before(
-            '<tr class="group"><td colspan="5"><strong>Requisition Date : </strong>' + group + '</td></tr>'
+            '<tr class="group"><td colspan="6" class="ctmBorderBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
           );
 
           last = group;
@@ -2257,7 +2282,7 @@ function dataTablePatientBasedReqnListOnLabNo(patientBasedReqnListOnLabNo) {
         "data": 'appointmentDate'
       },
       {
-        "data": 'billDate'
+        "data": 'billNo'
       },
 
       {
@@ -2340,7 +2365,7 @@ function dataTablePatientBasedReqnListOnLabNo(patientBasedReqnListOnLabNo) {
   });
 
   // Order by the grouping
-  $('#table tbody').on('click', 'tr.group', function() {
+  $('#DataTable7 tbody').on('click', 'tr.group', function() {
     var currentOrder = table.order()[0];
     if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
       table.order([groupColumn, 'desc']).draw();
