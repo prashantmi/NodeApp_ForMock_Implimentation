@@ -1017,10 +1017,22 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
         "targets": 0
       },
       {
-        "visible": false,
-        "targets": groupColumn
-      }
-    ],
+          "visible": false,
+          "targets": groupColumn
+        },
+        {
+      	"render": function ( data, type, row )
+            { return decideReqnStatusColor(data, type, row); },
+           className: "reqnStaus",
+           "targets": 4
+       },
+       {
+     	"render": function ( data, type, row )
+           { return decideTurnAroundTimeIcon(data, type, row); },
+          className: "reqnTat",
+          "targets": 5
+      },
+      ],
     "order": [[ 1, "desc" ]],
     "language": {
       "emptyTable": "No Data Is Available "
@@ -1040,7 +1052,7 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
       }).data().each(function(group, i) {
         if (last !== group) {
           $(rows).eq(i).before(
-            '<tr class="group"><td colspan="6" class="ctmBorderBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
+            '<tr class="group" class="ctmBor6e class="rowGroupReqnDate"rBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
           );
 
           last = group;
@@ -1092,7 +1104,8 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
     // 	dataSrc: "sampleBasedReqnListOnBillNo"
     //    },
     "aaData": sampleBasedReqnListOnBillNo,
-    "columns": [{
+    "columns": [
+      {
         "data": 'sno'
       },
       {
@@ -1105,15 +1118,14 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
         "data": 'groupNameTestName'
       },
       {
-        "data": 'advisedByDoc'
-      },
-      {
-        "data": 'billDate'
-      },
-      {
         "data": 'requisitionStatus'
       },
-
+      {
+        "data": 'turnAroundTime.turnAroundTime'
+      },
+      {
+        "data": 'testNote'
+      },
       {
         "data": 'requisitionDate'
       },
@@ -1121,16 +1133,20 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
         "data": 'requisitionBy'
       },
       {
+        "data": 'advisedByDoc'
+      },
+      {
         "data": 'groupNameTestName'
       },
       {
-
         "data": 'appointmentDate'
       },
       {
         "data": 'billNo'
       },
-
+      {
+        "data": 'billDate'
+      },
       {
         "data": 'sampleName'
       },
@@ -1272,10 +1288,22 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
         "targets": 0
       },
       {
-        "visible": false,
-        "targets": groupColumn
-      }
-    ],
+          "visible": false,
+          "targets": groupColumn
+        },
+        {
+      	"render": function ( data, type, row )
+            { return decideReqnStatusColor(data, type, row); },
+           className: "reqnStaus",
+           "targets": 4
+       },
+       {
+        	"render": function ( data, type, row )
+              { return decideTurnAroundTimeIcon(data, type, row); },
+             className: "reqnTat",
+             "targets": 5
+         },
+      ],
     "order": [[ 1, "desc" ]],
     "language": {
       "emptyTable": "No Data Is Available "
@@ -1295,7 +1323,7 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
       }).data().each(function(group, i) {
         if (last !== group) {
           $(rows).eq(i).before(
-            '<tr class="group"><td colspan="6" class="ctmBorderBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
+            '<tr class="group" class="ctmBor6e class="rowGroupReqnDate"rBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
           );
 
           last = group;
@@ -1336,44 +1364,49 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
       ]
     }, ],
     "aaData": patientBasedReqnListOnBillNo,
-    "columns": [{
-        "data": 'sno'
-      },
-      {
-        "data": 'requisitionDate'
-      },
-      {
-        "data": 'labName'
-      },
-      {
-        "data": 'groupNameTestName'
-      },
-      {
-        "data": 'advisedByDoc'
-      },
-      {
-        "data": 'billDate'
-      },
-      {
-        "data": 'requisitionStatus'
-      },
-
-      {
-        "data": 'requisitionDate'
-      },
-      {
-        "data": 'requisitionBy'
-      },
-      {
-        "data": 'groupNameTestName'
-      },
-      {
-        "data": 'appointmentDate'
-      },
-      {
-        "data": 'billNo'
-      },
-
+    "columns": [
+        {
+          "data": 'sno'
+        },
+        {
+          "data": 'requisitionDate'
+        },
+        {
+          "data": 'labName'
+        },
+        {
+          "data": 'groupNameTestName'
+        },
+        {
+          "data": 'requisitionStatus'
+        },
+        {
+          "data": 'turnAroundTime.turnAroundTime'
+        },
+        {
+          "data": 'testNote'
+        },
+        {
+          "data": 'requisitionDate'
+        },
+        {
+          "data": 'requisitionBy'
+        },
+        {
+          "data": 'advisedByDoc'
+        },
+        {
+          "data": 'groupNameTestName'
+        },
+        {
+          "data": 'appointmentDate'
+        },
+        {
+          "data": 'billNo'
+        },
+        {
+          "data": 'billDate'
+        },
       {
         "data": 'accessionNo'
       },
@@ -1481,10 +1514,22 @@ function dataTableSampleBasedReqnListOnCrNo(sampleBasedReqnListOnCrNo) {
         "targets": 0
       },
       {
-        "visible": false,
-        "targets": groupColumn
-      }
-    ],
+          "visible": false,
+          "targets": groupColumn
+        },
+        {
+      	"render": function ( data, type, row )
+            { return decideReqnStatusColor(data, type, row); },
+           className: "reqnStaus",
+           "targets": 4
+       },
+       {
+       	"render": function ( data, type, row )
+             { return decideTurnAroundTimeIcon(data, type, row); },
+            className: "reqnTat",
+            "targets": 5
+        },
+      ],
     "order": [[ 1, "desc" ]],
     "language": {
       "emptyTable": "No Data Is Available "
@@ -1504,7 +1549,7 @@ function dataTableSampleBasedReqnListOnCrNo(sampleBasedReqnListOnCrNo) {
       }).data().each(function(group, i) {
         if (last !== group) {
           $(rows).eq(i).before(
-            '<tr class="group"><td colspan="6" class="ctmBorderBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
+            '<tr class="group"><td colspan="6" class="rowGroupReqnDate"><strong>Requisition Date : </strong>' + group + '</td></tr>'
           );
 
           last = group;
@@ -1546,121 +1591,126 @@ function dataTableSampleBasedReqnListOnCrNo(sampleBasedReqnListOnCrNo) {
     }, ],
 
     "aaData": sampleBasedReqnListOnCrNo,
-    "columns": [{
-        "data": 'sno'
-      },
-      {
-        "data": 'requisitionDate'
-      },
-      {
-        "data": 'labName'
-      },
-      {
-        "data": 'groupNameTestName'
-      },
-      {
-        "data": 'advisedByDoc'
-      },
-      {
-        "data": 'billDate'
-      },
-      {
-        "data": 'requisitionStatus'
-      },
+    "columns": [
+    	 {
+            "data": 'sno'
+          },
+          {
+            "data": 'requisitionDate'
+          },
+          {
+            "data": 'labName'
+          },
+          {
+            "data": 'groupNameTestName'
+          },
+          {
+            "data": 'requisitionStatus'
+          },
+          {
+            "data": 'turnAroundTime.turnAroundTime'
+          },
+          {
+            "data": 'testNote'
+          },
+          {
+            "data": 'requisitionDate'
+          },
+          {
+            "data": 'requisitionBy'
+          },
+          {
+            "data": 'advisedByDoc'
+          },
+          {
+            "data": 'groupNameTestName'
+          },
+          {
+            "data": 'appointmentDate'
+          },
+          {
+            "data": 'billNo'
+          },
+          {
+            "data": 'billDate'
+          },
+          {
+            "data": 'sampleName'
+          },
+          {
+            "data": 'sampleNo'
+          },
+          {
+            "data": 'sampleCollDate'
+          },
+          {
+            "data": 'sampleCollBy'
+          },
 
-      {
-        "data": 'requisitionDate'
-      },
-      {
-        "data": 'requisitionBy'
-      },
-      {
-        "data": 'groupNameTestName'
-      },
-      {
-        "data": 'appointmentDate'
-      },
-      {
-        "data": 'billNo'
-      },
+          {
+            "data": 'packingListNo'
+          },
+          {
+            "data": 'labNo'
+          },
+          {
+            "data": 'packingListDateTime'
+          },
+          {
+            "data": 'packingListBy'
+          },
 
-      {
-        "data": 'sampleName'
-      },
-      {
-        "data": 'sampleNo'
-      },
-      {
-        "data": 'sampleCollDate'
-      },
-      {
-        "data": 'sampleCollBy'
-      },
+          {
+            "data": 'labNo'
+          },
+          {
+            "data": 'sampleAccepDate'
+          },
+          {
+            "data": 'sampleAccepBy'
+          },
+          {
+            "data": 'sampleAccepMode'
+          },
+          {
+            "data": 'machineName'
+          },
 
-      {
-        "data": 'packingListNo'
-      },
-      {
-        "data": 'labNo'
-      },
-      {
-        "data": 'packingListDateTime'
-      },
-      {
-        "data": 'packingListBy'
-      },
+          {
+            "data": 'sampleRejecDate'
+          },
+          {
+            "data": 'sampleRejecBy'
+          },
+          {
+            "data": 'sampleRejecReason'
+          },
 
-      {
-        "data": 'labNo'
-      },
-      {
-        "data": 'sampleAccepDate'
-      },
-      {
-        "data": 'sampleAccepBy'
-      },
-      {
-        "data": 'sampleAccepMode'
-      },
-      {
-        "data": 'machineName'
-      },
+          {
+            "data": 'resultEntryDate'
+          },
+          {
+            "data": 'resultEntryBy'
+          },
+          {
+            "data": 'resultEntryParam'
+          },
+          {
+            "data": 'resultValidDate'
+          },
+          {
+            "data": 'resultValidBy'
+          },
 
-      {
-        "data": 'sampleRejecDate'
-      },
-      {
-        "data": 'sampleRejecBy'
-      },
-      {
-        "data": 'sampleRejecReason'
-      },
-
-      {
-        "data": 'resultEntryDate'
-      },
-      {
-        "data": 'resultEntryBy'
-      },
-      {
-        "data": 'resultEntryParam'
-      },
-      {
-        "data": 'resultValidDate'
-      },
-      {
-        "data": 'resultValidBy'
-      },
-
-      {
-        "data": 'reportGenerationDate'
-      },
-      {
-        "data": 'reportPrintDate'
-      },
-      {
-        "data": 'reportPrintBy'
-      }
+          {
+            "data": 'reportGenerationDate'
+          },
+          {
+            "data": 'reportPrintDate'
+          },
+          {
+            "data": 'reportPrintBy'
+          }
     ],
 
     "sPaginationType": "full_numbers",
@@ -1725,10 +1775,22 @@ function dataTablePatientBasedReqnListOnCrNo(patientBasedReqnListOnCrNo) {
         "targets": 0
       },
       {
-        "visible": false,
-        "targets": groupColumn
-      }
-    ],
+          "visible": false,
+          "targets": groupColumn
+        },
+        {
+      	"render": function ( data, type, row )
+            { return decideReqnStatusColor(data, type, row); },
+           className: "reqnStaus",
+           "targets": 4
+       },
+       {
+       	"render": function ( data, type, row )
+             { return decideTurnAroundTimeIcon(data, type, row); },
+            className: "reqnTat",
+            "targets": 5
+        },
+      ],
     "order": [[ 1, "desc" ]],
     "language": {
       "emptyTable": "No Data Is Available "
@@ -1748,7 +1810,7 @@ function dataTablePatientBasedReqnListOnCrNo(patientBasedReqnListOnCrNo) {
       }).data().each(function(group, i) {
         if (last !== group) {
           $(rows).eq(i).before(
-            '<tr class="group"><td colspan="6" class="ctmBorderBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
+            '<tr class="group"><td colspan="6" class="rowGroupReqnDate"><strong>Requisition Date : </strong>' + group + '</td></tr>'
           );
 
           last = group;
@@ -1789,44 +1851,49 @@ function dataTablePatientBasedReqnListOnCrNo(patientBasedReqnListOnCrNo) {
       ]
     }, ],
     "aaData": patientBasedReqnListOnCrNo,
-    "columns": [{
-        "data": 'sno'
-      },
-      {
-        "data": 'requisitionDate'
-      },
-      {
-        "data": 'labName'
-      },
-      {
-        "data": 'groupNameTestName'
-      },
-      {
-        "data": 'advisedByDoc'
-      },
-      {
-        "data": 'billDate'
-      },
-      {
-        "data": 'requisitionStatus'
-      },
-
-      {
-        "data": 'requisitionDate'
-      },
-      {
-        "data": 'requisitionBy'
-      },
-      {
-        "data": 'groupNameTestName'
-      },
-      {
-        "data": 'appointmentDate'
-      },
-      {
-        "data": 'billNo'
-      },
-
+    "columns": [
+    	{
+            "data": 'sno'
+          },
+          {
+            "data": 'requisitionDate'
+          },
+          {
+            "data": 'labName'
+          },
+          {
+            "data": 'groupNameTestName'
+          },
+          {
+            "data": 'requisitionStatus'
+          },
+          {
+            "data": 'turnAroundTime.turnAroundTime'
+          },
+          {
+            "data": 'testNote'
+          },
+          {
+            "data": 'requisitionDate'
+          },
+          {
+            "data": 'requisitionBy'
+          },
+          {
+            "data": 'advisedByDoc'
+          },
+          {
+            "data": 'groupNameTestName'
+          },
+          {
+            "data": 'appointmentDate'
+          },
+          {
+            "data": 'billNo'
+          },
+          {
+            "data": 'billDate'
+          },
       {
         "data": 'accessionNo'
       },
@@ -1935,10 +2002,22 @@ function dataTableSampleBasedReqnListOnSampleNo(sampleBasedReqnListOnSampleNo) {
         "targets": 0
       },
       {
-        "visible": false,
-        "targets": groupColumn
-      }
-    ],
+          "visible": false,
+          "targets": groupColumn
+        },
+        {
+      	"render": function ( data, type, row )
+            { return decideReqnStatusColor(data, type, row); },
+           className: "reqnStaus",
+           "targets": 4
+       },
+       {
+       	"render": function ( data, type, row )
+             { return decideTurnAroundTimeIcon(data, type, row); },
+            className: "reqnTat",
+            "targets": 5
+        },
+      ],
     "order": [[ 1, "desc" ]],
     "language": {
       "emptyTable": "No Data Is Available "
@@ -1958,7 +2037,7 @@ function dataTableSampleBasedReqnListOnSampleNo(sampleBasedReqnListOnSampleNo) {
       }).data().each(function(group, i) {
         if (last !== group) {
           $(rows).eq(i).before(
-            '<tr class="group"><td colspan="6" class="ctmBorderBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
+            '<tr class="group"><td colspan="6" class="rowGroupReqnDate"><strong>Requisition Date : </strong>' + group + '</td></tr>'
           );
 
           last = group;
@@ -2011,121 +2090,126 @@ function dataTableSampleBasedReqnListOnSampleNo(sampleBasedReqnListOnSampleNo) {
     //   dataSrc: "patReqnListOnCrNo"
     // },
     "aaData": sampleBasedReqnListOnSampleNo,
-    "columns": [{
-        "data": 'sno'
-      },
-      {
-        "data": 'requisitionDate'
-      },
-      {
-        "data": 'labName'
-      },
-      {
-        "data": 'groupNameTestName'
-      },
-      {
-        "data": 'advisedByDoc'
-      },
-      {
-        "data": 'billDate'
-      },
-      {
-        "data": 'requisitionStatus'
-      },
+    "columns": [
+    	{
+            "data": 'sno'
+          },
+          {
+            "data": 'requisitionDate'
+          },
+          {
+            "data": 'labName'
+          },
+          {
+            "data": 'groupNameTestName'
+          },
+          {
+            "data": 'requisitionStatus'
+          },
+          {
+            "data": 'turnAroundTime.turnAroundTime'
+          },
+          {
+            "data": 'testNote'
+          },
+          {
+            "data": 'requisitionDate'
+          },
+          {
+            "data": 'requisitionBy'
+          },
+          {
+            "data": 'advisedByDoc'
+          },
+          {
+            "data": 'groupNameTestName'
+          },
+          {
+            "data": 'appointmentDate'
+          },
+          {
+            "data": 'billNo'
+          },
+          {
+            "data": 'billDate'
+          },
+          {
+            "data": 'sampleName'
+          },
+          {
+            "data": 'sampleNo'
+          },
+          {
+            "data": 'sampleCollDate'
+          },
+          {
+            "data": 'sampleCollBy'
+          },
 
-      {
-        "data": 'requisitionDate'
-      },
-      {
-        "data": 'requisitionBy'
-      },
-      {
-        "data": 'groupNameTestName'
-      },
-      {
-        "data": 'appointmentDate'
-      },
-      {
-        "data": 'billNo'
-      },
+          {
+            "data": 'packingListNo'
+          },
+          {
+            "data": 'labNo'
+          },
+          {
+            "data": 'packingListDateTime'
+          },
+          {
+            "data": 'packingListBy'
+          },
 
-      {
-        "data": 'sampleName'
-      },
-      {
-        "data": 'sampleNo'
-      },
-      {
-        "data": 'sampleCollDate'
-      },
-      {
-        "data": 'sampleCollBy'
-      },
+          {
+            "data": 'labNo'
+          },
+          {
+            "data": 'sampleAccepDate'
+          },
+          {
+            "data": 'sampleAccepBy'
+          },
+          {
+            "data": 'sampleAccepMode'
+          },
+          {
+            "data": 'machineName'
+          },
 
-      {
-        "data": 'packingListNo'
-      },
-      {
-        "data": 'labNo'
-      },
-      {
-        "data": 'packingListDateTime'
-      },
-      {
-        "data": 'packingListBy'
-      },
+          {
+            "data": 'sampleRejecDate'
+          },
+          {
+            "data": 'sampleRejecBy'
+          },
+          {
+            "data": 'sampleRejecReason'
+          },
 
-      {
-        "data": 'labNo'
-      },
-      {
-        "data": 'sampleAccepDate'
-      },
-      {
-        "data": 'sampleAccepBy'
-      },
-      {
-        "data": 'sampleAccepMode'
-      },
-      {
-        "data": 'machineName'
-      },
+          {
+            "data": 'resultEntryDate'
+          },
+          {
+            "data": 'resultEntryBy'
+          },
+          {
+            "data": 'resultEntryParam'
+          },
+          {
+            "data": 'resultValidDate'
+          },
+          {
+            "data": 'resultValidBy'
+          },
 
-      {
-        "data": 'sampleRejecDate'
-      },
-      {
-        "data": 'sampleRejecBy'
-      },
-      {
-        "data": 'sampleRejecReason'
-      },
-
-      {
-        "data": 'resultEntryDate'
-      },
-      {
-        "data": 'resultEntryBy'
-      },
-      {
-        "data": 'resultEntryParam'
-      },
-      {
-        "data": 'resultValidDate'
-      },
-      {
-        "data": 'resultValidBy'
-      },
-
-      {
-        "data": 'reportGenerationDate'
-      },
-      {
-        "data": 'reportPrintDate'
-      },
-      {
-        "data": 'reportPrintBy'
-      }
+          {
+            "data": 'reportGenerationDate'
+          },
+          {
+            "data": 'reportPrintDate'
+          },
+          {
+            "data": 'reportPrintBy'
+          }
     ],
 
     "sPaginationType": "full_numbers",
@@ -2182,11 +2266,22 @@ function dataTablePatientBasedReqnListOnLabNo(patientBasedReqnListOnLabNo) {
         "targets": 0
       },
       {
-        "visible": false,
-        "targets": groupColumn
-      }
-    ],
-    "order": [[ 1, "desc" ]],
+          "visible": false,
+          "targets": groupColumn
+        },
+        {
+      	"render": function ( data, type, row )
+            { return decideReqnStatusColor(data, type, row); },
+           className: "reqnStaus",
+           "targets": 4
+       },
+       {
+       	"render": function ( data, type, row )
+             { return decideTurnAroundTimeIcon(data, type, row); },
+            className: "reqnTat",
+            "targets": 5
+        },
+      ],
     "order": [[ 1, "desc" ]],
     "language": {
       "emptyTable": "No Data Is Available "
@@ -2206,7 +2301,7 @@ function dataTablePatientBasedReqnListOnLabNo(patientBasedReqnListOnLabNo) {
       }).data().each(function(group, i) {
         if (last !== group) {
           $(rows).eq(i).before(
-            '<tr class="group"><td colspan="6" class="ctmBorderBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
+            '<tr class="group"><td colspan="6" class="rowGroupReqnDate"><strong>Requisition Date : </strong>' + group + '</td></tr>'
           );
 
           last = group;
@@ -2247,44 +2342,49 @@ function dataTablePatientBasedReqnListOnLabNo(patientBasedReqnListOnLabNo) {
       ]
     }, ],
     "aaData": patientBasedReqnListOnLabNo,
-    "columns": [{
-        "data": 'sno'
-      },
-      {
-        "data": 'requisitionDate'
-      },
-      {
-        "data": 'labName'
-      },
-      {
-        "data": 'groupNameTestName'
-      },
-      {
-        "data": 'advisedByDoc'
-      },
-      {
-        "data": 'billDate'
-      },
-      {
-        "data": 'requisitionStatus'
-      },
-
-      {
-        "data": 'requisitionDate'
-      },
-      {
-        "data": 'requisitionBy'
-      },
-      {
-        "data": 'groupNameTestName'
-      },
-      {
-        "data": 'appointmentDate'
-      },
-      {
-        "data": 'billNo'
-      },
-
+    "columns": [
+    	{
+            "data": 'sno'
+          },
+          {
+            "data": 'requisitionDate'
+          },
+          {
+            "data": 'labName'
+          },
+          {
+            "data": 'groupNameTestName'
+          },
+          {
+            "data": 'requisitionStatus'
+          },
+          {
+            "data": 'turnAroundTime.turnAroundTime'
+          },
+          {
+            "data": 'testNote'
+          },
+          {
+            "data": 'requisitionDate'
+          },
+          {
+            "data": 'requisitionBy'
+          },
+          {
+            "data": 'advisedByDoc'
+          },
+          {
+            "data": 'groupNameTestName'
+          },
+          {
+            "data": 'appointmentDate'
+          },
+          {
+            "data": 'billNo'
+          },
+          {
+            "data": 'billDate'
+          },
       {
         "data": 'accessionNo'
       },
@@ -2379,6 +2479,55 @@ function dataTablePatientBasedReqnListOnLabNo(patientBasedReqnListOnLabNo) {
 
 
 /*------------------------------------------DataTables Custom Rows Creation Starts----------------------------------------------------------------------------*/
+
+/*--Functions For Returning custom Requsition Status Cell with css color class Starts-----------------*/
+function decideReqnStatusColor(data, type, row){
+	var statusColorClass="";
+	var stIcon="";
+	switch(row.requisitionStatusCode){
+	case "2":  statusColorClass="stReqnRaisedColor"; 		break;
+	case "5":  statusColorClass="stReqnRaisedColor";		break;
+	case "3":  statusColorClass="stStsampleCollectedColor"; break;
+	case "4":  statusColorClass="stPackListGenColor"; 		break;
+	case "6":  statusColorClass="stSampleAcceptColor"; 		break;
+	case "7":  statusColorClass="stResultEnteredColor"; 	 stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i>'; 	break;
+	case "8":  statusColorClass="stResultvalidColor";   	 stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i>';		break;
+	case "9":  statusColorClass="stPatRejectcolor"; 		break;
+	case "10": statusColorClass="stTestResceduleColor"; 	break;
+	case "11": statusColorClass="stTestResceduleColor"; 	break;
+	case "12": statusColorClass="stSampleCancleColor"; 		break;
+	case "13": statusColorClass="stWaitReportPntColor"; 	 stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i>';		break;
+	case "14": statusColorClass="stResultPrintColor"; 		 stIcon='<i class="stIcon far fa-file-pdf mr-sm-4"></i>';		break;
+	case "15": statusColorClass="stTestCancleColor"; 		break;
+	case "16": statusColorClass="stTestDeleteColor"; 		break;
+	case "17": statusColorClass="stMachineProcessColor"; 	break;
+	case "18": statusColorClass="stMachineProcessColor"; 	break;
+	case "26": statusColorClass="stReportGenColor";  		 stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i> <i class="stIcon far fa-file-pdf mr-sm-3"></i>';		break;
+	case "27": statusColorClass="stDraftResultEnteredColor"; stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i>';		break;
+	case "28": statusColorClass="stDraftResultValidColor";   stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i>'; 	break;
+	case "55": statusColorClass="stTestAdvisedColor"; 		break;
+	default: statusColorClass="";
+	}
+	var customCell="<a class='reqnStausA font-weight-bold "+statusColorClass+"'>"+"  "+data+"</a>"+stIcon;
+return customCell;
+};
+
+function decideTurnAroundTimeIcon(data, type, row){
+	var tatColorClass="";
+	var stIcon="";
+	switch(row.turnAroundTime.totDecisionCode){
+	case "0":  tatColorClass="tatNothingColor"; 	 tatIcon='<i class=""></i>'; break;
+	case "1":  tatColorClass="tatGenBeforeColor"; 	 tatIcon='<i class="tatIcon fas fa-check-double"></i>'; break;
+	case "2":  tatColorClass="tatGenWithinColor";   	 tatIcon='<i class="tatIcon fas fa-check"></i>';	break;
+	case "3":  tatColorClass="tatGenDelayColor"; 	 tatIcon='<i class="tatIcon fas fa-arrow-down"></i>';	break;
+	case "4":  tatColorClass="tatNotGenWithinColor"; 	 tatIcon='<i class="tatIcon fas fa-exclamation"></i> <i class="tatIcon fas fa-check"></i>';		  break;
+	case "5":  tatColorClass="tatNotGenDelayColor";  	 tatIcon='<i class="tatIcon fas fa-exclamation"></i> <i class="tatIcon fas fa-arrow-down"></i>';  break;
+	default:   tatColorClass="";
+	}
+	var customCell="<a class='reqnTatA "+tatColorClass+"'>"+"  "+data+"</a>"+tatIcon;
+return customCell;
+};
+/*--Functions For Returning custom Requsition Status Cell with css color class Ends-----------------*/
 
 /*--Functions For Returning custom Table Rows According To Screen Size Type1 patientDetails Starts---*/
 var crcount = 0;
@@ -2499,27 +2648,27 @@ function customeRowSmType21(api, rowIdx, columns) {
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded reqnRaisingColor"><div class="vertical-text">Requisition Raising</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 7, 13) + '</table></td>';
 
   tbdat += '<td class="rounded sampleCollColor"><div class="vertical-text">Sample Collection</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 14, 17) + '</table></td>';
 
   tbdat += '<td class="rounded packListGenColor"><div class="vertical-text">PackingList Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 19) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 19, 21) + '</table></td>';
 
   tbdat += '<td class="rounded sampleAccepColor"><div class="vertical-text">Sample Acceptance</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 22, 26) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded sampleRejeColor"><div class="vertical-text">Sample Rejection</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 27) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 27, 29) + '</table></td>';
 
   tbdat += '<td class="rounded resultEntColor"><div class="vertical-text">Result Entry/Validation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 28, 32) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 30, 34) + '</table></td>';
 
   tbdat += '<td class="rounded reportGenColor"><div class="vertical-text">Report Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 33, 35) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 35, 37) + '</table></td>';
   tbdat += '</tr>'
 
   return tbdat;
@@ -2530,29 +2679,29 @@ function customeRowSmType22(api, rowIdx, columns) {
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded reqnRaisingColor"><div class="vertical-text">Requisition Raising</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 7, 13) + '</table></td>';
 
   tbdat += '<td class="rounded sampleCollColor"><div class="vertical-text">Sample Collection</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 14, 17) + '</table></td>';
 
   tbdat += '<td class="rounded packListGenColor"><div class="vertical-text">PackingList Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 19) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 19, 21) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded sampleAccepColor"><div class="vertical-text">Sample Acceptance</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 22, 26) + '</table></td>';
 
   tbdat += '<td class="rounded sampleRejeColor"><div class="vertical-text">Sample Rejection</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 27) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 28, 30) + '</table></td>';
 
   tbdat += '<td class="rounded resultEntColor"><div class="vertical-text">Result Entry/Validation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 28, 32) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 30, 34) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded reportGenColor"><div class="vertical-text">Report Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 33, 35) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 35, 37) + '</table></td>';
   tbdat += '</tr>'
 
   return tbdat;
@@ -2561,13 +2710,13 @@ function customeRowSmType22(api, rowIdx, columns) {
 function customeRowSmType23(api, rowIdx, columns) {
   var tbdat = '';
 
-  /*0 to 5 as columns 0 to 5 are the columns with class not having none and
+  /*0 to 6 as columns 0 to 6 are the columns with class not having none and
   are the max. columns defined to shown on full width screen*/
   var colHidArray = [];
   var colHidStart = "";
   var colHidEnd = "";
   var colHidBoolean = false;
-  for (i = 0; i <= 5; i++) {
+  for (i = 0; i <= 6; i++) {
     if (columns[i].hidden) {
       colHidBoolean = true;
       colHidArray.push(i);
@@ -2582,63 +2731,63 @@ function customeRowSmType23(api, rowIdx, columns) {
     tbdat += '<td class="rounded "><table>' + dataRow(columns, colHidStart, colHidEnd) + '</table></td>';
 
     tbdat += '<td class="rounded reqnRaisingColor"><div class="vertical-text">Requisition Raising</div></td>';
-    tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 7, 13) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
     tbdat += '<td class="rounded sampleCollColor"><div class="vertical-text">Sample Collection</div></td>';
-    tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 14, 17) + '</table></td>';
 
     tbdat += '<td class="rounded packListGenColor"><div class="vertical-text">PackingList Generation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 19) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 18, 21) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
     tbdat += '<td class="rounded sampleAccepColor"><div class="vertical-text">Sample Acceptance</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 22, 26) + '</table></td>';
 
     tbdat += '<td class="rounded sampleRejeColor"><div class="vertical-text">Sample Rejection</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 27) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 27, 29) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
     tbdat += '<td class="rounded resultEntColor"><div class="vertical-text">Result Entry/Validation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 30, 32) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 32, 34) + '</table></td>';
 
     tbdat += '<td class="rounded reportGenColor"><div class="vertical-text">Report Generation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 33, 35) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 35, 37) + '</table></td>';
     tbdat += '</tr>'
 
   } else {
-    /*case when none of the default Essential columns are hidden*/
+    /*":when none of the default Essential columns are hidden*/
 
     tbdat += '<tr>'
     tbdat += '<td class="rounded reqnRaisingColor"><div class="vertical-text">Requisition Raising</div></td>';
-    tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 7, 13) + '</table></td>';
 
     tbdat += '<td class="rounded sampleCollColor"><div class="vertical-text">Sample Collection</div></td>';
-    tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 14, 17) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
     tbdat += '<td class="rounded packListGenColor"><div class="vertical-text">PackingList Generation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 19) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 18, 21) + '</table></td>';
 
     tbdat += '<td class="rounded sampleAccepColor"><div class="vertical-text">Sample Acceptance</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 22, 26) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
     tbdat += '<td class="rounded sampleRejeColor"><div class="vertical-text">Sample Rejection</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 27) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 27, 29) + '</table></td>';
 
     tbdat += '<td class="rounded resultEntColor"><div class="vertical-text">Result Entry/Validation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 28, 32) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 30, 34) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
     tbdat += '<td class="rounded reportGenColor"><div class="vertical-text">Report Generation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 33, 35) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 35, 37) + '</table></td>';
     tbdat += '</tr>'
   }
   return tbdat;
@@ -2647,13 +2796,13 @@ function customeRowSmType23(api, rowIdx, columns) {
 function customeRowSmType24(api, rowIdx, columns) {
   var tbdat = '';
 
-  /*0 to 5 as columns 0 to 5 are the columns with class not having none and
+  /*0 to 6 as columns 0 to 6 are the columns with class not having none and
   are the max. columns defined to shown on full width screen*/
   var colHidArray = [];
   var colHidStart = "";
   var colHidEnd = "";
   var colHidBoolean = false;
-  for (i = 0; i <= 5; i++) {
+  for (i = 0; i <= 6; i++) {
     if (columns[i].hidden) {
       colHidBoolean = true;
       colHidArray.push(i);
@@ -2671,37 +2820,37 @@ function customeRowSmType24(api, rowIdx, columns) {
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded reqnRaisingColor"><div class="vertical-text">Requisition Raising</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 7, 13) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded sampleCollColor"><div class="vertical-text">Sample Collection</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 12, 15) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 14, 17) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded packListGenColor"><div class="vertical-text">PackingList Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 16, 19) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 18, 21) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded sampleAccepColor"><div class="vertical-text">Sample Acceptance</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 22, 26) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded sampleRejeColor"><div class="vertical-text">Sample Rejection</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 27) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 27, 29) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded resultEntColor"><div class="vertical-text">Result Entry/Validation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 28, 32) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 30, 34) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded reportGenColor"><div class="vertical-text">Report Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 33, 35) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 35, 37) + '</table></td>';
   tbdat += '</tr>'
 
   return tbdat;
@@ -2714,21 +2863,21 @@ function customeRowPtType21(api, rowIdx, columns) {
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded reqnRaisingColor"><div class="vertical-text">Requisition Raising</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 7, 13) + '</table></td>';
 
   tbdat += '<td class="rounded patAccepColor"><div class="vertical-text">Patient Acceptance</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 12, 16) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 14, 18) + '</table></td>';
 
   tbdat += '<td class="rounded patRejeColor"><div class="vertical-text">Patient Rejection</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 17, 19) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 19, 21) + '</table></td>';
 
   tbdat += '<td class="rounded resultEntColor"><div class="vertical-text">Result Entry/Validation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 22, 26) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded reportGenColor"><div class="vertical-text">Report Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 26) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 27, 29) + '</table></td>';
   tbdat += '</tr>'
 
   return tbdat;
@@ -2739,21 +2888,21 @@ function customeRowPtType22(api, rowIdx, columns) {
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded reqnRaisingColor"><div class="vertical-text">Requisition Raising</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 7, 13) + '</table></td>';
 
   tbdat += '<td class="rounded patAccepColor"><div class="vertical-text">Patient Acceptance</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 12, 16) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 14, 18) + '</table></td>';
 
   tbdat += '<td class="rounded patRejeColor"><div class="vertical-text">Patient Rejection</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 17, 19) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 19, 21) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded resultEntColor"><div class="vertical-text">Result Entry/Validation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 22, 26) + '</table></td>';
 
   tbdat += '<td class="rounded reportGenColor"><div class="vertical-text">Report Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 26) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 27, 29) + '</table></td>';
   tbdat += '</tr>'
 
   return tbdat;
@@ -2762,13 +2911,13 @@ function customeRowPtType22(api, rowIdx, columns) {
 function customeRowPtType23(api, rowIdx, columns) {
   var tbdat = '';
 
-  /*0 to 5 as columns 0 to 5 are the columns with class not having none and
+  /*0 to 6 as columns 0 to 6 are the columns with class not having none and
   are the max. columns defined to shown on full width screen*/
   var colHidArray = [];
   var colHidStart = "";
   var colHidEnd = "";
   var colHidBoolean = false;
-  for (i = 0; i <= 5; i++) {
+  for (i = 0; i <= 6; i++) {
     if (columns[i].hidden) {
       colHidBoolean = true;
       colHidArray.push(i);
@@ -2783,46 +2932,46 @@ function customeRowPtType23(api, rowIdx, columns) {
     tbdat += '<td class="rounded "><table>' + dataRow(columns, colHidStart, colHidEnd) + '</table></td>';
 
     tbdat += '<td class="rounded reqnRaisingColor"><div class="vertical-text">Requisition Raising</div></td>';
-    tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 7, 13) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
     tbdat += '<td class="rounded patAccepColor"><div class="vertical-text">Patient Acceptance</div></td>';
-    tbdat += '<td class=""><table>' + dataRow(columns, 12, 16) + '</table></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 14, 18) + '</table></td>';
 
     tbdat += '<td class="rounded patRejeColor"><div class="vertical-text">Patient Rejection</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 17, 19) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 19, 21) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
     tbdat += '<td class="rounded resultEntColor"><div class="vertical-text">Result Entry/Validation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 22, 26) + '</table></td>';
 
     tbdat += '<td class="rounded reportGenColor"><div class="vertical-text">Report Generation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 26) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 27, 29) + '</table></td>';
     tbdat += '</tr>'
 
   } else {
     /*case when none of the default Essential columns are hidden*/
     tbdat += '<tr>'
     tbdat += '<td class="rounded reqnRaisingColor"><div class="vertical-text">Requisition Raising</div></td>';
-    tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 7, 13) + '</table></td>';
 
     tbdat += '<td class="rounded patAccepColor"><div class="vertical-text">Patient Acceptance</div></td>';
-    tbdat += '<td class=""><table>' + dataRow(columns, 12, 16) + '</table></td>';
+    tbdat += '<td class=""><table>' + dataRow(columns, 14, 18) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
     tbdat += '<td class="rounded patRejeColor"><div class="vertical-text">Patient Rejection</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 17, 19) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 19, 21) + '</table></td>';
 
     tbdat += '<td class="rounded resultEntColor"><div class="vertical-text">Result Entry/Validation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 22, 26) + '</table></td>';
     tbdat += '</tr>'
 
     tbdat += '<tr>'
     tbdat += '<td class="rounded reportGenColor"><div class="vertical-text">Report Generation</div></td>';
-    tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 26) + '</table></td>';
+    tbdat += '<td class="rounded "><table>' + dataRow(columns, 27, 29) + '</table></td>';
     tbdat += '</tr>'
   }
   return tbdat;
@@ -2831,13 +2980,13 @@ function customeRowPtType23(api, rowIdx, columns) {
 function customeRowPtType24(api, rowIdx, columns) {
   var tbdat = '';
 
-  /*0 to 5 as columns 0 to 5 are the columns with class not having none and
+  /*0 to 6 as columns 0 to 6 are the columns with class not having none and
   are the max. columns defined to shown on full width screen*/
   var colHidArray = [];
   var colHidStart = "";
   var colHidEnd = "";
   var colHidBoolean = false;
-  for (i = 0; i <= 5; i++) {
+  for (i = 0; i <= 6; i++) {
     if (columns[i].hidden) {
       colHidBoolean = true;
       colHidArray.push(i);
@@ -2855,27 +3004,27 @@ function customeRowPtType24(api, rowIdx, columns) {
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded reqnRaisingColor"><div class="vertical-text">Requisition Raising</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 7, 11) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 7, 13) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded patAccepColor"><div class="vertical-text">Patient Acceptance</div></td>';
-  tbdat += '<td class=""><table>' + dataRow(columns, 12, 16) + '</table></td>';
+  tbdat += '<td class=""><table>' + dataRow(columns, 14, 18) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded patRejeColor"><div class="vertical-text">Patient Rejection</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 17, 19) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 19, 21) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded "><div class="vertical-text">Result Entry/Validation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 20, 24) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 22, 26) + '</table></td>';
   tbdat += '</tr>'
 
   tbdat += '<tr>'
   tbdat += '<td class="rounded reportGenColor"><div class="vertical-text">Report Generation</div></td>';
-  tbdat += '<td class="rounded "><table>' + dataRow(columns, 25, 26) + '</table></td>';
+  tbdat += '<td class="rounded "><table>' + dataRow(columns, 27, 29) + '</table></td>';
   tbdat += '</tr>'
 
   return tbdat;
@@ -2904,5 +3053,6 @@ function customeRowDataAppend(data) {
   return rt;
 }
 /*--Functions For Returning custom Table Rows According To Screen Size Type1,2 Ends-----------------*/
+
 
 /*--------------------------------------------DataTables Custom Rows Creation Ends----------------------------------------------------------------------------*/
