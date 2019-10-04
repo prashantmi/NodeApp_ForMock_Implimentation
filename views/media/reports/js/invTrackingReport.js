@@ -491,11 +491,11 @@ function AjaxGetPatDetailsOnBillNo(billNo) {
     },
 
     "ajax": {
-      "url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&billNo=" + billNo,
+      //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&billNo=" + billNo,
+      "url": "/data",
       sync: true,
       postData: "",
       handleAs: "text",
-      //"url": "/data",
       sync: true,
       postData: "",
       handleAs: "text",
@@ -588,11 +588,11 @@ function AjaxGetPatDetailsOnCrNo(crNo) {
     },
 
     "ajax": {
-      "url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&crNo=" + crNo,
+      //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&crNo=" + crNo,
+      "url": "/data",
       sync: true,
       postData: "",
       handleAs: "text",
-      //"url": "/data",
       sync: true,
       postData: "",
       handleAs: "text",
@@ -685,11 +685,11 @@ function AjaxGetPatDetailsOnSampleNo(sampleNo) {
     },
 
     "ajax": {
-      "url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&sampleNo=" + sampleNo,
+      //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&sampleNo=" + sampleNo,
+      "url": "/data",
       sync: true,
       postData: "",
       handleAs: "text",
-      //"url": "/data",
       sync: true,
       postData: "",
       handleAs: "text",
@@ -782,11 +782,11 @@ function AjaxGetPatDetailsOnLabNo(labNo) {
     },
 
     "ajax": {
-      "url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&labNo=" + labNo,
+      //"url": "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&labNo=" + labNo,
+      "url": "/data",
       sync: true,
       postData: "",
       handleAs: "text",
-      //"url": "/data",
       sync: true,
       postData: "",
       handleAs: "text",
@@ -870,9 +870,9 @@ function AjaxGetReqnListOnBillNo(billNo) {
   var fromDate = document.getElementsByClassName("fromDateInput")[0].value;
   var toDate = document.getElementsByClassName("toDateInput")[0].value;
 
-  var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" +_mode+ "&billNo=" +billNo+ "&dataFromArchival=" +dataFromArchival+
-  "&fromDate=" +fromDate+ "&toDate=" +toDate;
-  //var url = "/data";
+  //var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" +_mode+ "&billNo=" +billNo+ "&dataFromArchival=" +dataFromArchival+
+  //"&fromDate=" +fromDate+ "&toDate=" +toDate;
+  var url = "/data";
 
   $.getJSON(url, function(data) {
       if (data) {
@@ -909,9 +909,9 @@ function AjaxGetReqnListOnCrNo(crNo) {
   var fromDate = document.getElementsByClassName("fromDateInput")[0].value;
   var toDate = document.getElementsByClassName("toDateInput")[0].value;
 
-  var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&crNo=" + crNo + "&dataFromArchival=" +dataFromArchival+
-  "&fromDate=" +fromDate+ "&toDate=" +toDate;
-  //var url = "/data";
+  //var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&crNo=" + crNo + "&dataFromArchival=" +dataFromArchival+
+  //"&fromDate=" +fromDate+ "&toDate=" +toDate;
+  var url = "/data";
   $.getJSON(url, function(data) {
       if (data) {
         globalSampleBasedReqnListOnCrNo = data.sampleBasedReqnListOnCrNo;
@@ -939,9 +939,9 @@ function AjaxGetReqnListOnSampleNo(sampleNo) {
   var fromDate = document.getElementsByClassName("fromDateInput")[0].value;
   var toDate = document.getElementsByClassName("toDateInput")[0].value;
 
-  var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&sampleNo=" + sampleNo + "&dataFromArchival=" +dataFromArchival+
-  "&fromDate=" +fromDate+ "&toDate=" +toDate;
-  //var url = "/data";
+  //var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&sampleNo=" + sampleNo + "&dataFromArchival=" +dataFromArchival+
+  //"&fromDate=" +fromDate+ "&toDate=" +toDate;
+  var url = "/data";
 
   $.getJSON(url, function(data) {
       if (data) {
@@ -968,9 +968,9 @@ function AjaxGetReqnListOnLabNo(labNo) {
   var fromDate = document.getElementsByClassName("fromDateInput")[0].value;
   var toDate = document.getElementsByClassName("toDateInput")[0].value;
 
-  var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&labNo=" + labNo + "&dataFromArchival=" +dataFromArchival+
-  "&fromDate=" +fromDate+ "&toDate=" +toDate;
-  //var url = "/data";
+  //var url = "/HISInvestigationG5/new_investigation/InvestigationTrackingReport.cnt?hmode=" + _mode + "&labNo=" + labNo + "&dataFromArchival=" +dataFromArchival+
+  //"&fromDate=" +fromDate+ "&toDate=" +toDate;
+  var url = "/data";
 
   $.getJSON(url, function(data) {
       if (data) {
