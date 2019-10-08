@@ -1052,7 +1052,7 @@ function dataTableSampleBasedReqnListOnBillNo(sampleBasedReqnListOnBillNo) {
       }).data().each(function(group, i) {
         if (last !== group) {
           $(rows).eq(i).before(
-            '<tr class="group" class="ctmBor6e class="rowGroupReqnDate"rBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
+            '<tr class="group"><td colspan="6" class="rowGroupReqnDate"><strong>Requisition Date : </strong>' + group + '</td></tr>'
           );
 
           last = group;
@@ -1323,7 +1323,7 @@ function dataTablePatientBasedReqnListOnBillNo(patientBasedReqnListOnBillNo) {
       }).data().each(function(group, i) {
         if (last !== group) {
           $(rows).eq(i).before(
-            '<tr class="group" class="ctmBor6e class="rowGroupReqnDate"rBottom"><strong>Requisition Date : </strong>' + group + '</td></tr>'
+            '<tr class="group"><td colspan="6" class="rowGroupReqnDate"><strong>Requisition Date : </strong>' + group + '</td></tr>'
           );
 
           last = group;
@@ -2485,27 +2485,27 @@ function decideReqnStatusColor(data, type, row){
 	var statusColorClass="";
 	var stIcon="";
 	switch(row.requisitionStatusCode){
-	case "2":  statusColorClass="stReqnRaisedColor"; 		break;
-	case "5":  statusColorClass="stReqnRaisedColor";		break;
-	case "3":  statusColorClass="stStsampleCollectedColor"; break;
-	case "4":  statusColorClass="stPackListGenColor"; 		break;
-	case "6":  statusColorClass="stSampleAcceptColor"; 		break;
-	case "7":  statusColorClass="stResultEnteredColor"; 	 stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i>'; 	break;
-	case "8":  statusColorClass="stResultvalidColor";   	 stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i>';		break;
-	case "9":  statusColorClass="stPatRejectcolor"; 		break;
-	case "10": statusColorClass="stTestResceduleColor"; 	break;
-	case "11": statusColorClass="stTestResceduleColor"; 	break;
-	case "12": statusColorClass="stSampleCancleColor"; 		break;
-	case "13": statusColorClass="stWaitReportPntColor"; 	 stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i>';		break;
-	case "14": statusColorClass="stResultPrintColor"; 		 stIcon='<i class="stIcon far fa-file-pdf mr-sm-4"></i>';		break;
-	case "15": statusColorClass="stTestCancleColor"; 		break;
-	case "16": statusColorClass="stTestDeleteColor"; 		break;
-	case "17": statusColorClass="stMachineProcessColor"; 	break;
-	case "18": statusColorClass="stMachineProcessColor"; 	break;
-	case "26": statusColorClass="stReportGenColor";  		 stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i> <i class="stIcon far fa-file-pdf mr-sm-3"></i>';		break;
+	case "2":  statusColorClass="stReqnRaisedColor"; 		       break;
+	case "5":  statusColorClass="stReqnRaisedColor";		       break;
+	case "3":  statusColorClass="stStsampleCollectedColor";    break;
+	case "4":  statusColorClass="stPackListGenColor"; 		     break;
+	case "6":  statusColorClass="stSampleAcceptColor"; 		     break;
+	case "7":  statusColorClass="stResultEnteredColor"; 	  stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i>'; 	break;
+	case "8":  statusColorClass="stResultvalidColor";   	  stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i>';	break;
+	case "9":  statusColorClass="stPatRejectcolor"; 		       break;
+	case "10": statusColorClass="stTestResceduleColor"; 	     break;
+	case "11": statusColorClass="stTestResceduleColor"; 	     break;
+	case "12": statusColorClass="stSampleCancleColor"; 	       break;
+	case "13": statusColorClass="stWaitReportPntColor"; 	  stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i>';	break;
+	case "14": statusColorClass="stResultPrintColor"; 		  stIcon='<i class="stIcon far fa-file-pdf mr-sm-4"></i>';		break;
+	case "15": statusColorClass="stTestCancleColor";           break;
+	case "16": statusColorClass="stTestDeleteColor"; 		       break;
+	case "17": statusColorClass="stMachineProcessColor"; 	     break;
+	case "18": statusColorClass="stMachineProcessColor"; 	     break;
+	case "26": statusColorClass="stReportGenColor";  		     stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i> <i class="stIcon far fa-file-pdf mr-sm-3"></i>';		break;
 	case "27": statusColorClass="stDraftResultEnteredColor"; stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i>';		break;
 	case "28": statusColorClass="stDraftResultValidColor";   stIcon='<i class="stIcon fas fa-align-left mr-sm-4"></i>'; 	break;
-	case "55": statusColorClass="stTestAdvisedColor"; 		break;
+	case "55": statusColorClass="stTestAdvisedColor"; 		     break;
 	default: statusColorClass="";
 	}
 	var customCell="<a class='reqnStausA font-weight-bold "+statusColorClass+"'>"+"  "+data+"</a>"+stIcon;
@@ -2516,12 +2516,12 @@ function decideTurnAroundTimeIcon(data, type, row){
 	var tatColorClass="";
 	var stIcon="";
 	switch(row.turnAroundTime.totDecisionCode){
-	case "0":  tatColorClass="tatNothingColor"; 	 tatIcon='<i class=""></i>'; break;
-	case "1":  tatColorClass="tatGenBeforeColor"; 	 tatIcon='<i class="tatIcon fas fa-check-double"></i>'; break;
-	case "2":  tatColorClass="tatGenWithinColor";   	 tatIcon='<i class="tatIcon fas fa-check"></i>';	break;
-	case "3":  tatColorClass="tatGenDelayColor"; 	 tatIcon='<i class="tatIcon fas fa-arrow-down"></i>';	break;
-	case "4":  tatColorClass="tatNotGenWithinColor"; 	 tatIcon='<i class="tatIcon fas fa-exclamation"></i> <i class="tatIcon fas fa-check"></i>';		  break;
-	case "5":  tatColorClass="tatNotGenDelayColor";  	 tatIcon='<i class="tatIcon fas fa-exclamation"></i> <i class="tatIcon fas fa-arrow-down"></i>';  break;
+	case "0":  tatColorClass="tatNothingColor";      tatIcon='<span class="tatIcon"><i class=" "></i></span>';                             break;
+	case "1":  tatColorClass="tatGenBeforeColor"; 	 tatIcon='<span class="tatIcon"><i class="tatIconGenBeforeColor fas fa-check-double"></i></span>';  break;
+	case "2":  tatColorClass="tatGenWithinColor";    tatIcon='<span class="tatIcon"><i class="tatIconGenWithinColor fas fa-check"></i></span>';	       break;
+	case "3":  tatColorClass="tatGenDelayColor"; 	   tatIcon='<span class="tatIcon"><i class="tatIconGenDelayCheckColor fas fa-check"></i>       <i class="tatIconGenDelayArrowColor fas fa-arrow-down"></i></span>';	break;
+	case "4":  tatColorClass="tatNotGenWithinColor"; tatIcon='<span class="tatIcon"><i class="tatIconNotGenWithinColor fas fa-exclamation"></i> <i class="tatIconNotGenWithinColor">---</i></span>';		    break;
+	case "5":  tatColorClass="tatNotGenDelayColor";  tatIcon='<span class="tatIcon"><i class="tatIconNotGenDelayColor fas fa-exclamation"></i> <i class="tatIconNotGenDelayColor fas fa-arrow-down"></i></span>';  break;
 	default:   tatColorClass="";
 	}
 	var customCell="<a class='reqnTatA "+tatColorClass+"'>"+"  "+data+"</a>"+tatIcon;

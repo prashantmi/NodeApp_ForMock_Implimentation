@@ -1,4 +1,33 @@
-{
+{      "patDetailsOnBillNo" : [{
+      "patientName" : "mahesh",
+      "crNumber" : "123456789012345",
+      "patientStatus" : "OPD",
+      "ageGender" : "9 Mth/M",
+      "phoneNo" : "9912123454",
+      "emailId" : "qwerty@gmail.com",
+      "latestBillNo" : "345367589360143",
+      "memberSince" : "2009",
+      "totalPaymentsDone" : "5000",
+      "pendingPayments" : "2000",
+      "address" : "A-23, New Delhi",
+      "note" : "Elergic to morfine"
+   }],
+
+
+   "patDetailsOnCrNo" : [{
+      "patientName" : "mahesh",
+      "crNumber" : "123456789012345",
+      "patientStatus" : "OPD",
+      "ageGender" : "9 Mth/M",
+      "phoneNo" : "9912123454",
+      "emailId" : "qwerty@gmail.com",
+      "latestBillNo" : "345367589360143",
+      "memberSince" : "2009",
+      "totalPaymentsDone" : "5000",
+      "pendingPayments" : "2000",
+      "address" : "A-23, New Delhi",
+      "note" : "Elergic to morfine"
+   }],
     "sampleBasedReqnListOnCrNo":[
         {
             "sno":1,

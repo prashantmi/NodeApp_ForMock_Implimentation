@@ -91,25 +91,25 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .divShadow {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 12px 16px 0px, rgba(0, 0, 0, 0.19) 0px 17px 50px 0px;
-  background-color: green;
-  border: none;
-  color: yellow;
-  padding: 2px 15px;
-  text-align: center;
-  text-decoration: none;
-  display:
-    inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  transition-duration: 0.4s;
-  height: 40px;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 12px 16px 0px, rgba(0, 0, 0, 0.19) 0px 17px 50px 0px;
+background-color: green;
+border: none;
+color: yellow;
+padding: 2px 15px;
+text-align: center;
+text-decoration: none;
+display:
+inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+transition-duration: 0.4s;
+height: 40px;
 }
 
 .vertical-text {
-  writing-mode: vertical-rl !important;
-  text-orientation: mixed;
+writing-mode: vertical-rl !important;
+text-orientation: mixed;
 }
 
 /* custom sub expand table card header color start*/
@@ -119,14 +119,14 @@ background: -webkit-linear-gradient(to right, #0575E6, #00F260);
 background: linear-gradient(to right, #0575E6, #00F260);
 }
 .reqnRaisingColor{background: #7e57c2;}
-.sampleCollColor{background: #5c6bc0;}
+.sampleCollColor{ background: #5c6bc0;}
 .packListGenColor{background: #42a5f5;}
 .sampleAccepColor{background: #b2102f;}
-.sampleRejeColor{background: #00695f;}
-.patAccepColor{background: #b2102f;}
-.patRejeColor{background: #00695f;}
-.resultEntColor{background: #a31545;}
-.reportGenColor{background: #00352c;}
+.sampleRejeColor{ background: #00695f;}
+.patAccepColor{   background: #b2102f;}
+.patRejeColor{    background: #00695f;}
+.resultEntColor{  background: #a31545;}
+.reportGenColor{  background: #00352c;}
 /* custom sub expand table card header color end*/
 
 /* Requstion Status Column cell colors starts*/
@@ -136,35 +136,52 @@ background: linear-gradient(to right, #0575E6, #00F260);
 	cursor: default;
 	text-decoration: none !important;
 	padding: .4em 1em .4em !important;
-    font-size: 95% !important;
-    border-radius: .2em !important;
-    }
+  font-size: 95% !important;
+  border-radius: .2em !important;
+}
 
 .stReqnRaisedColor{        	color: #7e57c2 !important; 	border-left : 4px solid #7e57c2; }
 .stStsampleCollectedColor{ 	color: #5c6bc0 !important; 	border-left : 4px solid #5c6bc0; }
 .stPackListGenColor{      	color: #42a5f5 !important; 	border-left : 4px solid #42a5f5; }
-.stSampleAcceptColor{ 		color: #b2102f !important;  border-left : 4px solid #b2102f; }
-.stResultEnteredColor{ 		color: #a31545 !important; 	border-left : 4px solid #a31545; }
-.stResultvalidColor{ 		color: #932020 !important;	border-left : 4px solid #932020; }
-.stPatRejectcolor{ 			color: #00695f !important;	border-left : 4px solid #00695f; }
-.stTestResceduleColor{ 		color: #c0ca33 !important;	border-left : 4px solid #c0ca33; }
-.stTestResceduleColor{ 		color: #00e676 !important;	border-left : 4px solid #00e676; }
-.stSampleCancleColor{ 		color: #00695f !important;	border-left : 4px solid #00695f; }
-.stWaitReportPntColor{ 		color: #4caf50 !important;	border-left : 4px solid #4caf50; }
-.stResultPrintColor{ 		color: #1de9b6 !important;	border-left : 4px solid #1de9b6; }
-.stTestCancleColor{ 		color: #e65100 !important;	border-left : 4px solid #e65100; }
-.stTestDeleteColor{ 		color: #1769aa !important;	border-left : 4px solid #1769aa; }
-.stMachineProcessColor{ 	color: #b2102f !important;	border-left : 4px solid #b2102f; }
-.stReportGenColor{ 			color: #00352c !important;	border-left : 4px solid #00352c; }
+.stSampleAcceptColor{ 		  color: #b2102f !important;  border-left : 4px solid #b2102f; }
+.stResultEnteredColor{ 		  color: #a31545 !important; 	border-left : 4px solid #a31545; }
+.stResultvalidColor{ 		    color: #932020 !important;	border-left : 4px solid #932020; }
+.stPatRejectcolor{ 			    color: #00695f !important;	border-left : 4px solid #00695f; }
+.stTestResceduleColor{ 		  color: #c0ca33 !important;	border-left : 4px solid #c0ca33; }
+.stTestResceduleColor{ 		  color: #00e676 !important;	border-left : 4px solid #00e676; }
+.stSampleCancleColor{ 		  color: #00695f !important;	border-left : 4px solid #00695f; }
+.stWaitReportPntColor{ 		  color: #4caf50 !important;	border-left : 4px solid #4caf50; }
+.stResultPrintColor{ 		    color: #1de9b6 !important;	border-left : 4px solid #1de9b6; }
+.stTestCancleColor{ 		    color: #e65100 !important;	border-left : 4px solid #e65100; }
+.stTestDeleteColor{ 		    color: #1769aa !important;	border-left : 4px solid #1769aa; }
+.stMachineProcessColor{ 	  color: #b2102f !important;	border-left : 4px solid #b2102f; }
+.stReportGenColor{ 			    color: #00352c !important;	border-left : 4px solid #00352c; }
 .stDraftResultEnteredColor{ color: #4bd396 !important;	border-left : 4px solid #4bd396; }
 .stDraftResultValidColor{ 	color: #4bd396 !important;	border-left : 4px solid #4bd396; }
-.stTestAdvisedColor{ 		color: #4bd396 !important;	border-left : 4px solid #4bd396; }
+.stTestAdvisedColor{ 		    color: #4bd396 !important;	border-left : 4px solid #4bd396; }
 
 .stIcon{
 	float:right;
 	color:#13A1FE;
 	font-size: large;
 }
+
+
+.tatIcon{
+	float:right;
+}
+.tatGenBeforeColor{    color: green;}
+.tatGenWithinColor{    color: green;}
+.tatGenDelayColor{     color: yellow;}
+.tatNotGenWithinColor{ color: yellow;}
+.tatNotGenDelayColor{  color: red;}
+
+.tatIconGenBeforeColor{    color: green;}
+.tatIconGenWithinColor{    color: green;}
+.tatIconGenDelayCheckColor{     color: green;}
+.tatIconGenDelayArrowColor{ color: yellow;}
+.tatIconNotGenWithinColor{ color: yellow;}
+.tatIconNotGenDelayColor{  color: red;}
 /* Requstion Status Column cell colors ends */
 
 
@@ -240,7 +257,12 @@ box-shadow: -3px 3px 6px 0px grey;
 }
 
 .rowGroupReqnDate {
-border-bottom: 1px solid #c5c5c5  !important;
+border-bottom: 5px solid !important;
+border-left: 5px solid !important;
+/* border-color: #16BFFD  !important;
+border-color: -webkit-linear-gradient(to right,  #CB3066, #16BFFD,  #ffff)  !important;
+border-color: linear-gradient(to right,   #CB3066, #16BFFD , #ffff)  !important; */
+border-image: linear-gradient(45deg, #CB3066, #16BFFD) 1;
 /* border-left: 1px solid #c5c5c5  !important;  */
 border-radius: .2em !important;
 padding: .4em 1em .4em !important;
@@ -250,11 +272,12 @@ background: -webkit-linear-gradient(to left, #ffff, #A6FFCB, #12D8FA, #1FA2FF); 
 background: linear-gradient(to left, #ffff, #A6FFCB, #12D8FA, #1FA2FF); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
-background: #16BFFD;
+/* background: #16BFFD;
 background: -webkit-linear-gradient(to right,  #CB3066, #16BFFD,  #ffff);
-background: linear-gradient(to right,   #CB3066, #16BFFD , #ffff);
+background: linear-gradient(to right,   #CB3066, #16BFFD , #ffff); */
 
 }
+
 
 
 table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
