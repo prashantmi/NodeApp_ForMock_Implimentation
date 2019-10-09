@@ -2517,11 +2517,11 @@ function decideTurnAroundTimeIcon(data, type, row){
 	var stIcon="";
 	switch(row.turnAroundTime.totDecisionCode){
 	case "0":  tatColorClass="tatNothingColor";      tatIcon='<span class="tatIcon"><i class=" "></i></span>';                             break;
-	case "1":  tatColorClass="tatGenBeforeColor"; 	 tatIcon='<span class="tatIcon"><i class="tatIconGenBeforeColor fas fa-check-double"></i></span>';  break;
-	case "2":  tatColorClass="tatGenWithinColor";    tatIcon='<span class="tatIcon"><i class="tatIconGenWithinColor fas fa-check"></i></span>';	       break;
-	case "3":  tatColorClass="tatGenDelayColor"; 	   tatIcon='<span class="tatIcon"><i class="tatIconGenDelayCheckColor fas fa-check"></i>       <i class="tatIconGenDelayArrowColor fas fa-arrow-down"></i></span>';	break;
-	case "4":  tatColorClass="tatNotGenWithinColor"; tatIcon='<span class="tatIcon"><i class="tatIconNotGenWithinColor fas fa-exclamation"></i> <i class="tatIconNotGenWithinColor">---</i></span>';		    break;
-	case "5":  tatColorClass="tatNotGenDelayColor";  tatIcon='<span class="tatIcon"><i class="tatIconNotGenDelayColor fas fa-exclamation"></i> <i class="tatIconNotGenDelayColor fas fa-arrow-down"></i></span>';  break;
+	case "1":  tatColorClass="tatGenBeforeColor"; 	 tatIcon='<span class="tatIcon"><i class="text-success fas fa-check"></i><img height="10" width="10" src='media/images/medal.svg'></span>';  break;
+	case "2":  tatColorClass="tatGenWithinColor";    tatIcon='<span class="tatIcon"><i class="text-success fas fa-check"></i></span>';	       break;
+	case "3":  tatColorClass="tatGenDelayColor"; 	   tatIcon='<span class="tatIcon"><i class="text-success fas fa-check"></i>       <i class="text-warning fas fa-arrow-down"></i></span>';	break;
+	case "4":  tatColorClass="tatNotGenWithinColor"; tatIcon='<span class="tatIcon"><i class="text-danger fas fa-exclamation"></i> <i class="text-warning">---</i></span>';		    break;
+	case "5":  tatColorClass="tatNotGenDelayColor";  tatIcon='<span class="tatIcon"><i class="text-danger fas fa-exclamation"></i> <i class="text-danger fas fa-arrow-down"></i></span>';  break;
 	default:   tatColorClass="";
 	}
 	var customCell="<a class='reqnTatA "+tatColorClass+"'>"+"  "+data+"</a>"+tatIcon;

@@ -170,18 +170,7 @@ background: linear-gradient(to right, #0575E6, #00F260);
 .tatIcon{
 	float:right;
 }
-.tatGenBeforeColor{    color: green;}
-.tatGenWithinColor{    color: green;}
-.tatGenDelayColor{     color: yellow;}
-.tatNotGenWithinColor{ color: yellow;}
-.tatNotGenDelayColor{  color: red;}
 
-.tatIconGenBeforeColor{    color: green;}
-.tatIconGenWithinColor{    color: green;}
-.tatIconGenDelayCheckColor{     color: green;}
-.tatIconGenDelayArrowColor{ color: yellow;}
-.tatIconNotGenWithinColor{ color: yellow;}
-.tatIconNotGenDelayColor{  color: red;}
 /* Requstion Status Column cell colors ends */
 
 
