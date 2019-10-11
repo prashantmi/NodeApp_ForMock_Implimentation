@@ -5,6 +5,23 @@
 ## Module Name				: INVESTIGATION
 -->
 
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
+
+<%--
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
+<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles"%>
+<%@ taglib uri="/WEB-INF/dateTag.tld" prefix="date"%>
+<%@ taglib uri="/WEB-INF/hisTab.tld" prefix="tag"%>
+<%@ taglib uri="/WEB-INF/HisTools.tld" prefix="his"%>
+<%@page import="hisglobal.hisconfig.Config"%>
+--%>
+
+<%@page import="java.util.*"%>
+<%@page import="com.ibm.icu.text.SimpleDateFormat"%>
+
 <!doctype html>
 <html lang="en">
 
@@ -18,22 +35,22 @@
 
   <!---New Resources Created by Prashant Start----------------------------------------------------------------------------------------------------------------->
 
-  <!--JQuery Added by Prashant-->
+  <!--JQuery -->
   <script src="media/jquery/3.4.1/jquery-3.4.1.min.js" type="text/javascript"></script>
 
-  <!--Propper JS Added by Prashant-->
+  <!--Propper JS -->
   <script src="media/popper.js/1.15.0/umd/popper.min.js"></script>
-  <!--Tooltip JS Added by Prashant-->
+  <!--Tooltip JS -->
   <script src="media/tooltip.js/1.3.2/umd/tooltip.min.js"></script>
 
 
-  <!--JQueryUI Added by Prashant-->
+  <!--JQueryUI -->
   <script src="media/jquery-ui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
   <link href="media/jquery-ui/1.12.1/jquery-ui.min.css" rel="stylesheet" type="text/css" />
   <script src="media/jquery-ui/1.12.1/jquery.ui.datepicker.validation.min.js" type="text/javascript"></script>
   <script src="media/jquery-ui/1.12.1/jquery.validate.min.js" type="text/javascript"></script>
 
-  <!--Bootstrap Added by Prashant-->
+  <!--Bootstrap -->
   <link href="media/bootstrap/bootstrap-4.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <!-- <link href="media/bootstrap/bootstrap-themes/css/litera/bootstrap.min.css" rel="stylesheet" type="text/css" />  -->
   <!-- <link href="media/bootstrap/bootstrap-themes/css/slate/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
@@ -41,13 +58,13 @@
   <script src="media/bootstrap/bootstrap-4.3.1/js/bootstrap.min.js" type="text/javascript"></script>
 
 
-  <!--Bootstrap Datables Added by Prashant-->
+  <!--Bootstrap Datables -->
   <link href="media/dataTables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
   <script src="media/dataTables/DataTables-1.10.18/js/jquery.dataTables.min.js" type="text/javascript"></script>
   <script src="media/dataTables/DataTables-1.10.18/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
 
 
-  <!--Bootstrap Datatables Buttons Added by Prashant-->
+  <!--Bootstrap Datatables Buttons -->
   <link href="media/dataTables/Buttons-1.5.6/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
   <script src="media/dataTables/Buttons-1.5.6/js/dataTables.buttons.min.js" type="text/javascript"></script>
   <script src="media/dataTables/Buttons-1.5.6/js/buttons.bootstrap4.min.js" type="text/javascript"></script>
@@ -58,34 +75,34 @@
   <script src="media/dataTables/Buttons-1.5.6/js/buttons.print.min.js" type="text/javascript"></script>
 
 
-  <!--Excel HTML5 export button Added by Prashant-->
+  <!--Excel HTML5 export button -->
   <script src="media/dataTables/JSZip-2.5.0/jszip.min.js" type="text/javascript"></script>
 
-  <!--PDF HTML5 export button Added by Prashant-->
+  <!--PDF HTML5 export button -->
   <script src="media/dataTables/pdfmake-0.1.36/pdfmake.min.js" type="text/javascript"></script>
   <script src="media/dataTables/pdfmake-0.1.36/vfs_fonts.js" type="text/javascript"></script>
 
 
-  <!--Bootstrap Datables FixedHeader Added by Prashant-->
+  <!--Bootstrap Datables FixedHeader -->
   <link href="media/dataTables/FixedHeader-3.1.4/css/fixedHeader.bootstrap4.min.css" rel="stylesheet" type="text/css" />
   <script src="media/dataTables/FixedHeader-3.1.4/js/dataTables.fixedHeader.min.js" type="text/javascript"></script>
   <script src="media/dataTables/FixedHeader-3.1.4/js/fixedHeader.bootstrap4.min.js" type="text/javascript"></script>
   <!--not ness-->
 
 
-  <!--Bootstrap Datables RowGroup Added by Prashant-->
+  <!--Bootstrap Datables RowGroup -->
   <link href="media/dataTables/RowGroup-1.1.0/css/rowGroup.bootstrap4.min.css" rel="stylesheet" type="text/css" />
   <script src="media/dataTables/RowGroup-1.1.0/js/dataTables.rowGroup.min.js" type="text/javascript"></script>
   <script src="media/dataTables/RowGroup-1.1.0/js/rowGroup.bootstrap4.min.js" type="text/javascript"></script>
   <!--not ness-->
 
 
-  <!--Bootstrap Datables Responsive Added by Prashant-->
+  <!--Bootstrap Datables Responsive -->
   <link href="media/dataTables/Responsive-2.2.2/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
   <script src="media/dataTables/Responsive-2.2.2/js/dataTables.responsive.min.js" type="text/javascript"></script>
   <script src="media/dataTables/Responsive-2.2.2/js/responsive.bootstrap4.min.js" type="text/javascript"></script>
 
-  <!-- Datables api->processing Added by Prashant-->
+  <!-- Datables api->processing -->
   <script type="text/javascript" src="media/dataTables/api/processing().js"></script>
 
   <!--Fontawesome Icons---->
@@ -103,20 +120,28 @@
   <script type="text/javascript" src="media/moment-js/datetime-moment.js"></script>
 
 
-  <!--Vue.js Added by Prashant-->
-  <script src="media/vue-js/vue.js" type="text/javascript"></script>
+  <!--Vue.js -->
+  <script src="media/vue-js/vue.min.js" type="text/javascript"></script>
   <script src="media/vue-js/vuex.js" type="text/javascript"></script>
   <script src="media/vue-js/portal-vue.umd.min.js" type="text/javascript"></script>
   <link rel="stylesheet" href="media/vue-js/bootstrap-vue/bootstrap-vue.min.css" />
 
-  <!--canvasjs Added by Prashant-->
-  <script src="media/canvasjs/canvasjs-2.3.2/jquery.canvasjs.min.js" type="text/javascript"></script>
+  <!--canvasjs -->
+  <!-- <script src="media/canvasjs/canvasjs-2.3.2/jquery.canvasjs.min.js" type="text/javascript"></script> -->
+
+  <!--canvasjs -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
   <!--Custome Resources----->
   <script type="text/javascript" src="media/reports/js/invTrackingReport.js"></script>
-  <link rel="stylesheet" href="media/fonts/webfontkit-averta-family/stylesheet.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="media/fonts/webfontkit-averta-family/stylesheet.css" type="text/css" />
   <link rel="stylesheet" href="media/reports/css/invTrackingReport.css" />
-  <script type="text/javascript" src="media/reports/js/invTrackingReportChart.js"></script>
+
+  <script type="text/javascript" src="media/reports/js/highChart1.js"></script>
+
+
 
   <!---New Resources Created by Prashant End------------------------------------------------------------------------------------------------------------------->
 
@@ -129,7 +154,28 @@
 <bean:define name="InvTrackingReportFB" property="toDate" id="tDate" type="java.lang.String" />
 <bean:define name="InvTrackingReportFB" property="miscDate" id="mDate" type="java.lang.String" />
 
+<%
+ if(frDate==null||frDate.equalsIgnoreCase(""))
+    {Date date = new Date(System.currentTimeMillis());
+     SimpleDateFormat formatter= new SimpleDateFormat("dd-MMM-yyyy");
+     frDate=formatter.format(date); }
+ if(tDate==null||tDate.equalsIgnoreCase(""))
+    {Date date = new Date(System.currentTimeMillis());
+     SimpleDateFormat formatter= new SimpleDateFormat("dd-MMM-yyyy");
+     tDate=formatter.format(date); }
+%>
 
+<%
+
+Date date = new Date(System.currentTimeMillis());
+Calendar cal = Calendar.getInstance();
+cal.setTime(date);
+cal.add(Calendar.DATE, -90);
+SimpleDateFormat formatter= new SimpleDateFormat("dd-MMM-yyyy");
+date=cal.getTime();
+mDate=formatter.format(date);
+
+%>
 
     <div class="container-fluid mt-2 mb-3" id="container1">
       <div class="mx-md-0 row p-3 p-md-1 align-items-center shadow rounded bg-white no-gutters hover-shadow ">
@@ -138,7 +184,7 @@
 		<div class="mx-md-0 row align-items-center no-gutters ">
         <div class="col-12 col-md-4 col-lg-3 mr-md-1 ml-md-1 ">
           <p class="" style="font-size: 23px; font-family: 'averta-extrabolduploaded_file';">
-          <span class="text-primary"><img height="45" width="45" src='media/images/reportBlue.svg'></span>
+          <span class="text-primary"><img height="45" width="45" src='media/images/reportGradiant.svg'></span>
           Investigation Tracking </p>
         </div>
 
@@ -154,8 +200,8 @@
                  -->
               </select>
             </div>
-            <input type="number" step="0.01" class="form-control" id="billNoInput" placeholder="Enter Bill No." maxlength="15" value="961019190000641">
-            <input type="number" step="0.01" class="form-control" id="crNoInput" placeholder="Enter Cr. No." maxlength="20" style="display: none" value="961011900005083">
+            <input type="number" step="0.01" class="form-control" id="crNoInput" placeholder="Enter Cr. No." maxlength="20"  value="961011900012918"> <!-- 961011900005083 -->
+            <input type="number" step="0.01" class="form-control" id="billNoInput" placeholder="Enter Bill No." maxlength="15" style="display: none" value="961019190000641">
             <input type="number" step="0.01" class="form-control" id="sampleNoInput" placeholder="Enter Sample No." maxlength="10" style="display: none" value="0125428">
             <input type="number" step="0.01" class="form-control" id="labNoInput" placeholder="Enter Lab No." maxlength="10" style="display: none" value="24623156">
           </div>
@@ -167,7 +213,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text px-1">From Date:</span>
               </div>
-              <input type='text' class="form-control px-1 fromDateInput" value="" onkeydown="return false" />
+              <input type='text' class="form-control px-1 fromDateInput" value="<%=frDate%>" onkeydown="return false" />
               <span class="input-group-addon mt-2">
                 <span class="">
                   <i class="fas fa-calendar-alt" style="color: #007BFF; font-size:21px;"></i>
@@ -183,7 +229,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text px-1">To Date:</span>
               </div>
-              <input type='text' class="form-control px-1 toDateInput " value="" onkeydown="return false" />
+              <input type='text' class="form-control px-1 toDateInput " value="<%=tDate%>" onkeydown="return false" />
               <span class="input-group-addon mt-2">
                 <span class="">
                   <i class="fas fa-calendar-alt" style="color: #007BFF; font-size:21px;"></i>
@@ -206,7 +252,7 @@
         <div class="mx-md-0 row align-items-center no-gutters d-flex justify-content-center">
 
 		<div class="divArchivalbtn1 mx-md-3 mt-2 pr-4 pr-md-1">
-			<label><h6 class="card-subtitle mb-2 text-muted">The request shown below is from last three months [] of Lab Request,
+			<label><h6 class="card-subtitle mb-2 text-muted">The request shown below is from last three months [<%=mDate%>] of Lab Request,
 			To view request older than three months</h6></label>
   			<button id="btnDataFromArchival1" type="button" class="btn btn-sm btn-warning "><a class="text-nowrap ">Click Here</a>
   			</button>
@@ -220,18 +266,6 @@
   			</button>
 		</div>
 
- 		<!-- option Accepted By All Users -->
-		<!-- <div class="mx-md-3 mt-0 custom-control custom-radio px-2" style="display: none;">
-  			<input type="radio" class="custom-control-input dataFromArchival" id="dataFromMonth3" name="dataFromArchival" value="0" checked>
-  			<label class="custom-control-label" for="dataFromMonth3">3 Months</label>
-		</div> -->
-
-		<!--option Accepted By loged in Users -->
-		<!-- <div class="mx-md-3 mt-0 custom-control custom-radio px-2" style="display: none;">
-  			<input type="radio" class="custom-control-input dataFromArchival" id="dataFromMonthB3" name="dataFromArchival" value="1">
-  			<label class="custom-control-label" for="dataFromMonthB3">Beyond 3 Months</label>
-		</div> -->
-
       </div>
 
 
@@ -240,37 +274,55 @@
     </div>
 
 
-    <div class="container-fluid mt-2 mb-3" id="patDetails" style="display:none;">
+    <div class="container-fluid mt-2 mb-3 patDetailsContainer" id="patDetails" style="display:none;">
       <div class="mx-md-0 row p-2 align-items-center shadow rounded bg-white no-gutters">
 
-        <div class="col-md-1 " id="patDetails-icon">
+        <div class="col-md-1 col-md-point5 " id="patDetails-icon">
           <p class="" style="font-weight: bold;font-size: 26px;">
-            <i class="fas fa-female" id="patDetails-icon-w" style="color: #E83E8C; font-size:40px; display:none;"></i>
-            <i class="fas fa-male" id="patDetails-icon-m" style="color: #007BFF; font-size:40px; display:none;"></i>
+            <i class="fas fa-female"id="patDetails-icon-w" style="color: #E83E8C; font-size:40px; display:none;"></i>
+            <i class="fas fa-male"	id="patDetails-icon-m" style="color: #007BFF; font-size:40px; display:none;"></i>
             <i class="fas fa-child" id="patDetails-icon-g" style="color: #E83E8C; font-size:40px; display:none;"></i>
             <i class="fas fa-child" id="patDetails-icon-b" style="color: #007BFF; font-size:40px; display:none;"></i>
-            <i class="fas fa-baby" id="patDetails-icon-gc" style="color: #E83E8C; font-size:40px; display:none;"></i>
-            <i class="fas fa-baby" id="patDetails-icon-bc" style="color: #007BFF; font-size:40px; "></i>
+            <i class="fas fa-baby"  id="patDetails-icon-gc" style="color: #E83E8C; font-size:40px; display:none;"></i>
+            <i class="fas fa-baby"  id="patDetails-icon-bc" style="color: #007BFF; font-size:40px; "></i>
           </p>
         </div>
 
-        <div class="col-md-11 rounded hover-shadow" id="patDetails-table">
+        <div class="col-md-11 col-md-11-5 rounded hover-shadow" id="patDetails-table-Opd">
           <table id="DataTable1" class="table table-sm dt-responsive nowrap table-condensed mx-md-0 rounded bg-white " style="width:100%">
             <thead>
               <tr>
                 <th>Patient Name</th>
                 <th>CR Number</th>
                 <th>Patient Status</th>
-                <th>Ward Name</th>
-                <th>Age/Gender</th>
-                <th>Phone</th>
-                <th>Email Id</th>
-                <th>Latest Bill Number</th>
-                <th>Payments Done</th>
-                <th>Pending Payments</th>
-                <th>Member Since</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>GuardianName</th>
+                <th>Category</th>
+                <th>DOB</th>
+                <th>Mobile No</th>
                 <th>Address</th>
-                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+
+        <div class=" col-md-11 col-md-11-5 rounded hover-shadow" id="patDetails-table-Ipd" style="display: none;">
+          <table id="DataTable8" class="table table-sm dt-responsive nowrap table-condensed mx-md-0 rounded bg-white " style="width:100% ">
+            <thead>
+              <tr>
+                <th>Patient Name</th>
+                <th>CR Number</th>
+                <th>Patient Status</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>GuardianName</th>
+                <th>Category</th>
+                <th>DOB</th>
+                <th>Mobile No</th>
+                <th>Address</th>
               </tr>
             </thead>
             <tbody>
@@ -364,16 +416,8 @@
             </div>
           </b-tab>
 
-          <b-tab title="Graph">
+          <b-tab title="Graph" >
           	<div class="row p-2 align-items-center no-gutters">
-
-            	<div class="card col-md-4 hoverCards" style="width: 18rem;">
-                	<div class="card-body">
-                      <h5 class="card-title">Pending Tests</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <div id="chartContainer" style="height: 250px; width: 100%;"></div>
-                    </div>
-                 </div>
 
             </div>
           </b-tab>
@@ -391,15 +435,17 @@
                   <th class="">Requisition Date</th>
                   <th class="">Lab Name</th>
                   <th class="">Group/Test Name</th>
-                  <th class="">Advised By Doc.</th>
-                  <th class="">Bill Date</th>
                   <th class="">Status</th>
+                  <th class="">Turn Around Time</th>
+                  <th class="">Note</th>
 
                   <th class="none">Requisition Date</th>
                   <th class="none">Requisition By</th>
+                  <th class="none">Advised By Doc.</th>
                   <th class="none">Group/Test Name</th>
                   <th class="none">Appointment DateTime</th>
-                  <th class="none">Bill Date/No.</th>
+                  <th class="none">Bill No.</th>
+                  <th class="none">Bill Date</th>
 
                   <th class="none">Sample Name</th>
                   <th class="none">Sample No.</th>
@@ -419,11 +465,11 @@
 
                   <th class="none">Sample Rejec. Date</th>
                   <th class="none">Sample Rejec. By</th>
-                  <th class="none">Sample Rejec. Reason</th><!--new-->
+                  <th class="none">Sample Rejec. Reason</th>
 
                   <th class="none">Result Entry Date</th>
                   <th class="none">Result Entry By</th>
-                  <th class="none "><a href="#" class="text-decoration-none">Result Entry Parameters</a></th>
+                  <th class="none ">Result Entry Parameters</th>
                   <th class="none">Result Valid. Date</th>
                   <th class="none">Result Valid. By</th>
 
@@ -452,15 +498,17 @@
                   <th class="">Requisition Date</th>
                   <th class="">Lab Name</th>
                   <th class="">Group/Test Name</th>
-                  <th class="">Advised By Doc.</th>
-                  <th class="">Bill Date</th>
                   <th class="">Status</th>
+                  <th class="">Turn Around Time</th>
+                  <th class="">Note</th>
 
                   <th class="none">Requisition Date</th>
                   <th class="none">Requisition By</th>
+                  <th class="none">Advised By Doc.</th>
                   <th class="none">Group/Test Name</th>
                   <th class="none">Appointment DateTime</th>
-                  <th class="none">Bill Date/No.</th>
+                  <th class="none">Bill No.</th>
+                  <th class="none">Bill Date</th>
 
                   <th class="none">Accession No.</th>
                   <th class="none">Patient Accep. Date</th>
@@ -470,11 +518,11 @@
 
                   <th class="none">Patient Rejec. Date</th>
                   <th class="none">Patient Rejec. By</th>
-                  <th class="none">Patient Rejec. Reason</th><!--new-->
+                  <th class="none">Patient Rejec. Reason</th>
 
                   <th class="none">Result Entry Date</th>
                   <th class="none">Result Entry By</th>
-                  <th class="none"><a href="#" class="text-decoration-none">Result Entry Parameters</a></th>
+                  <th class="none">Result Entry Parameters</th>
                   <th class="none">Result Valid. Date</th>
                   <th class="none">Result Valid. By</th>
 
@@ -577,12 +625,31 @@
             </div>
           </b-tab>
 
-          <b-tab title="Graph">
-            <p>Here Comes Graph</p>
+          <b-tab title="Graph" id="CrNoBasedGraphTab">
+            <div class="row p-2 align-items-center no-gutters">
+
+          		<div class="col-md-2">
+	          		<div class="list-group list-group-flush">
+					  <button type="button" id="lftBtn" class="lft list-group-item list-group-item-action " onClick="lftGraph();">LFT</button> <!-- active -->
+					  <button type="button" id="rftBtn" class="list-group-item list-group-item-action" onClick="rftGraph();">KFT</button>
+					  <button type="button" id="glucoseBtn" class="list-group-item list-group-item-action" onClick="glucoseGraph();">Glucose</button>
+					</div>
+				</div>
+
+          		<div class="col-md-4" style="border-left: 3px solid gray;">
+          		 <div id="lftGraph" style="min-width: 310px; height: 400px; margin: 0 auto;"></div>
+                 <div id="rftGraph" style="min-width: 310px; height: 400px; margin: 0 auto; display: none;"></div>
+                 <div id="glucoseGraph" style="min-width: 310px; height: 400px; margin: 0 auto; display: none;"></div>
+                </div>
+
+          		<div class="col-md-6" style="border-left: 3px solid gray;">
+          		</div>
+
+          		</div>
           </b-tab>
 
           <b-tab title="SampleBased Test" id="sampleBasedTabCrNo" class="pt-3" active>
-            <table id="DataTable4" class="table table-sm dt-responsive  nowrap table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
+            <table id="DataTable4" class="table table-sm  dt-responsive  nowrap table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
               <caption>Investigation Tracking List By Cr. No.</caption>
               <thead>
                 <tr>
@@ -593,16 +660,22 @@
                   </th>
                   <th class="">Requisition Date</th>
                   <th class="">Lab Name</th>
+                  <th class="">Advised By Dep.</th>
                   <th class="">Group/Test Name</th>
-                  <th class="">Advised By Doc.</th>
-                  <th class="">Bill Date</th>
                   <th class="">Status</th>
+                  <th class="">Turn Around Time</th>
+                  <th class="">Sample No.</th>
+                  <th class="">Rate</th>
+                  <th class="">B/UnBilled</th>
+                  <th class="">Note</th>
 
                   <th class="none">Requisition Date</th>
                   <th class="none">Requisition By</th>
+                  <th class="none">Advised By Doc.</th>
                   <th class="none">Group/Test Name</th>
                   <th class="none">Appointment DateTime</th>
-                  <th class="none">Bill Date/No.</th>
+                  <th class="none">Bill No.</th>
+                  <th class="none">Bill Date</th>
 
                   <th class="none">Sample Name</th>
                   <th class="none">Sample No.</th>
@@ -622,11 +695,11 @@
 
                   <th class="none">Sample Rejec. Date</th>
                   <th class="none">Sample Rejec. By</th>
-                  <th class="none">Sample Rejec. Reason</th><!--new-->
+                  <th class="none">Sample Rejec. Reason</th>
 
                   <th class="none">Result Entry Date</th>
                   <th class="none">Result Entry By</th>
-                  <th class="none"><a href="#">Result Entry Parameters</a></th>
+                  <th class="none">Result Entry Parameters</th>
                   <th class="none">Result Valid. Date</th>
                   <th class="none">Result Valid. By</th>
 
@@ -643,7 +716,7 @@
           </b-tab>
 
           <b-tab title="PatientBased Test" id="patientBasedTabCrNo" class="pt-3">
-            <table id="DataTable5" class="table table-sm dt-responsive  nowrap table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
+            <table id="DataTable5" class="table table-sm  dt-responsive  nowrap table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
               <caption>Investigation Tracking List By Cr. No.</caption>
               <thead>
                 <tr>
@@ -655,16 +728,22 @@
                     </th>
                     <th class="">Requisition Date</th>
                     <th class="">Lab Name</th>
+                    <th class="">Advised By Dep.</th>
                     <th class="">Group/Test Name</th>
-                    <th class="">Advised By Doc.</th>
-                    <th class="">Bill Date</th>
                     <th class="">Status</th>
+                    <th class="">Turn Around Time</th>
+                    <th class="">Accession No.</th>
+                    <th class="">Rate</th>
+                    <th class="">B/UnBilled</th>
+                    <th class="">Note</th>
 
-                    <th class="none">Requisition Date</th>
-                    <th class="none">Requisition By</th>
-                    <th class="none">Group/Test Name</th>
-                    <th class="none">Appointment DateTime</th>
-                    <th class="none">Bill Date/No.</th>
+	                <th class="none">Requisition Date</th>
+	                <th class="none">Requisition By</th>
+	                <th class="none">Advised By Doc.</th>
+	                <th class="none">Group/Test Name</th>
+	                <th class="none">Appointment DateTime</th>
+	                <th class="none">Bill No.</th>
+	                <th class="none">Bill Date</th>
 
                     <th class="none">Accession No.</th>
                     <th class="none">Patient Accep. Date</th>
@@ -674,11 +753,11 @@
 
                     <th class="none">Patient Rejec. Date</th>
                     <th class="none">Patient Rejec. By</th>
-                    <th class="none">Patient Rejec. Reason</th><!--new-->
+                    <th class="none">Patient Rejec. Reason</th>
 
                     <th class="none">Result Entry Date</th>
                     <th class="none">Result Entry By</th>
-                    <th class="none"><a href="#">Result Entry Parameters</a></th>
+                    <th class="none">Result Entry Parameters</th>
                     <th class="none">Result Valid. Date</th>
                     <th class="none">Result Valid. By</th>
 
@@ -698,208 +777,7 @@
       </div>
     </div>
 
-    <div id="patReqnListOnSampleORLabNo" class="container-fluid mt-2 mb-3" style="display: none;">
-      <div id='app3' class="p-2 shadow rounded bg-white hover-shadow">
-        <b-tabs content-class="">
 
-          <b-tab title="Home">
-            <div class="row no-gutters">
-
-              <div class="col-md-9">
-
-                <div class="row p-2 align-items-center no-gutters">
-                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Pending Tests</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-
-                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Apcoming Appointments</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-
-                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Previous Requisitions</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row p-2 align-items-center no-gutters">
-                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Abnormal Tests Reports</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-
-                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Pending Reports</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-
-                  <div class="card col-md-4 hoverCards" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-              <div class="col-md-3" style="border-left: 3px solid gray;">
-                <p class="d-flex justify-content-center">Notification Space</p>
-              </div>
-
-            </div>
-          </b-tab>
-
-          <b-tab title="Graph">
-            <p>Here Comes Graph</p>
-          </b-tab>
-
-          <b-tab title="SampleBased Test" id="sampleBasedTabSampleNo" active>
-            <table id="DataTable6" class="table table-sm dt-responsive  nowrap table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
-              <caption>Investigation Tracking List By Cr. No.</caption>
-              <thead>
-                <tr>
-                  <th class="all">
-                    <i class="fas fa-chevron-circle-up text-danger d-none collapseButton"></i>
-                    <i class="fas fa-chevron-circle-down text-success expandButton"></i>
-                    S.No
-                  </th>
-                  <th class="">Requisition Date</th>
-                  <th class="">Lab Name</th>
-                  <th class="">Group/Test Name</th>
-                  <th class="">Advised By Doc.</th>
-                  <th class="">Bill Date</th>
-                  <th class="">Status</th>
-
-                  <th class="none">Requisition Date</th>
-                  <th class="none">Requisition By</th>
-                  <th class="none">Group/Test Name</th>
-                  <th class="none">Appointment DateTime</th>
-                  <th class="none">Bill Date/No.</th>
-
-                  <th class="none">Sample Name</th>
-                  <th class="none">Sample No.</th>
-                  <th class="none">Sample Coll. Date</th>
-                  <th class="none">Sample Coll. By</th>
-
-                  <th class="none">PackingList No.</th>
-                  <th class="none">Lab No.</th>
-                  <th class="none">PackingList DateTime</th>
-                  <th class="none">PackingList Gene. By</th>
-
-                  <th class="none">Lab No.</th>
-                  <th class="none">Sample Accep. Date</th>
-                  <th class="none">Sample Accep. By</th>
-                  <th class="none">Sample Accep. Mode</th>
-                  <th class="none">Machine Name</th>
-
-                  <th class="none">Sample Rejec. Date</th>
-                  <th class="none">Sample Rejec. By</th>
-                  <th class="none">Sample Rejec. Reason</th><!--new-->
-
-                  <th class="none">Result Entry Date</th>
-                  <th class="none">Result Entry By</th>
-                  <th class="none"><a href="#">Result Entry Parameters</a></th>
-                  <th class="none">Result Valid. Date</th>
-                  <th class="none">Result Valid. By</th>
-
-                  <th class="none">Report Gen Date</th>
-                  <th class="none">Report Print Date</th>
-                  <th class="none">Report Print By</th>
-                </tr>
-              </thead>
-              <tbody>
-              </tbody>
-              <tfoot>
-              </tfoot>
-            </table>
-          </b-tab>
-
-          <b-tab title="PatientBased Test" id="patientBasedTabLabNo">
-            <table id="DataTable7" class="table table-sm dt-responsive  nowrap table-condensed mx-md-0 shadow rounded bg-white hover-shadow" style="width:100%">
-              <caption>Investigation Tracking List By Cr. No.</caption>
-              <thead>
-                <tr>
-                  <tr>
-                    <th class="all">
-                      <i class="fas fa-chevron-circle-up text-danger d-none collapseButton"></i>
-                      <i class="fas fa-chevron-circle-down text-success expandButton"></i>
-                      S.No
-                    </th>
-                    <th class="">Requisition Date</th>
-                    <th class="">Lab Name</th>
-                    <th class="">Group/Test Name</th>
-                    <th class="">Advised By Doc.</th>
-                    <th class="">Bill Date</th>
-                    <th class="">Status</th>
-
-                    <th class="none">Requisition Date</th>
-                    <th class="none">Requisition By</th>
-                    <th class="none">Group/Test Name</th>
-                    <th class="none">Appointment DateTime</th>
-                    <th class="none">Bill Date/No.</th>
-
-                    <th class="none">Accession No.</th>
-                    <th class="none">Patient Accep. Date</th>
-                    <th class="none">Patient Accep. By</th>
-                    <th class="none">Patient Accep. Mode</th>
-                    <th class="none">Machine Name</th>
-
-                    <th class="none">Patient Rejec. Date</th>
-                    <th class="none">Patient Rejec. By</th>
-                    <th class="none">Patient Rejec. Reason</th><!--new-->
-
-                    <th class="none">Result Entry Date</th>
-                    <th class="none">Result Entry By</th>
-                    <th class="none"><a href="#">Result Entry Parameters</a></th>
-                    <th class="none">Result Valid. Date</th>
-                    <th class="none">Result Valid. By</th>
-
-                    <th class="none">Report Gen Date</th>
-                  	<th class="none">Report Print Date</th>
-                  	<th class="none">Report Print By</th>
-                  </tr>
-              </thead>
-              <tbody>
-              </tbody>
-              <tfoot>
-              </tfoot>
-            </table>
-          </b-tab>
-
-        </b-tabs>
-      </div>
-    </div>
 
   </html:form>
   <script type="text/javascript" src="media/vue-js/bootstrap-vue/bootstrap-vue.min.js"></script>
@@ -921,12 +799,6 @@
     }
   });
 
-  new Vue({
-	    el: "#app3",
-	    data: {
-	      name: "Sitepoint"
-	    }
-	  });
 </script>
 
 </html>

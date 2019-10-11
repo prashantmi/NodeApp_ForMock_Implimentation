@@ -22,7 +22,8 @@ font-family: 'averta-regularuploaded_file';
 }
 
 body{
-  background-color: #F3FBFF;
+  /* background-color: #F3FBFF; */
+ background-color: #F0F8FF;
   /* color: #F2F2F2; */
 }
 
@@ -30,6 +31,37 @@ container-fluid{
 background-color: #F3FBFF;
 color: #F2F9FF;
 }
+
+@media (min-width: 576px) {
+.col-sm-point5 { max-width: 4.166% ! important ;    flex: 0 0 4.166% ! important; }
+.col-sm-1-5    { max-width: 12.5% ! important ;     flex: 0 0 12.5% ! important; }
+.col-sm-2-5	   { max-width: 20.83333% ! important ; flex: 0 0 20.83333% ! important; }
+.col-sm-3-5    { max-width: 29.16667% ! important ; flex: 0 0 29.16667% ! important; }
+.col-sm-4-5    { max-width: 37.5% ! important ;     flex: 0 0 37.5% ! important; }
+.col-sm-5-5    { max-width: 45.83333% ! important ; flex: 0 0 45.83333% ! important; }
+.col-sm-6-5    { max-width: 54.16667% ! important ; flex: 0 0 54.16667% ! important; }
+.col-sm-7-5    { max-width: 62.5% ! important ;     flex: 0 0 62.5% ! important; }
+.col-sm-8-5    { max-width: 70.83333% ! important ; flex: 0 0 70.83333% ! important; }
+.col-sm-9-5    { max-width: 79.16667% ! important ; flex: 0 0 79.16667% ! important; }
+.col-sm-10-5   { max-width: 87.5% ! important ;     flex: 0 0 87.5% ! important; }
+.col-sm-11-5   { max-width: 95.8333% ! important ;  flex: 0 0 95.8333% ! important; }
+}
+
+@media (min-width: 720px) {
+.col-md-point5 { max-width: 4.166% ! important;     flex: 0 0 4.166% ! important; }
+.col-md-1-5    { max-width: 12.5% ! important;      flex: 0 0 12.5% ! important;  }
+.col-md-2-5    { max-width: 20.83333% ! important ; flex: 0 0 20.83333% ! important; }
+.col-md-3-5    { max-width: 29.16667% ! important ; flex: 0 0 29.16667% ! important; }
+.col-md-4-5    { max-width: 37.5% ! important ;     flex: 0 0 37.5% ! important; }
+.col-md-5-5    { max-width: 45.83333% ! important ; flex: 0 0 45.83333% ! important; }
+.col-md-6-5    { max-width: 54.16667% ! important ; flex: 0 0 54.16667% ! important; }
+.col-md-7-5    { max-width: 62.5% ! important ;     flex: 0 0 62.5% ! important; }
+.col-md-8-5    { max-width: 70.83333% ! important ; flex: 0 0 70.83333% ! important; }
+.col-md-9-5    { max-width: 79.16667% ! important ; flex: 0 0 79.16667% ! important; }
+.col-md-10-5   { max-width: 87.5% ! important ;     flex: 0 0 87.5% ! important; }
+.col-md-11-5   { max-width: 95.8333% ! important;   flex: 0 0 95.8333% ! important; }
+}
+
 
 .btn-primary{
   background-color:  #13A1FE !important;
@@ -112,32 +144,40 @@ writing-mode: vertical-rl !important;
 text-orientation: mixed;
 }
 
+.patDetailsContainer{
+ position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
 /* custom sub expand table card header color start*/
 .essenDataColor{
 background: #00F260;
 background: -webkit-linear-gradient(to right, #0575E6, #00F260);
 background: linear-gradient(to right, #0575E6, #00F260);
 }
-.reqnRaisingColor{background: #7e57c2;}
-.sampleCollColor{ background: #5c6bc0;}
-.packListGenColor{background: #42a5f5;}
-.sampleAccepColor{background: #b2102f;}
-.sampleRejeColor{ background: #00695f;}
-.patAccepColor{   background: #b2102f;}
-.patRejeColor{    background: #00695f;}
-.resultEntColor{  background: #a31545;}
-.reportGenColor{  background: #00352c;}
+.reqnRaisingColor{background: #7e57c2; color: white; font-weight : 400 ; }
+.sampleCollColor{ background: #5c6bc0; color: white; font-weight : 400 ; }
+.packListGenColor{background: #42a5f5; color: white; font-weight : 400 ; }
+.sampleAccepColor{background: #b2102f; color: white; font-weight : 400 ; }
+.sampleRejeColor{ background: #00695f; color: white; font-weight : 400 ; }
+.patAccepColor{   background: #b2102f; color: white; font-weight : 400 ; }
+.patRejeColor{    background: #00695f; color: white; font-weight : 400 ; }
+.resultEntColor{  background: #a31545; color: white; font-weight : 400 ; }
+.reportGenColor{  background: #00352c; color: white; font-weight : 400 ; }
 /* custom sub expand table card header color end*/
 
 /* Requstion Status Column cell colors starts*/
-.reqnStaus{padding:5px !important;}
+/* .reqnStaus{padding:5px !important;} */
 .reqnStausA{
 	/* text-align: center; */
 	cursor: default;
 	text-decoration: none !important;
-	padding: .4em 1em .4em !important;
+	padding: .4em 0.1em .4em .4em !important;
   font-size: 95% !important;
   border-radius: .2em !important;
+   white-space: nowrap;
 }
 
 .stReqnRaisedColor{        	color: #7e57c2 !important; 	border-left : 4px solid #7e57c2; }
@@ -163,18 +203,30 @@ background: linear-gradient(to right, #0575E6, #00F260);
 .stIcon{
 	float:right;
 	color:#13A1FE;
-	font-size: large;
+	/* font-size: large; */
+
 }
 
 
 .tatIcon{
 	float:right;
+	font-size: large;
+	margin-right: 3px;
 }
 
+.tatImg{
+ vertical-align: top;
+}
 /* Requstion Status Column cell colors ends */
 
 
 /* datatable css starts */
+.even{
+	background-color: #FFFFFF !important;
+}
+.odd{
+	background-color: #F2F5F9 !important;
+}
 
 #DataTable1 td, #DataTable2 td, #DataTable3 td, #DataTable4 td, #DataTable5 td, #DataTable6 td, #DataTable7 td,
 #DataTable1 th, #DataTable2  th, #DataTable3  th, #DataTable4  th, #DataTable5  th, #DataTable6  th, #DataTable7  th{
@@ -217,7 +269,7 @@ box-shadow: -3px 3px 6px 0px grey;
 }
 
 
-#patDetails-table {
+#patDetails-table-Opd {
     /* box-shadow: -4px 3px 9px 0px #007bff; */
     /* transform: scale(1,0); */
   /* border-top: 1px solid black;
@@ -227,6 +279,22 @@ box-shadow: -3px 3px 6px 0px grey;
   border: 1px solid grey;
 }
 
+/* #DataTable1 th {
+	display : none;
+}
+
+#DataTable8 th {
+	display : none;
+}
+ */
+#DataTable8 th ,#DataTable8 td, #DataTable1 th, #DataTable1 td {
+	  text-align: center;
+}
+
+/* #DataTable2 td:nth-child(10) {
+   word-break: break-word !important;
+}
+ */
 #DataTable1 th {
   border-bottom:0px;
 }
@@ -264,6 +332,8 @@ background: linear-gradient(to left, #ffff, #A6FFCB, #12D8FA, #1FA2FF); W3C, IE 
 /* background: #16BFFD;
 background: -webkit-linear-gradient(to right,  #CB3066, #16BFFD,  #ffff);
 background: linear-gradient(to right,   #CB3066, #16BFFD , #ffff); */
+
+background-color :
 
 }
 
