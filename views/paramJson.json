@@ -1,0 +1,73 @@
+{"reqnTestParamListOnCrNo":{
+		   "testCodeWise":{
+			      "1234": {
+			       "reqnDnoPlusTestCode":{
+			         "100001234":[ {"paramCode":"5456", "paraName":"dfg", "paraValue":"12", "refRange":"5-10ml", "outOfBound":"1", "dateTime":"10/02/2019",
+			                                  "isInteger":"1"},
+			                       {"paramCode":"7842", "paraName":"fgx", "paraValue":"23", "refRange":"12-55ml", "outOfBound":"0", "dateTime":"10/02/2019", "isInteger":"0"}
+			                     ],
+			         "200001234":[ {"paramCode":"5456", "paraName":"dfg", "paraValue":"10", "refRange":"5-10ml", "outOfBound":"1", "dateTime":"12/02/2019",
+			                                  "isInteger":"1"},
+			                       {"paramCode":"7842", "paraName":"fgx", "paraValue":"23", "refRange":"12-55ml", "outOfBound":"0", "dateTime":"12/02/2019", "isInteger":"0"}
+			                      ]
+			       },
+			        "isGroup":"0",
+			        "testCode":"1234",
+			        "testName":"Calcium",
+			        "Note":"comments"
+            },
+            "4684": {
+			       "reqnDnoPlusTestCode":{
+			         "300004684":[ {"paramCode":"2344", "paraName":"bob", "paraValue":"12", "refRange":"5-10ml", "outOfBound":"1", "dateTime":"10/02/2019",
+			                                  "isInteger":"1"},
+			                       {"paramCode":"3445", "paraName":"cob", "paraValue":"23", "refRange":"12-55ml", "outOfBound":"0", "dateTime":"10/02/2019", "isInteger":"0"}
+			                     ],
+			         "400004684":[ {"paramCode":"2344", "paraName":"bob", "paraValue":"10", "refRange":"5-10ml", "outOfBound":"1", "dateTime":"12/02/2019",
+			                                  "isInteger":"1"},
+			                       {"paramCode":"3445", "paraName":"cob", "paraValue":"23", "refRange":"12-55ml", "outOfBound":"0", "dateTime":"12/02/2019", "isInteger":"0"}
+			                      ]
+			       },
+			        "isGroup":"0",
+			        "testCode":"4684",
+			        "testName":"cadimimim",
+			        "Note":"comments"
+			        }
+			    },
+
+			  "groupCodeWise":{
+			    "4565": {
+			       "reqnNoPlusGroupCode":{
+			         "110004565":[ {"paramCode":"4566", "paraName":"DFG", "paraValue":"46", "refRange":"5-10ml", "outOfBound":"1", "dateTime":"14/02/2019",
+			                                  "isInteger":"1", "testName":"globuline"},
+			                       {"paramCode":"5865", "paraName":"FGf", "paraValue":"45", "refRange":"4-12ml", "outOfBound":"0", "dateTime":"14/02/2019", "isInteger":"0", "testName":"zcfdf"}
+			                     ],
+			         "120004565":[ {"paramCode":"4566", "paraName":"DFG", "paraValue":"47", "refRange":"5-10ml", "outOfBound":"1", "dateTime":"13/02/2019",
+			                                  "isInteger":"1", "testName":"globuline"},
+			                       {"paramCode":"5865", "paraName":"FGf", "paraValue":"40", "refRange":"4-12ml", "outOfBound":"0", "dateTime":"13/02/2019", "isInteger":"0", "testName":"zcfdf"}
+			                     ]
+			       },
+			        "isGroup":"1",
+			        "groupCode":"4565",
+			        "groupName":"KFT",
+			        "Note":"comments"
+            },
+
+            "34534": {
+  			       "reqnNoPlusGroupCode":{
+  			         "1300034534":[ {"paramCode":"9078", "paraName":"dop", "paraValue":"46", "refRange":"5-10ml", "outOfBound":"1", "dateTime":"14/02/2019",
+  			                                  "isInteger":"1", "testName":"globuline"},
+  			                       {"paramCode":"12390", "paraName":"aop", "paraValue":"45", "refRange":"4-12ml", "outOfBound":"0", "dateTime":"14/02/2019", "isInteger":"0", "testName":"zcfdf"}
+  			                     ],
+  			         "1400034534":[ {"paramCode":"9078", "paraName":"dop", "paraValue":"47", "refRange":"5-10ml", "outOfBound":"1", "dateTime":"13/02/2019",
+  			                                  "isInteger":"1", "testName":"bobuline"},
+  			                       {"paramCode":"12390", "paraName":"aop", "paraValue":"40", "refRange":"4-12ml", "outOfBound":"0", "dateTime":"13/02/2019", "isInteger":"0", "testName":"zcfdf"}
+  			                     ]
+  			       },
+  			        "isGroup":"1",
+  			        "groupCode":"34534",
+  			        "groupName":"ght",
+  			        "Note":"comments"
+  			        }
+			 }
+			 }
+			}
