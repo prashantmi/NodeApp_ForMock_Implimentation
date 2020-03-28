@@ -1,39 +1,346 @@
-.divShadow{box-shadow: rgba(0, 0, 0, 0.24) 0px 12px 16px 0px, rgba(0, 0, 0, 0.19) 0px 17px 50px 0px;
-background-color: green; border: none; color: yellow; padding: 2px 15px;
-text-align: center;
-text-decoration: none; display:
-inline-block;
-font-size: 16px; margin: 4px 2px; cursor: pointer;
-transition-duration: 0.4s; height: 40px; }
 
+.nav-tabs {
+    border-bottom: 1px solid #12B796;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
 
-.vertical-text{
-writing-mode: vertical-rl !important;
-text-orientation: mixed;
+.nav-tabs .nav-link {
+    border-bottom-color:  #12B796;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.nav-tabs .nav-link:hover {
+ border: 1px solid #12B796;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #12B796;
+    background-color: #fff;
+}
+
+.nav-tabs .nav-link.active {
+    border: 1px solid #12B796;
+    border-bottom: 1px solid transparent;
 }
 
 
-.CrystalClear{
-  background: #159957;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #155799, #159957);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #155799, #159957); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+/* custom sub expand table card header color start*/
+.essenDataColor{
+background: #00F260;
+background: -webkit-linear-gradient(to right, #0575E6, #00F260);
+background: linear-gradient(to right, #0575E6, #00F260);
+min-width: 20px;
+}
+.reqnRaisingColor{background: #7e57c2; color: white; font-weight : 400 ; min-width: 20px; }
+.sampleCollColor{ background: #5c6bc0; color: white; font-weight : 400 ; min-width: 20px; }
+.packListGenColor{background: #42a5f5; color: white; font-weight : 400 ; min-width: 20px; }
+.sampleAccepColor{background: #b2102f; color: white; font-weight : 400 ; min-width: 20px; }
+.sampleRejeColor{ background: #00695f; color: white; font-weight : 400 ; min-width: 20px; }
+.patAccepColor{   background: #b2102f; color: white; font-weight : 400 ; min-width: 20px; }
+.patRejeColor{    background: #00695f; color: white; font-weight : 400 ; min-width: 20px; }
+.resultEntColor{  background: #a31545; color: white; font-weight : 400 ; min-width: 20px; }
+.reportGenColor{  background: #00352c; color: white; font-weight : 400 ; min-width: 20px; }
+/* custom sub expand table card header color end*/
+
+/* Requstion Status Column cell colors starts*/
+/* .reqnStaus{padding:5px !important;} */
+.reqnStausA{
+	/* text-align: center; */
+	cursor: default;
+	text-decoration: none !important;
+	padding: .4em 0.1em .4em .4em !important;
+  font-size: 95% !important;
+  border-radius: .2em !important;
+   white-space: nowrap;
+}
+
+.stReqnRaisedColor{        	color: #7e57c2 !important; 	border-left : 4px solid #7e57c2; }
+.stStsampleCollectedColor{ 	color: #5c6bc0 !important; 	border-left : 4px solid #5c6bc0; }
+.stPackListGenColor{      	color: #42a5f5 !important; 	border-left : 4px solid #42a5f5; }
+.stSampleAcceptColor{ 		  color: #b2102f !important;  border-left : 4px solid #b2102f; }
+.stResultEnteredColor{ 		  color: #a31545 !important; 	border-left : 4px solid #a31545; }
+.stResultvalidColor{ 		    color: #932020 !important;	border-left : 4px solid #932020; }
+.stPatRejectcolor{ 			    color: #00695f !important;	border-left : 4px solid #00695f; }
+.stTestResceduleColor{ 		  color: #c0ca33 !important;	border-left : 4px solid #c0ca33; }
+.stTestResceduleColor{ 		  color: #00e676 !important;	border-left : 4px solid #00e676; }
+.stSampleCancleColor{ 		  color: #00695f !important;	border-left : 4px solid #00695f; }
+.stWaitReportPntColor{ 		  color: #4caf50 !important;	border-left : 4px solid #4caf50; }
+.stResultPrintColor{ 		    color: #1de9b6 !important;	border-left : 4px solid #1de9b6; }
+.stTestCancleColor{ 		    color: #e65100 !important;	border-left : 4px solid #e65100; }
+.stTestDeleteColor{ 		    color: #1769aa !important;	border-left : 4px solid #1769aa; }
+.stMachineProcessColor{ 	  color: #b2102f !important;	border-left : 4px solid #b2102f; }
+.stReportGenColor{ 			    color: #00352c !important;	border-left : 4px solid #00352c; }
+.stDraftResultEnteredColor{ color: #4bd396 !important;	border-left : 4px solid #4bd396; }
+.stDraftResultValidColor{ 	color: #4bd396 !important;	border-left : 4px solid #4bd396; }
+.stTestAdvisedColor{ 		    color: #4bd396 !important;	border-left : 4px solid #4bd396; }
+
+.stIcon{
+	/* float:right; */
+	color:#13A1FE;
+	font-size: large;
+	/*  position: absolute;
+    top: 0;
+    right: 0; */
+	
+}
+
+
+.tatIcon{
+	/* float:right; */
+	font-size: large;
+	/* margin-right: 3px; */
+}
+
+.tatImg{
+  vertical-align: top;
+}
+/* Requstion Status Column cell colors ends */
+
+
+/* datatable css starts */
+
+
+#DataTable2 td, #DataTable3 td, #DataTable4 td, #DataTable5 td, #DataTable6 td, #DataTable7 td,
+#DataTable2  th, #DataTable3  th, #DataTable4  th, #DataTable5  th, #DataTable6  th, #DataTable7  th{
+  border-top:0px !important;
+}
+
+
+/* #DataTable2 table tr td tr {
+    border: 1px solid grey;
+    box-shadow: -3px 3px 6px 0px grey;
+} */
+
+#DataTable2 table tr td,
+#DataTable3 table tr td,
+#DataTable4 table tr td,
+#DataTable5 table tr td,
+#DataTable6 table tr td,
+#DataTable7 table tr td {
+box-shadow: -3px 3px 6px 0px grey;
+}
+
+
+/* #DataTable2 tbody table table tr :hover,
+#DataTable3 tbody table table tr :hover,
+#DataTable4 tbody table table tr :hover,
+#DataTable5 tbody table table tr :hover {
+    box-shadow: -3px 3px 6px 0px #007BFF;
+} */
+
+.rowhover :hover{
+  /* box-shadow: -3px 3px 6px 0px #007BFF; */
+}
+
+#DataTable2 table tr td tr td,
+#DataTable3 table tr td tr td,
+#DataTable4 table tr td tr td,
+#DataTable5 table tr td tr td,
+#DataTable6 table tr td tr td,
+#DataTable7 table tr td tr td {
+    box-shadow: 0px 0px 0px 0px ;
+}
+
+
+
+/* #DataTable2 td:nth-child(10) {
+   word-break: break-word !important; 
+} */
+
+
+.rowGroupReqnDate {
+border-bottom: 5px solid !important;
+border-left: 5px solid !important;
+/* border-color: #16BFFD  !important;
+border-color: -webkit-linear-gradient(to right,  #CB3066, #16BFFD,  #ffff)  !important;
+border-color: linear-gradient(to right,   #CB3066, #16BFFD , #ffff)  !important; */
+/* border-image: linear-gradient(45deg, #CB3066, #16BFFD) 1; */
+/* border-image: linear-gradient(45deg, #02D67F,#048DCC, #067aef, #16bffd) 1 !important; */
+    border-image: linear-gradient(45deg, #07e58a , #04c274,#0796d8, #178bff, #16bffd, #46cdff) 1 / 1 / 0 stretch !important;
+/* border-left: 1px solid #c5c5c5  !important;  */
+border-radius: .2em !important;
+padding: .4em 1em .4em !important;
+
+/* background: #1FA2FF;  fallback for old browsers
+background: -webkit-linear-gradient(to left, #ffff, #A6FFCB, #12D8FA, #1FA2FF);  Chrome 10-25, Safari 5.1-6
+background: linear-gradient(to left, #ffff, #A6FFCB, #12D8FA, #1FA2FF); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+/* background: #16BFFD;
+background: -webkit-linear-gradient(to right,  #CB3066, #16BFFD,  #ffff);
+background: linear-gradient(to right,   #CB3066, #16BFFD , #ffff); */
 
 }
 
-.CoolSky{
-background: #2980B9;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+top: 12px;
+/* vertical-align: middle; */
 }
 
-.WitchingHour{
-  background: #c31432;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #240b36, #c31432);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #240b36, #c31432); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/* datatable css ends */
+
+/* home cards slide animation start*/
+.hoverCards:hover {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  animation-name: example;
+  animation-duration: 0.25s;
+  border-left: 8px solid #007BFF;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+/* home cards slide animation end*/
+
+
+
+
+/*-------------------------------------------------------- Graph Tab styling----------------------------------------------------------------------------------*/
+
+@media screen and (min-width:767px){
+/* @media (min-width: 767px) (max-width: 1444px){ */
+.graphTabTestOrGroupList{
+max-height: 400px;
+ }
 }
 
-.RainbowBlue{
-  background: #00F260;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+@media screen and (max-width: 766px){
+.graphTabTestOrGroupList{
+max-height: 200px;
+ }
 }
+
+.graphTabTestOrGroupList::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+.graphTabTestOrGroupList::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+.graphTabTestOrGroupList::-webkit-scrollbar-thumb
+{
+	background-color: #0ae;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%,
+	                   color-stop(.5, rgba(255, 255, 255, .2)),
+					   color-stop(.5, transparent), to(transparent));
+}
+
+.graphTabTestOrGroupList-col {
+	/* border-right: 3px solid gray; */
+}
+
+.graphTabTestOrGroupList{
+	/* border-bottom: 1px solid #33BBF1; */
+	/* border-right: 2px solid grey; */
+}
+
+/* .bl-g-2{
+	border-left: 2px solid grey;
+} */
+.br-g-2{
+	border-right: 2px solid grey;
+}
+
+@media screen and (min-width: 767px) {
+.graphTabTestGraph-col{
+	border-right: 2px solid grey;
+}
+
+.graphTabTestGraphnTable-col{
+	border-left: 2px solid grey;
+}
+
+}
+@media screen and (max-width: 767px) {
+.graphTabTestGraph-col{
+	/* border-top: 1px solid #33BBF1; */
+	border-bottom: 2px solid grey;
+}
+
+.graphTabTestOrGroupList{
+	border-bottom: 2px solid grey;
+}
+
+}
+
+
+@keyframes blinkTh {  
+	0% { 
+    border-top: 1.5px solid #13A1FE ;
+	border-left: 1.5px solid #13A1FE ;
+	border-right: 1.5px solid #13A1FE ;
+	color:#13A1FE;
+	}
+	
+	100% { 
+    border-top: 1.5px solid #8AC744 ;
+	border-left: 1.5px solid #8AC744 ;
+	border-right: 1.5px solid #8AC744 ;
+	color:#0BB193;
+	}
+	
+	 }
+
+@keyframes blinkTd { 
+	0% { 
+   	border-left: 1.5px solid #13A1FE ;
+	border-right: 1.5px solid #13A1FE ;
+	color: green;
+	}
+	100% { 
+   	border-left: 1.5px solid #8AC744 ;
+	border-right: 1.5px solid #8AC744 ;
+	color: #0BB193;
+	}
+	 }
+	
+@keyframes blinkSpan { 
+	0% { 
+   	/* border: 1px solid green ; */
+	color: #13A1FE;
+	}
+	100% { 
+	color: #8AC744;
+	}
+	 }
+
+th.highLightColumnColor{
+	/* animation: blinkTh 1s step-end 2 alternate  linear forwards; */
+	animation: blinkTh 2s infinite ;
+}
+
+td.highLightColumnColor{
+	/* animation: blinkTd 1s step-end 2 alternate  linear forwards; */
+	animation: blinkTd 2s infinite ;
+}
+
+li span.highLightSpanColor{
+	/* animation: blinkSpan 1s step-end 2 alternate  linear forwards; */
+	margin: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 2px;
+    
+	animation: blinkSpan 2s infinite ;
+}
+
+
+
+@media screen and (min-width: 992px) {
+.rotated270-lg {
+  transform: rotate(270deg); /* Equal to rotateZ(45deg) */
+      width: fit-content;
+      margin-top : 3px;
+      margin-bottom : 10px;
+}
+}
+
+

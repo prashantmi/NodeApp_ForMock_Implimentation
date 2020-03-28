@@ -1,0 +1,187 @@
+
+
+.rotated270-lg {
+  transform: rotate(90deg); /* Equal to rotateZ(45deg) */
+    /*  width: fit-content;
+       margin-top : 3px;
+      margin-bottom : 10px; */
+}
+
+@media screen and (max-width: 600px) {
+.rotated270-lg {
+  transform: rotate(90deg); /* Equal to rotateZ(45deg) */
+     width: fit-content;
+      margin-left : 0px;
+     /*   margin-top : 3px;
+      margin-bottom : 10px; */
+}
+}
+
+/* .fancybox-slide.fancybox-slide--iframe.fancybox-slide--current.fancybox-slide--complete {
+padding-top: 3rem!important;
+padding-right: 1rem!important;
+padding-left: 1rem!important;
+padding-bottom: .5rem!important;
+overflow-y: auto;
+overflow-x: auto;
+}
+
+.fancybox-slide--iframe .fancybox-content {
+    width  : 800px;
+    height : 600px;
+    max-width  : 80%;
+    max-height : 80%;
+    margin: 0;
+} */
+
+.fancybox-content {
+    border: 7px solid white;
+    border-radius: .5rem!important;
+}
+
+@media screen and (max-width: 600px) {
+.testParamTables{
+	font-size: smaller !important;
+}
+
+.DataTable11{
+	font-size: smaller !important;
+}
+
+.DataTable12{
+	font-size: smaller !important;
+}
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+    top: 7px;
+}
+
+
+.rowGroupReqnDate {
+    border-top: 0px !important;
+    border-bottom: 3px solid !important;
+    /* border-left: 5px solid !important; */
+    /* border-image: linear-gradient(45deg, #CB3066, #16BFFD) 1; */
+    /* border-image: linear-gradient(45deg, #02D67F,#048DCC, #067aef, #16bffd) 1 !important; */
+    border-image: linear-gradient(45deg, #07e58a , #04c274,#0796d8, #178bff, #16bffd, #46cdff) 1 / 1 / 0 stretch !important;
+    /* border-left: 1px solid #c5c5c5 !important; */
+    border-radius: .2em !important;
+    padding: 0em 0em 0em 1em !important;
+    background: linear-gradient(45deg, #cdebf5, transparent);
+}
+
+
+.testParamTables th {
+  border-top: 1px  lightgrey !important;
+}
+
+.testParamTables td{
+  border-bottom: 1px solid white !important;
+}
+
+.testParamTables{
+background: linear-gradient(45deg, #02D67F,#048DCC, #067aef, #16bffd);
+/* color: white; */
+width: 50% !important; 
+}
+
+.testParamTables td {
+    color: black;
+}
+
+.testParamTables th {
+    color: white;
+}
+
+#DataTable11 th, #DataTable11 td{
+  border-top:0px ;
+}
+
+.validatedGradient {
+	background: -webkit-linear-gradient(to right, #00b09b, #96c93d);
+	background: linear-gradient(to right, #00b09b, #96c93d);
+	color: white;
+}
+
+.DataTable11Caption{
+	padding-bottom: 0px;
+}
+
+.DataTable12Caption{
+	padding-bottom: 0px;
+}
+
+
+#DataTable11 .even, #DataTable12 .even{
+	background-color: #FFFFFF !important;
+}
+#DataTable11 .odd, #DataTable12 .odd{
+	background-color: #FFFFFF !important; 
+}
+
+
+#DataTable11 .testParamTables .even, #DataTable12 .testParamTables .even {
+	background-color: #FFFFFF !important;
+}
+#DataTable11 .testParamTables .even, #DataTable12 .testParamTables .even {
+    background-color: #f0f7ff !important;
+}
+
+.btn-circle-comment {
+ width: 25px;
+    height: 25px;
+    line-height: 29px;
+    font-size: 1.3rem;
+}
+
+.btn-circle-allRowSort {
+width: 25px;
+    height: 25px;
+    line-height: 22px;
+    font-size: 1.3rem;
+}
+
+.btn-circle-allRowSort {
+width: 25px;
+    height: 25px;
+    line-height: 22px;
+    font-size: 1.3rem;
+}
+
+.btn-circle-reqnGroupRowSort {
+width: 25px;
+    height: 25px;
+    line-height: 29px;
+    font-size: 1.2rem;
+}
+
+
+.btn-circle-comparebtn{
+    width: 21px;
+    height: 21px;
+    line-height: 17px;
+    text-align: center;
+    padding: 0;
+    border-radius: 50%;
+}
+
+.urgentGradient{
+	animation: urgentGradientAnime 1s infinite ;
+}
+
+
+@keyframes urgentGradientAnime {  
+	0% { 
+	color:red;
+	}
+	
+	50% { 
+	color:yellow;
+	}
+	
+	100% { 
+	color:blue;
+	}
+	
+	 }

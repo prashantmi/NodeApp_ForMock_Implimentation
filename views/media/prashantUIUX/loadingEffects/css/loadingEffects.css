@@ -1,0 +1,80 @@
+.gradient-border {
+  --borderWidth: 3px;
+  background: #1D1F20;
+  position: relative;
+  border-radius: var(--borderWidth);
+}
+
+.gradient-border:after {
+  content: '';
+  position: absolute;
+  /* top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2); */
+  top: calc(-1 * var(--borderWidth));
+  left: calc(0 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 0);
+  width: calc(100% + var(--borderWidth) * 0);
+  /* background: linear-gradient(80deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82); */
+  background: linear-gradient(to right,#1a2a6c, #b21f1f, #f37055, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82, #11998e, #38ef7d,  #00f260, #0575e6, #16bffd, #cb3066, #ef4e7b);
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 1s ease alternate infinite;
+  background-size: 300% 300%;
+}
+
+
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.bar {
+  position: relative;
+}
+
+.rollingCircle {
+  position: absolute;
+  top: -10px;
+  height: 60px;
+  width: 60px;
+  left: 0;
+  background: #13A1FE !important;
+  border-radius: 30%;
+  z-index:-1;
+
+  box-shadow: -0.1px 1px 20px -7px #007bff !important;
+  -webkit-animation: move 5s infinite;
+}
+
+.lodingText {
+  text-transform: uppercase;
+  /* color: #F0F8FF; */
+  font-family: helvetica, sans-serif;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 767px) {
+@-webkit-keyframes move {
+  10% {left: 10;}
+  50% {left: 85%; -webkit-transform: rotate(450deg); width: 150px; height: 150px;}
+  75% {left: 85%; -webkit-transform: rotate(450deg); width: 150px; height: 150px;}
+  100 {right: 85%;}
+}}
+
+@media screen and (max-width: 500px) {
+@-webkit-keyframes move {
+  10% {left: 10;}
+  50% {left: 70%; -webkit-transform: rotate(270deg); width: 105px; height: 105px;}
+  75% {left: 70%; -webkit-transform: rotate(270deg); width: 105px; height: 105px;}
+  100 {right: 70%;}
+}}
+

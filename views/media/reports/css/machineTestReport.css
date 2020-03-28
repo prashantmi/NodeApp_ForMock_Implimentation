@@ -1,0 +1,63 @@
+
+/* html {
+  font-size: 1rem;
+} */
+
+html { font-size: 14px }
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 1.2rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 1.4rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1.6rem;
+  }
+}
+
+
+/* Remove input type number up and down arrow */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+.table.dataTable td:nth-child(9),td:nth-child(10){
+  white-space: nowrap;
+}
+
+.table.dataTable th {
+  white-space: nowrap;
+}
+
+.table.dataTable td:nth-child(8) {
+   word-break: break-word; 
+   /*width: 300px; */
+  /* white-space: pre */
+} 
+
+
+/* This does 10px gutters. 
+The values in the CSS should be half 
+the desired gutter width */
+.condensed-grid.row, 
+.condensed-grid .row { 
+	margin-left: -5px; 
+	margin-right: -5px; 
+} 
+
+.condensed-grid [class*="col-"]{ 
+	padding-left: 5px; 
+	padding-right: 5px; 
+}

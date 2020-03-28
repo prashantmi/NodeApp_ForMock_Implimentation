@@ -1,0 +1,149 @@
+
+#patDetails-table-Ipd, #patDetails-table-Opd {
+    overflow: auto!important;
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+}
+
+/* @media screen and (max-width: 460px) {
+	#patDetails-table-Ipd, #patDetails-table-Opd {
+	    font-size: 3vw;
+	}
+}
+ */
+.patDetailsContainer{
+ position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.patStatusSpan{
+   padding: 0.5em 0.5em !important;
+   font-size: 95% !important;
+   border-radius: .2em !important;
+   white-space: nowrap;
+   color : white;
+   font-weight : 500 ;
+   font-family: 'averta-bolditalicuploadedfile';
+}
+
+.opdSpan{
+   background : #04aeff;
+}
+
+.emgcOpdSpan{
+	background : #04aeff;
+}
+
+@media screen and (min-width: 768px) {
+.emgcOpdSpan{
+	font-size: smaller !important;
+}
+
+.spclOpdSpan{
+	font-size: smaller !important;
+}
+
+}
+
+.spclOpdSpan{
+	background : #04aeff;
+}
+
+.ipdSpan {
+    background: #16ba1d;
+}
+
+.unknownSpan{
+   background : #757575;
+}
+.deadSpan{
+   background : #c62828;
+}
+.mlcSpan{
+   background : #ad1457;
+}
+
+.newBornSpan {
+    background: hotpink;
+}
+
+.pregnantSpan {
+    background: deeppink;
+}
+
+.vipSpan {
+    background: black;
+    color: gold;
+}
+
+.confidentialSpan {
+    background: black;
+    color: greenyellow;
+}
+
+table.dataTable tbody tr.selected, table.dataTable tbody th.selected, table.dataTable tbody td.selected {
+    color: black !important;
+}
+
+table.dataTable tbody>tr.selected, table.dataTable tbody>tr>.selected {
+    background-color: #bfcfdccc !important;
+}
+
+#DataTableOPD td, #DataTableIPD td,
+#DataTableOPD th, #DataTableIPD th{
+  border-top:0px !important;
+}
+
+#DataTableOPD th, #DataTableIPD th {
+  border-bottom:0px !important;
+}
+
+#patDetails-table-Opd, #patDetails-table-Ipd {
+  /* box-shadow: -4px 3px 9px 0px #007bff; */
+  border: 1px solid grey;
+}
+
+
+#DataTableIPD :hover, #DataTableOPD :hover{
+    box-shadow: 0px 0px 0px 0px !important;
+}
+
+/* 
+#DataTableIPD thead th :hover,
+#DataTableIPD tbody td :hover,
+#DataTableOPD thead th :hover,
+#DataTableOPD tbody td :hover{
+	 transform: scale(1) !important;
+} */
+
+
+/* Forcefull Hide DataTableIPD odering icon */
+#DataTableIPD thead .sorting_asc:before,
+#DataTableIPD thead .sorting_asc:after,
+#DataTableIPD thead .sorting_desc:before,
+#DataTableIPD thead .sorting_desc:after,
+
+#DataTableOPD thead .sorting_asc:before,
+#DataTableOPD thead .sorting_asc:after,
+#DataTableOPD thead .sorting_desc:before,
+#DataTableOPD thead .sorting_desc:after {
+	opacity: 0 !important;
+	display: none !important;
+	content: "" !important;
+}
+
+
+
+/*-------------------------------------------------------- Graph Tab styling----------------------------------------------------------------------------------*/
+
+
+.noUserSelect{
+-webkit-user-select: none;  /* Chrome all / Safari all */
+-moz-user-select: none;     /* Firefox all */
+-ms-user-select: none;      /* IE 10+ */
+user-select: none;
+}
+
+
