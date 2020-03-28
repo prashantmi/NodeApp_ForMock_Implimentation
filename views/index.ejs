@@ -4,24 +4,6 @@
 ## Author          		   	: github.com/prashantmi
 ## Module Name				: INVESTIGATION
 -->
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
-<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
-<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
-
-<%--
-<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic"%>
-<%@ taglib uri="/WEB-INF/struts-tiles.tld" prefix="tiles"%>
-<%@ taglib uri="/WEB-INF/dateTag.tld" prefix="date"%>
-<%@ taglib uri="/WEB-INF/hisTab.tld" prefix="tag"%>
-<%@ taglib uri="/WEB-INF/HisTools.tld" prefix="his"%>
-<%@page import="hisglobal.hisconfig.Config"%>
---%>
-
-<%@page import="java.util.*"%>
-<%@page import="com.ibm.icu.text.SimpleDateFormat"%>
-
 <!doctype html>
 <html lang="en">
 
@@ -148,34 +130,6 @@
 </head>
 
 <body class="">
-  <html:form action="/InvestigationTrackingReport" enctype="multipart/form-data">
-
-<bean:define name="InvTrackingReportFB" property="fromDate" id="frDate" type="java.lang.String" />
-<bean:define name="InvTrackingReportFB" property="toDate" id="tDate" type="java.lang.String" />
-<bean:define name="InvTrackingReportFB" property="miscDate" id="mDate" type="java.lang.String" />
-
-<%
- if(frDate==null||frDate.equalsIgnoreCase(""))
-    {Date date = new Date(System.currentTimeMillis());
-     SimpleDateFormat formatter= new SimpleDateFormat("dd-MMM-yyyy");
-     frDate=formatter.format(date); }
- if(tDate==null||tDate.equalsIgnoreCase(""))
-    {Date date = new Date(System.currentTimeMillis());
-     SimpleDateFormat formatter= new SimpleDateFormat("dd-MMM-yyyy");
-     tDate=formatter.format(date); }
-%>
-
-<%
-
-Date date = new Date(System.currentTimeMillis());
-Calendar cal = Calendar.getInstance();
-cal.setTime(date);
-cal.add(Calendar.DATE, -90);
-SimpleDateFormat formatter= new SimpleDateFormat("dd-MMM-yyyy");
-date=cal.getTime();
-mDate=formatter.format(date);
-
-%>
 
     <div class="container-fluid mt-2 mb-3" id="container1">
       <div class="mx-md-0 row p-3 p-md-1 align-items-center shadow rounded bg-white no-gutters hover-shadow ">
@@ -213,7 +167,7 @@ mDate=formatter.format(date);
               <div class="input-group-prepend">
                 <span class="input-group-text px-1">From Date:</span>
               </div>
-              <input type='text' class="form-control px-1 fromDateInput" value="<%=frDate%>" onkeydown="return false" />
+              <input type='text' class="form-control px-1 fromDateInput" value="" onkeydown="return false" />
               <span class="input-group-addon mt-2">
                 <span class="">
                   <i class="fas fa-calendar-alt" style="color: #007BFF; font-size:21px;"></i>
@@ -229,7 +183,7 @@ mDate=formatter.format(date);
               <div class="input-group-prepend">
                 <span class="input-group-text px-1">To Date:</span>
               </div>
-              <input type='text' class="form-control px-1 toDateInput " value="<%=tDate%>" onkeydown="return false" />
+              <input type='text' class="form-control px-1 toDateInput " value="" onkeydown="return false" />
               <span class="input-group-addon mt-2">
                 <span class="">
                   <i class="fas fa-calendar-alt" style="color: #007BFF; font-size:21px;"></i>
@@ -252,7 +206,7 @@ mDate=formatter.format(date);
         <div class="mx-md-0 row align-items-center no-gutters d-flex justify-content-center">
 
 		<div class="divArchivalbtn1 mx-md-3 mt-2 pr-4 pr-md-1">
-			<label><h6 class="card-subtitle mb-2 text-muted">The request shown below is from last three months [<%=mDate%>] of Lab Request,
+			<label><h6 class="card-subtitle mb-2 text-muted">The request shown below is from last three months [] of Lab Request,
 			To view request older than three months</h6></label>
   			<button id="btnDataFromArchival1" type="button" class="btn btn-sm btn-warning "><a class="text-nowrap ">Click Here</a>
   			</button>
@@ -779,7 +733,6 @@ mDate=formatter.format(date);
 
 
 
-  </html:form>
   <script type="text/javascript" src="media/vue-js/bootstrap-vue/bootstrap-vue.min.js"></script>
   <script type="text/javascript" src="media/vue-js/bootstrap-vue/polyfill.min.js"></script>
 </body>
